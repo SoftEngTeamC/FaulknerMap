@@ -62,7 +62,8 @@ faulknerDatabase/seg0/c6b0.dat
 faulknerDatabase/seg0/c6c1.dat
 faulknerDatabase/seg0/d690.dat
 faulknerDatabase/seg0/d6a1.dat
-/faulknerDatabase/*
-/output/*
+faulknerDatabase/*
+faulknerDatabase/seg0/*
+output/*
 
 
