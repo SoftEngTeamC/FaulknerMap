@@ -57,4 +57,14 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
-/output/
+.idea/*
+faulknerDatabase/seg0/c6b0.dat
+faulknerDatabase/seg0/c6c1.dat
+faulknerDatabase/seg0/d690.dat
+faulknerDatabase/seg0/d6a1.dat
+faulknerDatabase/tmp/
+faulknerDatabase/seg0/*
+faulknerDatabase/log/*
+/output/*
+
+
