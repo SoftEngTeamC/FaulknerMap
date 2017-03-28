@@ -35,6 +35,13 @@ and then:
 git push --set-upstream origin <NAME OF YOUR BRANCH>
 ```
 
+Once you have pushed, and depending on if anyone has pushed previously before you, you then can merge your branch with the master branch:
+
+```
+git checkout master
+git merge <NAME OF YOUR BRANCH>
+```
+
 
 Alternatively you can create a branch in GitHub online.
 
