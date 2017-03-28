@@ -52,9 +52,8 @@ public class Driver {
             ResultSet rs = stmt.executeQuery(str);
             printAllRows(rs);
 
-            //Dont forget to double single quotes in order to escape them in SQL
+            //Do not forget to double single quotes in order to escape them in SQL
             System.out.println("\nStoring new data...");
-            addRow("Allergy ", "4G", stmt);
             addRow("Arthritis Center", "4D", stmt);
             addRow("Brigham and Women''s Primary Physicians", "4A/4S/5J", stmt);
             addRow("Cardiology", "4G", stmt);
@@ -106,7 +105,7 @@ public class Driver {
         try {
             Statement stmt = connection.createStatement(); //Statement object
             try {
-                // Drop the UnpaidOrder table.
+                // Drop the Hospital Service table.
                 String str = "DROP TABLE " + HospitalServicesTable.NAME;
                 stmt.execute(str); //check HospitalServices table
                 System.out.println("HospitalServices table dropped.");
@@ -137,7 +136,7 @@ public class Driver {
             stmt.execute(str);
 
             // Add row to table
-            addRow("Help Desk", "Ground Location", stmt);
+            addRow("Allergy ", "4G", stmt);
 
             System.out.println("HospitalServices table created and populated.");
         } catch (SQLException ex) {
