@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Mar 28 12:06:28 EDT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015b-15ab-20e3-0000069ec878 
+Tue Mar 28 12:13:11 EDT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.11.1.2 - (1629631): instance a816c00e-015b-15b1-46fa-0000069ecf88 
 on database directory /Users/Gina/IdeaProjects/FaulknerMap/faulknerDatabase with class loader sun.misc.Launcher$AppClassLoader@14dad5dc 
 Loaded from file:/Library/Java/JavaVirtualMachines/jdk1.8.0_121.jdk/Contents/Home/db/lib/derby.jar
 java.vendor=Oracle Corporation
