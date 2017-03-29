@@ -6,7 +6,6 @@ import java.util.List;
 
 import db.HospitalServicesSchema.*;
 
-import javax.swing.plaf.nimbus.State;
 
 /**
  * Created by Gina on 3/27/17.
@@ -32,7 +31,7 @@ public class Driver {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase");
+            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase;create=true");
             dropDB(connection); // checks there isn't already a db
 
             buildTables(connection); //build all tables
