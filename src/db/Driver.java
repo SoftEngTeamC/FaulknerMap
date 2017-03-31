@@ -102,7 +102,7 @@ public class Driver {
             addProviderRow("Connell, Nathan", "MD", "4G", stmt);
             addProviderRow("Copello, Maria", "MD", "4A", stmt);
             addProviderRow("Cua, Christopher", "MD", "4I", stmt);
-           // addProviderRow("D'Ambrosio, Carolyn", "MD", "4G", stmt);
+            addProviderRow("D''Ambrosio, Carolyn", "MD", "4G", stmt);
             addProviderRow("Dave, Jatin", "MD", "4G", stmt);
             addProviderRow("Drewniak, Stephen", "MD", "4B", stmt);
             addProviderRow("Fanta, Christopher", "MD", "4G", stmt);
@@ -130,7 +130,7 @@ public class Driver {
             addProviderRow("Mullally, William", "MD", "4C", stmt);
             addProviderRow("Mutinga, Muthoka", "MD", "4B", stmt);
             addProviderRow("Novak, Peter", "MD", "4C", stmt);
-           // addProviderRow("O'Leary, Michael", "MD", "4N", stmt);
+            addProviderRow("O''Leary, Michael", "MD", "4N", stmt);
             addProviderRow("Oliver, Lynn", "RN", "4A", stmt);
             addProviderRow("Owens, Lisa Michelle", "MD", "4S", stmt);
             addProviderRow("Pariser, Kenneth", "MD", "4D", stmt);
