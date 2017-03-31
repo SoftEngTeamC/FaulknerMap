@@ -17,9 +17,16 @@ class HospitalServicesSchema {
         }
     }
 }
+
 //Providers == professionals
 class HospitalProvidersSchema {
     static final class HospitalProvidersTable {
+        static final String NAME = "hospitalProviders";
 
+        static final class Cols {
+            static final String NAME = "name";
+            static final String TITLE = "title";
+            static final String LOCATION = "location";
+        }
     }
 }
