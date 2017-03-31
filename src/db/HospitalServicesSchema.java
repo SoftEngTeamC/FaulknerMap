@@ -17,3 +17,9 @@ class HospitalServicesSchema {
         }
     }
 }
+//Providers == professionals
+class HospitalProvidersSchema {
+    static final class HospitalProvidersTable {
+
+    }
+}
