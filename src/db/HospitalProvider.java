@@ -1,5 +1,7 @@
 package db;
 
+import java.util.UUID;
+
 /**
  * Created by wangyaofeng on 3/31/17.
  */
@@ -8,6 +10,14 @@ public class HospitalProvider {
     private String name;
     private String title;
     private String location;
+    private UUID id;
+
+    public HospitalProvider(String name, String title, String location){
+        this.name = name;
+        this.title = title;
+        this.location = location;
+        id = UUID.randomUUID(); //set id to random
+    }
 
 
     public String getName() {
@@ -33,4 +43,6 @@ public class HospitalProvider {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public UUID getId() { return id; }
 }

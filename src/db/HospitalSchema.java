@@ -8,29 +8,31 @@ package db;
     Using this class helps prevent typos/mistakes when calling the database
  */
 
-class HospitalSchema {
+public class HospitalSchema {
 
     // Hospital service
-    class HospitalServicesSchema {
-        final class HospitalServicesTable {
-            static final String NAME = "hospitalServices";
+    public class HospitalServiceSchema {
+        public final class HospitalServiceTable {
+            public static final String NAME = "hospitalServices";
 
-            final class Cols {
-                static final String NAME = "name";
-                static final String LOCATION = "location";
+            public final class Cols {
+                public static final String ID = "id";
+                public static final String NAME = "name";
+                public static final String LOCATION = "location";
             }
         }
     }
 
     // Providers == professionals
-    class HospitalProvidersSchema {
-        final class HospitalProvidersTable {
-            static final String NAME = "hospitalProviders";
+    public class HospitalProviderSchema {
+        public final class HospitalProviderTable {
+            public static final String NAME = "hospitalProviders";
 
-            final class Cols {
-                static final String NAME = "name";
-                static final String TITLE = "title";
-                static final String LOCATION = "location";
+            public final class Cols {
+                public static final String ID = "id";
+                public static final String NAME = "name";
+                public static final String TITLE = "title";
+                public static final String LOCATION = "location";
             }
         }
     }
