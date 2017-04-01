@@ -1,10 +1,19 @@
 package db;
 
 
-public class Hospitalservices {
+import java.util.UUID;
+
+public class HospitalService {
 
   private String name;
   private String location;
+  private UUID id;
+
+  public HospitalService(String name, String location){
+    this.name = name;
+    this.location = location;
+    id = UUID.randomUUID(); //set id to random
+  }
 
 
   public String getName() {
@@ -23,5 +32,7 @@ public class Hospitalservices {
   public void setLocation(String location) {
     this.location = location;
   }
+
+  public UUID getId() { return id; }
 
 }
