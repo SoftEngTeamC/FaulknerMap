@@ -8,37 +8,152 @@
 
 <SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1038.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
          <children>
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
             <Button layoutX="14.0" layoutY="553.0" mnemonicParsing="false" text="Logout" />
-            <Text layoutX="13.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To edit the map, select the nodes or routes for more options." wrappingWidth="110.546875" />
-            <TitledPane layoutX="12.0" layoutY="205.0" prefHeight="342.0" prefWidth="282.0" text="Selected: Node">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
-                     <children>
-                        <Button layoutX="226.0" layoutY="277.0" mnemonicParsing="false" text="Undo" />
-                        <Button layoutX="205.0" layoutY="27.0" mnemonicParsing="false" text="Update" />
-                        <TextField layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="187.0" />
-                        <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                        <ListView layoutX="14.0" layoutY="73.0" prefHeight="98.0" prefWidth="187.0" />
-                        <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" text="Remove" />
-                        <Text layoutX="20.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Routes Connected" />
-                        <ListView layoutX="14.0" layoutY="192.0" prefHeight="98.0" prefWidth="187.0" />
-                        <Button layoutX="203.0" layoutY="192.0" mnemonicParsing="false" text="Connect" />
-                        <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disconnected Routes" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </TitledPane>
-         </children></AnchorPane>
+            <TabPane layoutX="14.0" layoutY="187.0" prefHeight="345.0" prefWidth="278.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Edit Node">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
+                                 <children>
+                                    <Button layoutX="226.0" layoutY="277.0" mnemonicParsing="false" text="Undo" />
+                                    <Button layoutX="205.0" layoutY="27.0" mnemonicParsing="false" text="Update" />
+                                    <TextField layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="187.0" />
+                                    <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                                    <ListView layoutX="14.0" layoutY="73.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" text="Remove" />
+                                    <Text layoutX="20.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Routes Connected" />
+                                    <ListView layoutX="14.0" layoutY="192.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button layoutX="203.0" layoutY="192.0" mnemonicParsing="false" text="Connect" />
+                                    <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disconnected Routes" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Edit Route">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                              <TextField layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="193.0" />
+                              <Button layoutX="212.0" layoutY="23.0" mnemonicParsing="false" text="Update" />
+                              <Text layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Node" />
+                              <Text layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ending Node" />
+                              <ListView layoutX="14.0" layoutY="79.0" prefHeight="34.0" prefWidth="194.0" />
+                              <ListView layoutX="14.0" layoutY="130.0" prefHeight="32.0" prefWidth="194.0" />
+                              <Button layoutX="86.0" layoutY="263.0" mnemonicParsing="false" text="Switch" />
+                              <Text layoutX="14.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Nodes" />
+                              <ListView layoutX="14.0" layoutY="185.0" prefHeight="55.0" prefWidth="195.0" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Text layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To edit nodes or routes, select them on the map for more options." wrappingWidth="278.0" />
+         </children>
+      </AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="516.0" prefWidth="648.0">
          <children>
-            <ImageView fitHeight="429.0" fitWidth="724.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../Resources/floor4.png" />
-               </image>
-            </ImageView>
+            <TabPane layoutX="2.0" prefHeight="592.0" prefWidth="724.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="1st Floor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="2nd Floor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="565.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="3rd Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor3.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="4th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="563.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor4.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="5th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="561.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor5.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="6th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="561.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor6.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="7th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor7.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
          </children></AnchorPane>
   </items>
 </SplitPane>
