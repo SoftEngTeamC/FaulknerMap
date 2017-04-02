@@ -51,15 +51,15 @@ public class EdgesHelper {
         try {
             statement = connection.createStatement();
 
-            //check if table is empty
-            if (getEdges(null).isEmpty()) {
-                originalList = new ArrayList<>(); //initialize empty array and populate
-                //populate table
-                populateArray();
-            }
+//            //check if table is empty
+//            if (getEdges(null).isEmpty()) {
+//                originalList = new ArrayList<>(); //initialize empty array and populate
+//                //populate table
+//                populateArray();
+//            }
         } catch (SQLException e) {
             System.out.println("Edge constructor error");
-         //   e.printStackTrace();
+            //   e.printStackTrace();
         }
     }
 
@@ -73,7 +73,7 @@ public class EdgesHelper {
         //insert Edge into table
         String str = "INSERT INTO " + EdgeTable.NAME + " VALUES (" +
                 "'" + edge.getId().toString() + "', '" + edge.getFrom().getId().toString() +
-                 "', '" + edge.getTo().getId().toString() + "', " + edge.getLength() +
+                "', '" + edge.getTo().getId().toString() + "', " + edge.getLength() +
                 ", '" + edge.getDisabled()
                 + "')";
         try {
@@ -81,7 +81,7 @@ public class EdgesHelper {
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add Edge: " + edge.toString());
-          //  e.printStackTrace();
+            //  e.printStackTrace();
             return false;
         }
     }
@@ -112,7 +112,7 @@ public class EdgesHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not update Edge: " + edge.toString());
-              //  e.printStackTrace();
+                //  e.printStackTrace();
                 return false;
             }
         }
@@ -138,7 +138,7 @@ public class EdgesHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not delete Edge: " + edge.toString());
-             //   e.printStackTrace();
+                //   e.printStackTrace();
                 return false;
             }
         }
@@ -166,10 +166,38 @@ public class EdgesHelper {
             return tempEdge;
         } catch (SQLException e) {
             System.out.println("Could not select edge with id: " + id.toString());
-          //  e.printStackTrace();
+            //  e.printStackTrace();
         }
         return null;
     }
+
+
+    public ArrayList<Node> getNeighbors(Node node) {
+        ArrayList<Node> temp = new ArrayList<>();
+        try {
+            String str;
+            //query all Edges in table without order
+            str = "SELECT * FROM " + EdgeTable.NAME + " WHERE " +
+                    EdgeTable.Cols.FROM_NODE + " = '" + node.getId().toString() + "'";
+
+            ResultSet resultSet = statement.executeQuery(str);
+
+            //iterate through result
+            while (resultSet.next()) {
+                //get neighbor Nodes from resultSet
+                Node neighbor = NodesHelper.getNodeByID(UUID.fromString(resultSet.getString(EdgeTable.Cols.TO_NODE)));
+                temp.add(neighbor); //add to array
+            }
+        } catch (Exception e) {
+            System.out.println("No neighbors where found for node : " + node.toString());
+            //  e.printStackTrace();
+            return temp;
+        }
+
+        return temp;
+
+    }
+
 
     /**
      * Function takes in a order by clause and generates list of all Edges
@@ -193,7 +221,7 @@ public class EdgesHelper {
             }
             ResultSet resultSet = statement.executeQuery(str);
 
-            //iterate through result, printing out values of each row
+            //iterate through result
             while (resultSet.next()) {
                 //get Edge from resultSet
                 Node from = NodesHelper.getNodeByID(UUID.fromString(resultSet.getString(EdgeTable.Cols.FROM_NODE)));
@@ -206,7 +234,7 @@ public class EdgesHelper {
             }
         } catch (Exception e) {
             System.out.println("No Edges are available to list");
-          //  e.printStackTrace();
+            //  e.printStackTrace();
         }
 
         return temp;
@@ -229,14 +257,6 @@ public class EdgesHelper {
         //populate with originalList of edges
         System.out.println("\nStoring initial Edges");
 
-        //TODO: create list of Edges once the Node table is created and populated
-        originalList.add(new Edge(NodesHelper.getNodes(null).get(0),
-                NodesHelper.getNodes(null).get(1), 10));
-        originalList.add(new Edge(NodesHelper.getNodes(null).get(1),
-                NodesHelper.getNodes(null).get(2), 5));
-        originalList.add(new Edge(NodesHelper.getNodes(null).get(2),
-                NodesHelper.getNodes(null).get(0), 7));
-
         populateTable(originalList); //put array in database now
     }
 
@@ -247,8 +267,8 @@ public class EdgesHelper {
         dropTable();
         buildTable();
 
-            for (Edge edge : list) {
-                addEdge(edge);
+        for (Edge edge : list) {
+            addEdge(edge);
 
         }
     }
@@ -267,7 +287,7 @@ public class EdgesHelper {
                 System.out.println("Edge table dropped.");
             } catch (SQLException e) {
                 System.out.println("No Edge table to drop");
-             //   e.printStackTrace();
+                //   e.printStackTrace();
                 //Table did not exist
             }
         } catch (SQLException e) {
@@ -303,7 +323,7 @@ public class EdgesHelper {
             System.out.println("Edge table created.");
         } catch (SQLException e) {
             System.out.println("Could not build Edge table");
-           // e.printStackTrace();
+            // e.printStackTrace();
         }
     }
 

@@ -2,7 +2,9 @@ package db.dbHelpers;
 
 
 import db.HospitalSchema.NodeSchema.*;
+import db.HospitalSchema.EdgeSchema.*;
 import db.dbClasses.Coordinate;
+import db.dbClasses.Edge;
 import db.dbClasses.Node;
 
 import java.sql.*;
@@ -256,12 +258,21 @@ public class NodesHelper {
         //populate with originalList of nodes
         System.out.println("\nStoring initial Nodes");
 
+        ArrayList<Edge> edgeList = new ArrayList<>();
+
         //Example of how to add a Node:    TODO: delete this example when actually populating
-        originalList.add(new Node(null, new Coordinate(1, 2, 3), "node1"));
-        originalList.add(new Node(null, new Coordinate(4, 5, 6), "node2"));
-        originalList.add(new Node(null, new Coordinate(7, 8, 9), "node3"));
+//        Node tempFrom = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Node tempTo = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Edge edge = new Edge(tempFrom,tempTo, 10);
+//        edgeList.add(edge);
+//        edge = new Edge(tempFrom, tempTo2, 5);
+//        originalList.add(tempFrom);
+//        originalList.add(tempTo);
+
 
         populateTable(originalList); //put array in database now
+
+        EdgesHelper.get(connection).populateTable(edgeList); //pass over Edge List
     }
 
     /**

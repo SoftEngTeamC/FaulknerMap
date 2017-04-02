@@ -47,13 +47,8 @@ public class Driver {
         hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
 
         //Nodes must be created before edges since the edges table references the node table
-    //    nodesHelper = NodesHelper.get(connection);
-    //    edgesHelper = EdgesHelper.get(connection);
-
-       // EdgesHelper edgesHelper1 = EdgesHelper.get(connection);
-
-       // nodesHelper.printAllNodes();
-       /// edgesHelper.printAllEdges();
+        nodesHelper = NodesHelper.get(connection);
+        edgesHelper = EdgesHelper.get(connection);
 
     }
 

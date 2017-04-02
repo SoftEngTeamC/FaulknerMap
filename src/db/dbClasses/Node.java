@@ -52,5 +52,8 @@ public class Node {
         this.name = name;
     }
 
+    public String toString(){
+        return "Node " + name + ": " + position.toString();
+    }
 
 }

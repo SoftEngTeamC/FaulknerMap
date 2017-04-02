@@ -156,6 +156,7 @@ public class HospitalProfessionalsHelper {
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
                 tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+                tempProfessional.setId(id);
             }
             return tempProfessional;
         } catch (SQLException e) {
@@ -222,6 +223,7 @@ public class HospitalProfessionalsHelper {
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
                 tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+                tempProfessional.setId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.ID)));
                 temp.add(tempProfessional); //add to array
             }
         } catch (Exception e) {

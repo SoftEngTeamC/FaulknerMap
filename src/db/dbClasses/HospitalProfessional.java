@@ -18,7 +18,7 @@ public class HospitalProfessional {
         this.title = title;
         this.location = location;
         id = UUID.randomUUID(); //set id to random
-        nodeId = UUID.randomUUID();
+        nodeId = UUID.randomUUID(); //TODO: change once populated Nodes
     }
 
 

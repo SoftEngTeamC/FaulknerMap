@@ -67,8 +67,8 @@ public class HospitalServicesHelper {
     public boolean addHospitalService(HospitalService service) {
         //insert HospitalService into table
         String str = "INSERT INTO " + HospitalServiceTable.NAME + " VALUES (" +
-                "'" + service.getId().toString() + "', '" + service.getName() + "', '" + service.getLocation() + "', '"
-                + service.getNodeId().toString() + "')";
+                "'" + service.getId().toString() + "', '" + service.getName() + "', '"
+                + service.getLocation() + "', '" + service.getNodeId().toString() + "')";
         try {
             statement.executeUpdate(str);
             return true;
@@ -152,6 +152,7 @@ public class HospitalServicesHelper {
                 tempService = new HospitalService(resultSet.getString(HospitalServiceTable.Cols.NAME),
                         resultSet.getString(HospitalServiceTable.Cols.LOCATION));
                 tempService.setNodeId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.NODEID)));
+                tempService.setId(id);
             }
             return tempService;
         } catch (SQLException e) {
@@ -216,6 +217,7 @@ public class HospitalServicesHelper {
                 HospitalService tempService = new HospitalService(resultSet.getString(HospitalServiceTable.Cols.NAME),
                         resultSet.getString(HospitalServiceTable.Cols.LOCATION));
                 tempService.setNodeId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.NODEID)));
+                tempService.setId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.ID)));
                 temp.add(tempService); //add to array
             }
         } catch (Exception e) {
