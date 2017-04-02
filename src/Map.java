@@ -1,3 +1,6 @@
+import db.dbClasses.Edge;
+import db.dbClasses.Node;
+
 import java.util.Collection;
 import java.util.List;
 

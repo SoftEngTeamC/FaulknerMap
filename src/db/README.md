@@ -5,7 +5,7 @@
 1. Include these imports at the top of the class:
 ```
         import db.Driver;
-        import db.dbHelper.*;
+        import db.dbHelpers.*;
 ```
         
 2. Depending on which database table you want to access, create its 
