@@ -23,10 +23,10 @@ public class HospitalSchema {
         }
     }
 
-    // Providers == professionals
-    public class HospitalProviderSchema {
-        public final class HospitalProviderTable {
-            public static final String NAME = "hospitalProviders";
+
+    public class HospitalProfessionalSchema {
+        public final class HospitalProfessionalTable {
+            public static final String NAME = "hospitalProfessionals";
 
             public final class Cols {
                 public static final String ID = "id";

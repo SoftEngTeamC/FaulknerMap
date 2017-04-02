@@ -5,14 +5,14 @@ import java.util.UUID;
 /**
  * Created by wangyaofeng on 3/31/17.
  */
-public class HospitalProvider {
+public class HospitalProfessional {
 
     private String name;
     private String title;
     private String location;
     private UUID id;
 
-    public HospitalProvider(String name, String title, String location){
+    public HospitalProfessional(String name, String title, String location){
         this.name = name;
         this.title = title;
         this.location = location;
