@@ -67,13 +67,14 @@ public class HospitalServicesHelper {
     public boolean addHospitalService(HospitalService service) {
         //insert HospitalService into table
         String str = "INSERT INTO " + HospitalServiceTable.NAME + " VALUES (" +
-                "'" + service.getId().toString() + "', '" + service.getName() + "', '" + service.getLocation() + "')";
+                "'" + service.getId().toString() + "', '" + service.getName() + "', '" + service.getLocation() + "', '"
+                + service.getNodeId().toString() + "')";
         try {
             statement.executeUpdate(str);
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add HospitalService: " + service.getName());
-           // e.printStackTrace();
+         //   e.printStackTrace();
             return false;
         }
     }
@@ -94,7 +95,8 @@ public class HospitalServicesHelper {
             //updating
             String str = "UPDATE " + HospitalServiceTable.NAME + " SET " + HospitalServiceTable.Cols.NAME +
                     " = '" + service.getName() + "', " + HospitalServiceTable.Cols.LOCATION +
-                    " = '" + service.getLocation() + "' WHERE " + HospitalServiceTable.Cols.ID + " = '" +
+                    " = '" + service.getLocation() + "', " + HospitalServiceTable.Cols.NODEID +
+                    " = '" + service.getNodeId().toString() + "' WHERE " + HospitalServiceTable.Cols.ID + " = '" +
                     service.getId().toString() + "'";
             try {
                 statement.executeUpdate(str);
@@ -149,6 +151,7 @@ public class HospitalServicesHelper {
             while (resultSet.next()) {
                 tempService = new HospitalService(resultSet.getString(HospitalServiceTable.Cols.NAME),
                         resultSet.getString(HospitalServiceTable.Cols.LOCATION));
+                tempService.setNodeId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.NODEID)));
             }
             return tempService;
         } catch (SQLException e) {
@@ -185,6 +188,7 @@ public class HospitalServicesHelper {
                 //get HospitalService from resultSet
                 HospitalService tempService = new HospitalService(resultSet.getString(HospitalServiceTable.Cols.NAME),
                         resultSet.getString(HospitalServiceTable.Cols.LOCATION));
+                tempService.setNodeId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.NODEID)));
                 temp.add(tempService); //add to array
             }
         } catch (Exception e) {
@@ -289,15 +293,16 @@ public class HospitalServicesHelper {
 
             // Create HospitalService table.
             String str = "CREATE TABLE " + HospitalServiceTable.NAME + "(" +
-                    HospitalServiceTable.Cols.ID + " CHAR(100) NOT NULL PRIMARY KEY, " +
+                    HospitalServiceTable.Cols.ID + " VARCHAR(100) NOT NULL PRIMARY KEY, " +
                     HospitalServiceTable.Cols.NAME + " VARCHAR(50) NOT NULL, " +
-                    HospitalServiceTable.Cols.LOCATION + " VARCHAR(20) NOT NULL)";
+                    HospitalServiceTable.Cols.LOCATION + " VARCHAR(20) NOT NULL," +
+                    HospitalServiceTable.Cols.NODEID + " VARCHAR(100))";
             statement.execute(str);
 
             System.out.println("HospitalService table created.");
         } catch (SQLException e) {
             System.out.println("Could not build HospitalService table");
-         //   e.printStackTrace();
+        //    e.printStackTrace();
         }
     }
 }

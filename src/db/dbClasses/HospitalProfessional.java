@@ -11,12 +11,14 @@ public class HospitalProfessional {
     private String title;
     private String location;
     private UUID id;
+    private UUID nodeId;
 
     public HospitalProfessional(String name, String title, String location){
         this.name = name;
         this.title = title;
         this.location = location;
         id = UUID.randomUUID(); //set id to random
+        nodeId = UUID.randomUUID();
     }
 
 
@@ -45,4 +47,10 @@ public class HospitalProfessional {
     }
 
     public UUID getId() { return id; }
+
+    public UUID getNodeId() { return nodeId; }
+
+    public void setNodeId(UUID nodeId) { this.nodeId = nodeId; }
+
+
 }

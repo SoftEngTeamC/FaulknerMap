@@ -8,11 +8,13 @@ public class HospitalService {
   private String name;
   private String location;
   private UUID id;
+  private UUID nodeId;
 
   public HospitalService(String name, String location){
     this.name = name;
     this.location = location;
     id = UUID.randomUUID(); //set id to random
+    nodeId = UUID.randomUUID();
   }
 
 
@@ -34,5 +36,10 @@ public class HospitalService {
   }
 
   public UUID getId() { return id; }
+
+  public UUID getNodeId() {
+    return nodeId; }
+
+  public void setNodeId(UUID nodeId) { this.nodeId = nodeId; }
 
 }

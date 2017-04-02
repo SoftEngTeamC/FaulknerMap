@@ -70,7 +70,8 @@ public class HospitalProfessionalsHelper {
         //insert HospitalProfessional into table
         String str = "INSERT INTO " + HospitalProfessionalTable.NAME + " VALUES (" +
                 "'" + professional.getId().toString() + "', '" + professional.getName() + "', '" +
-                professional.getTitle() + "', '" + professional.getLocation() + "')";
+                professional.getTitle() + "', '" + professional.getLocation() + "', '" +
+                professional.getNodeId().toString() + "')";
         try {
             statement.executeUpdate(str);
             return true;
@@ -97,7 +98,8 @@ public class HospitalProfessionalsHelper {
             String str = "UPDATE " + HospitalProfessionalTable.NAME + " SET " + HospitalProfessionalTable.Cols.NAME +
                     " = '" + professional.getName() + "', " + HospitalProfessionalTable.Cols.TITLE +
                     " = '" + professional.getTitle() + "', " + HospitalProfessionalTable.Cols.LOCATION +
-                    " = '" + professional.getLocation() + "' WHERE " + HospitalProfessionalTable.Cols.ID + " = '" +
+                    " = '" + professional.getLocation() + "', " + HospitalProfessionalTable.Cols.NODEID +
+                    " = '" + professional.getNodeId().toString() + "' WHERE " + HospitalProfessionalTable.Cols.ID + " = '" +
                     professional.getId().toString() + "'";
             try {
                 //update was successful
@@ -153,6 +155,7 @@ public class HospitalProfessionalsHelper {
                 tempProfessional = new HospitalProfessional(resultSet.getString(HospitalProfessionalTable.Cols.NAME),
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
             }
             return tempProfessional;
         } catch (SQLException e) {
@@ -190,6 +193,7 @@ public class HospitalProfessionalsHelper {
                 HospitalProfessional tempProfessional = new HospitalProfessional(resultSet.getString(HospitalProfessionalTable.Cols.NAME),
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
                 temp.add(tempProfessional); //add to array
             }
         } catch (Exception e) {
@@ -343,10 +347,11 @@ public class HospitalProfessionalsHelper {
 
             // Create HospitalProfessional table.
             String str = "CREATE TABLE " + HospitalProfessionalTable.NAME + "(" +
-                    HospitalProfessionalTable.Cols.ID + " CHAR(100) NOT NULL PRIMARY KEY, " +
+                    HospitalProfessionalTable.Cols.ID + " VARCHAR(100) NOT NULL PRIMARY KEY, " +
                     HospitalProfessionalTable.Cols.NAME + " VARCHAR(50) NOT NULL, " +
                     HospitalProfessionalTable.Cols.TITLE + " VARCHAR(50) NOT NULL, " +
-                    HospitalProfessionalTable.Cols.LOCATION + " VARCHAR(20) )";
+                    HospitalProfessionalTable.Cols.LOCATION + " VARCHAR(20), " +
+                    HospitalProfessionalTable.Cols.NODEID + " VARCHAR(100))";
 
             statement.execute(str);
 
