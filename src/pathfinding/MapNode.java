@@ -1,3 +1,5 @@
+package pathfinding;
+
 import java.awt.*;
 import java.util.Collection;
 import java.util.Map;

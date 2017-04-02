@@ -1,4 +1,6 @@
+package pathfinding;
 import java.util.*;
+
 
 
 public class PathFinder {
