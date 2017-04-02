@@ -1,3 +1,6 @@
+import db.dbClasses.Edge;
+import db.dbClasses.Node;
+
 /**
  * Created by jack on 3/30/17.
  */
