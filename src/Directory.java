@@ -1,4 +1,9 @@
+import db.dbHelpers.EdgesHelper;
+import db.dbHelpers.NodesHelper;
+
 import java.util.Collection;
+
+import static db.Driver.*;
 
 /**
  * Created by jack on 3/31/17.
@@ -17,5 +22,8 @@ public class Directory {
         this.locations = locations;
     }
 
-    public void search(){}
+    public void search(){
+
+        EdgesHelper test = getEdgesHelper();
+    }
 }
