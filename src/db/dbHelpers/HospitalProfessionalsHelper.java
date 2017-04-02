@@ -166,11 +166,39 @@ public class HospitalProfessionalsHelper {
     }
 
     /**
+     * Function finds a HospitalProfessional by id
+     *
+     * @param name Name of HospitalProfessional
+     * @return the HospitalProfessional found or null if could not be found
+     */
+    public HospitalProfessional getHospitalProfessionalByName(String name) {
+        //query table for specific HospitalProfessional
+        String str = "SELECT * FROM " + HospitalProfessionalTable.NAME + " WHERE " +
+                HospitalProfessionalTable.Cols.NAME + " = '" + name + "'";
+        try {
+            ResultSet resultSet = statement.executeQuery(str);
+            HospitalProfessional tempProfessional = null;
+            while(resultSet.next()){
+                tempProfessional = new HospitalProfessional(name,
+                        resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
+                        resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.ID)));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+            }
+            return tempProfessional;
+        } catch (SQLException e) {
+            System.out.println("Could not select Hospital Professional with name: " + name);
+            //    e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Function takes in a order by clause and generates list of all HospitalProfessional
      * if no order is needed, order gets set to null when called
      * Default sort if of name alphabetical order
      *
-     * @param order
+     * @param order Order By command
      * @return list of HospitalProfessionals
      */
     public ArrayList<HospitalProfessional> getHospitalProfessionals(String order) {

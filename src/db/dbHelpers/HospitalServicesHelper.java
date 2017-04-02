@@ -162,6 +162,33 @@ public class HospitalServicesHelper {
     }
 
     /**
+     * Function finds a HospitalService by name
+     *
+     * @param name Name of HospitalService
+     * @return the HospitalService found or null if could not be found
+     */
+    public HospitalService getHospitalServiceByName(String name) {
+        //query table for specific HospitalService
+        String str = "SELECT * FROM " + HospitalServiceTable.NAME + " WHERE " +
+                HospitalServiceTable.Cols.ID + " = '" + name + "'";
+        try {
+            ResultSet resultSet = statement.executeQuery(str);
+            HospitalService tempService = null;
+            while (resultSet.next()) {
+                tempService = new HospitalService(name,
+                        resultSet.getString(HospitalServiceTable.Cols.LOCATION));
+                tempService.setNodeId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.NODEID)));
+                tempService.setId(UUID.fromString(resultSet.getString(HospitalServiceTable.Cols.ID)));
+            }
+            return tempService;
+        } catch (SQLException e) {
+            System.out.println("Could not select Hospital Service with name: " + name);
+            //   e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Function takes in a order by clause and generates list of all HospitalService
      * if no order is needed, order gets set to null when called
      * Default sort if of name alphabetical order

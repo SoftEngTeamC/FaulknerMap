@@ -48,6 +48,10 @@ public class HospitalProfessional {
 
     public UUID getId() { return id; }
 
+    public void setId(UUID id){
+        this.id = id;
+    }
+
     public UUID getNodeId() { return nodeId; }
 
     public void setNodeId(UUID nodeId) { this.nodeId = nodeId; }

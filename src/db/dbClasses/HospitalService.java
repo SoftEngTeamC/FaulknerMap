@@ -37,6 +37,10 @@ public class HospitalService {
 
   public UUID getId() { return id; }
 
+  public void setId(UUID id){
+    this.id = id;
+  }
+
   public UUID getNodeId() {
     return nodeId; }
 
