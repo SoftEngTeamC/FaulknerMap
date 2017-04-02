@@ -8,6 +8,7 @@ import db.dbHelper.*;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import java.util.ArrayList;
 
 public class dbtesting {
     //Create an instance of HospitalServicesHelper
@@ -84,11 +85,29 @@ public class dbtesting {
         assertEquals(null, hs.getHospitalProvider(newProv6.getId()));
     }
 
-    //Attempt to edit a Provider that has been removed from the DB
+    //Add a Provider and then check the size of the DB
     @Test
     public void test7() {
-        assertEquals(null, hs.getHospitalProvider(newProv6.getId()));
+        ArrayList<HospitalProvider> initlist = hs.getHospitalProviders(null);
+        int initSize = initlist.size();
+        HospitalProvider newProv7 = new HospitalProvider("Potter, Harry", "Student", "Cupboard");
+        hs.addHospitalProvider(newProv7);
+        ArrayList<HospitalProvider> addlist = hs.getHospitalProviders(null);
+        int addSize = addlist.size();
+        assertEquals(initSize+1, addSize);
     }
-    
+
+    //Add and remove a Provider from the DB and then check to see if still present
+    @Test
+    public void test8() {
+        HospitalProvider newProv8 = new HospitalProvider("Potter, Harry", "Student", "Cupboard");
+        hs.addHospitalProvider(newProv8);
+        ArrayList<HospitalProvider> initlist = hs.getHospitalProviders(null);
+        int initSize = initlist.size();
+        hs.deleteHospitalProvider(newProv8)
+        ArrayList<HospitalProvider> remlist = hs.getHospitalProviders(null);
+        int remSize = remlist.size();
+        assertEquals(initSize-1, remSize);
+    }
 }
 
