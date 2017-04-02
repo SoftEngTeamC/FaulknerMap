@@ -245,7 +245,9 @@ public class HospitalServicesHelper {
         System.out.println("\nStoring initial Hospital Services");
 
         originalList.add(new HospitalService("Arthritis Center", "4D"));
-        originalList.add(new HospitalService("Brigham and Women''s Primary Physicians", "4A/4S/5J"));
+        originalList.add(new HospitalService("Brigham and Women''s Primary Physicians", "4A"));
+        originalList.add(new HospitalService("Brigham and Women''s Primary Physicians", "4S"));
+        originalList.add(new HospitalService("Brigham and Women''s Primary Physicians", "5J"));
         originalList.add(new HospitalService("Cardiology", "4G"));
         originalList.add(new HospitalService("Doherty Conference Room", "4th Floor"));
         originalList.add(new HospitalService("Endocrinology", "4G"));
@@ -271,6 +273,16 @@ public class HospitalServicesHelper {
         originalList.add(new HospitalService("Sadowsky Conference Room", "4th Floor"));
         originalList.add(new HospitalService("Saslow Conference Room", "4th Floor"));
         originalList.add(new HospitalService("Social Work", "4th Floor"));
+        originalList.add(new HospitalService("Urology", "4N"));
+
+        originalList.add(new HospitalService("Boston ENT Associates", "5B"));
+        originalList.add(new HospitalService("Brigham and Women's Primary Physicians", "5J"));
+        originalList.add(new HospitalService("Brigham Dermatology Associates", "5G"));
+        originalList.add(new HospitalService("Center for Metabolic Health and Bariatric Surgery", "5D"));
+        originalList.add(new HospitalService("Center for Weight Management and Metabolic Surgery", "5K"));
+        originalList.add(new HospitalService("Colorectal Surgery", "5D"));
+        originalList.add(new HospitalService("Urology", "4N"));
+        originalList.add(new HospitalService("Urology", "4N"));
         originalList.add(new HospitalService("Urology", "4N"));
 
         populateTable(originalList); //put array in database now
