@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class dbtesting {
     //Create an instance of HospitalServicesHelper
     HospitalProvidersHelper hs = Driver.getHospitalProviderHelper();
+
     //Create instances of HosptitalProvider
     HospitalProvider newProv1 = new HospitalProvider("Gates, William", "CEO", "Room 404");
     HospitalProvider newProv2 = new HospitalProvider("Jobs, Steve", "CTO", "Room 303");
@@ -109,5 +110,6 @@ public class dbtesting {
         int remSize = remlist.size();
         assertEquals(initSize-1, remSize);
     }
+
 }
 
