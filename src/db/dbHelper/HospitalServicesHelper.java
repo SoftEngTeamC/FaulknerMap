@@ -29,6 +29,7 @@ public class HospitalServicesHelper {
 
         if (hospitalServicesHelper == null) {
             hospitalServicesHelper = new HospitalServicesHelper(connection);
+            System.out.println("Created new HospitalProfessionalsHelper");
         }
         return hospitalServicesHelper;
     }
@@ -46,7 +47,7 @@ public class HospitalServicesHelper {
             statement = connection.createStatement();
 
             //check if table is empty
-            if (getHospitalServices(null) == null) {
+            if (originalList == null) {
                 originalList = new ArrayList<>(); //initialize empty array and populate
                 //populate table
                 populateArray();

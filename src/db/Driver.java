@@ -11,7 +11,7 @@ public class Driver {
 
     private static HospitalServicesHelper hospitalServicesHelper;
 
-    private static HospitalProvidersHelper hospitalProvidersHelper;
+    private static HospitalProfessionalsHelper hospitalProfessionalsHelper;
 
     public static void main(String[] args) {
         System.out.println("-------Embedded Java DB Connection Testing --------");
@@ -43,8 +43,7 @@ public class Driver {
         System.out.println("Java DB connection established!");
 
         hospitalServicesHelper = HospitalServicesHelper.get(connection);
-        hospitalProvidersHelper = HospitalProvidersHelper.get(connection);
-
+        hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
     }
 
     //getter for all other classes to access the HospitalService table
@@ -52,9 +51,9 @@ public class Driver {
         return hospitalServicesHelper;
     }
 
-    //getter for all other classes to access the HospitalProvider table
-    public static HospitalProvidersHelper getHospitalProviderHelper() {
-        return hospitalProvidersHelper;
+    //getter for all other classes to access the HospitalProfessional table
+    public static HospitalProfessionalsHelper getHospitalProfessionalHelper() {
+        return hospitalProfessionalsHelper;
     }
 
 }
