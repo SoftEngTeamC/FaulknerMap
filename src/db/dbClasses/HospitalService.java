@@ -1,4 +1,4 @@
-package db;
+package db.dbClasses;
 
 
 import java.util.UUID;

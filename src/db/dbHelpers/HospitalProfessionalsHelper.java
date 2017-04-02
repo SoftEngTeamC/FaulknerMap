@@ -1,6 +1,6 @@
-package db.dbHelper;
+package db.dbHelpers;
 
-import db.HospitalProfessional;
+import db.dbClasses.HospitalProfessional;
 import db.HospitalSchema.HospitalProfessionalSchema.*;
 
 import java.sql.*;
@@ -49,14 +49,14 @@ public class HospitalProfessionalsHelper {
             statement = connection.createStatement();
 
             //check if table is empty
-            if (originalList == null) {
+            if (getHospitalProfessionals(null).isEmpty()) {
                 originalList = new ArrayList<>(); //initialize empty array and populate
                 //populate table
                 populateArray();
             }
         } catch (SQLException e) {
-            System.out.println("Constructor error");
-            e.printStackTrace();
+            System.out.println("HospitalProfessional constructor error");
+          //  e.printStackTrace();
         }
     }
 
@@ -76,7 +76,7 @@ public class HospitalProfessionalsHelper {
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add HospitalProfessional: " + professional.getName());
-            e.printStackTrace();
+          //  e.printStackTrace();
             return false;
         }
     }
@@ -105,7 +105,7 @@ public class HospitalProfessionalsHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not update HospitalProfessional: " + professional.getName());
-                e.printStackTrace();
+              //  e.printStackTrace();
                 return false;
             }
         }
@@ -130,7 +130,7 @@ public class HospitalProfessionalsHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not delete HospitalProfessional: " + professional.getName());
-                e.printStackTrace();
+              //  e.printStackTrace();
                 return false;
             }
         }
@@ -157,7 +157,7 @@ public class HospitalProfessionalsHelper {
             return tempProfessional;
         } catch (SQLException e) {
             System.out.println("Could not select Hospital Professional with id: " + id.toString());
-            e.printStackTrace();
+        //    e.printStackTrace();
         }
         return null;
     }
@@ -193,8 +193,9 @@ public class HospitalProfessionalsHelper {
                 temp.add(tempProfessional); //add to array
             }
         } catch (Exception e) {
-            System.out.println("Could not get all HospitalProfessionals");
-            e.printStackTrace();
+            System.out.println("No HospitalProfessionals are available to list");
+         //   e.printStackTrace();
+            return temp;
         }
 
         return temp;
@@ -322,17 +323,19 @@ public class HospitalProfessionalsHelper {
                 String str = "DROP TABLE " + HospitalProfessionalTable.NAME;
                 statement.execute(str); //check HospitalProfessionals table
                 System.out.println("HospitalProfessionals table dropped.");
-            } catch (SQLException ex) {
+            } catch (SQLException e) {
+                System.out.println("No HospitalProfessional Table to drop");
+            //    e.printStackTrace();
                 //Table did not exist
             }
         } catch (SQLException e) {
-            System.out.println("Could not drop HospitalProfessionals table");
-            e.printStackTrace();
+            System.out.println("Could not create statement in HospitalProfessional Table");
+         //   e.printStackTrace();
         }
     }
 
     /**
-     * This is the function that will create all tables in our database
+     * This is the function that will create this table in our database
      */
     private void buildTable() {
         try {
@@ -350,7 +353,7 @@ public class HospitalProfessionalsHelper {
             System.out.println("HospitalProfessional table created.");
         } catch (SQLException e) {
             System.out.println("Could not build HospitalProfessional table");
-            e.printStackTrace();
+         //   e.printStackTrace();
         }
     }
 }
