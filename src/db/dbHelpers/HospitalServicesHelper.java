@@ -1,7 +1,7 @@
-package db.dbHelper;
+package db.dbHelpers;
 
 import db.HospitalSchema.HospitalServiceSchema.*;
-import db.HospitalService;
+import db.dbClasses.HospitalService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ public class HospitalServicesHelper {
 
         if (hospitalServicesHelper == null) {
             hospitalServicesHelper = new HospitalServicesHelper(connection);
-            System.out.println("Created new HospitalProfessionalsHelper");
+            System.out.println("Created new HospitalServicesHelper");
         }
         return hospitalServicesHelper;
     }
@@ -47,14 +47,14 @@ public class HospitalServicesHelper {
             statement = connection.createStatement();
 
             //check if table is empty
-            if (originalList == null) {
+            if (getHospitalServices(null).isEmpty()) {
                 originalList = new ArrayList<>(); //initialize empty array and populate
                 //populate table
                 populateArray();
             }
         } catch (SQLException e) {
-            System.out.println("Constructor error");
-            e.printStackTrace();
+            System.out.println("HospitalService constructor error");
+          //  e.printStackTrace();
         }
     }
 
@@ -73,7 +73,7 @@ public class HospitalServicesHelper {
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add HospitalService: " + service.getName());
-            e.printStackTrace();
+           // e.printStackTrace();
             return false;
         }
     }
@@ -101,7 +101,7 @@ public class HospitalServicesHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not update HospitalService: " + service.getName());
-                e.printStackTrace();
+             //   e.printStackTrace();
                 return false;
             }
         }
@@ -127,7 +127,7 @@ public class HospitalServicesHelper {
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not delete HospitalService: " + service.getName());
-                e.printStackTrace();
+            //    e.printStackTrace();
                 return false;
             }
         }
@@ -153,7 +153,7 @@ public class HospitalServicesHelper {
             return tempService;
         } catch (SQLException e) {
             System.out.println("Could not select Hospital Service with id: " + id.toString());
-            e.printStackTrace();
+         //   e.printStackTrace();
         }
         return null;
     }
@@ -188,8 +188,9 @@ public class HospitalServicesHelper {
                 temp.add(tempService); //add to array
             }
         } catch (Exception e) {
-            System.out.println("Could not get all HospitalServices");
-            e.printStackTrace();
+            System.out.println("No HospitalServices are available to list");
+          //  e.printStackTrace();
+            return temp;
         }
 
         return temp;
@@ -268,17 +269,19 @@ public class HospitalServicesHelper {
                 String str = "DROP TABLE " + HospitalServiceTable.NAME;
                 statement.execute(str); //check HospitalService table
                 System.out.println("HospitalService table dropped.");
-            } catch (SQLException ex) {
+            } catch (SQLException e) {
+                System.out.println("No HospitalService table to drop");
+              //  e.printStackTrace();
                 //Table did not exist
             }
         } catch (SQLException e) {
-            System.out.println("Could not drop HospitalService table");
-            e.printStackTrace();
+            System.out.println("Could not create statement in HospitalServices Table");
+          //  e.printStackTrace();
         }
     }
 
     /**
-     * This is the function that will create all tables in our database
+     * This is the function that will create this table in our database
      */
     private void buildTable() {
         try {
@@ -294,7 +297,7 @@ public class HospitalServicesHelper {
             System.out.println("HospitalService table created.");
         } catch (SQLException e) {
             System.out.println("Could not build HospitalService table");
-            e.printStackTrace();
+         //   e.printStackTrace();
         }
     }
 }
