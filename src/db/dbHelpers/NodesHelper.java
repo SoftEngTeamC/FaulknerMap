@@ -263,11 +263,18 @@ public class NodesHelper {
         //Example of how to add a Node:    TODO: delete this example when actually populating
 //        Node tempFrom = new Node(null, new Coordinate(1, 2, 3), "node1");
 //        Node tempTo = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Node tempTo2 = new Node(null, new Coordinate(1, 2, 3), "node1");
 //        Edge edge = new Edge(tempFrom,tempTo, 10);
 //        edgeList.add(edge);
 //        edge = new Edge(tempFrom, tempTo2, 5);
 //        originalList.add(tempFrom);
 //        originalList.add(tempTo);
+        Node tempFrom = new Node(null, new Coordinate(271,1090,4),"MEDREC");
+        Node tempTo = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
+        Edge edge = new Edge(tempFrom, tempTo,134);
+        edgeList.add(edge);
+        originalList.add(tempFrom);
+        originalList.add(tempTo);
 
 
         populateTable(originalList); //put array in database now
