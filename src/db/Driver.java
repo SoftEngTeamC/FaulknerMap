@@ -34,7 +34,7 @@ public class Driver {
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase;create=true");
+            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase;create=True");
 
         } catch (SQLException e) {
             System.out.println("Connection failed. Check output console.");
