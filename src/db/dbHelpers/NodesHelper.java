@@ -311,12 +311,12 @@ public class NodesHelper {
         edgeList.add(edge2);
         originalList.add(tempC);
 
-        tempA = new Node(null, new Coordinate(987,1085,4)"CONF713");
+        tempA = new Node(null, new Coordinate(987,1085,4),"CONF713");
         edge = new Edge(tempC, tempA,23);
         edgeList.add(edge);
         originalList.add(tempA);
 
-        tempB = new Node(null, new Coordinate(1142,1085,4)"ADMINEXE");
+        tempB = new Node(null, new Coordinate(1142,1085,4),"ADMINEXE");
         edge2 = new Edge(tempA, tempB, 155);
         edgeList.add(edge2);
         originalList.add(tempB);
@@ -395,7 +395,37 @@ public class NodesHelper {
 
         //Eyyy, there it is! I told you the node would come up again!
         tempA = new Node(null, new Coordinate(1084,1026, 4), "o_4-5");
-        edge2 = new Edge(tempA, midNode, 110);
+        edge2 = new Edge(tempA, midNode, 58);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1194, 1026, 4), "o_1-2-3");
+        edge = new Edge(tempB, midNode, 52);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1142, 922, 4), "LUNG");
+        edge2 = new Edge(tempC, midNode, 104);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1142, 856, 4), "HSKPG");
+        edge = new Edge(tempA, tempC, 66);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1142, 796, 4), "NURSESPACE");
+        edge2 = new Edge(tempB, tempA, 60);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1142, 770, 4), "SUITE4349-4995");
+        edge = new Edge(tempC, tempB, 26);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1142, 696, 4), "SUITE4985-90");
+        edge2 = new Edge(tempA, tempC, 74);
         edgeList.add(edge2);
         originalList.add(tempA);
 
