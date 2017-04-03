@@ -269,6 +269,69 @@ public class NodesHelper {
 //        edge = new Edge(tempFrom, tempTo2, 5);
 //        originalList.add(tempFrom);
 //        originalList.add(tempTo);
+/******************************
+
+Here's how all the things are connected:
+
+##Left
+271 1090 MEDREC
+405 1090 UROLOGY
+441 1090 tynanConf
+653 1085 o_44m4and44s3
+783 1085 dptmedoff
+810 1085 o_4211
+877 1085 MEDLIB
+896 1085 RAD_ADMIN
+964 1085 CASMNGMT
+987 1085 CONF713
+##MIDDLE
+1142 1085 ADMINEXE
+
+##Right
+1284 1085 o_4102-4
+1327 1085 PATSAFE
+1407 1085 SURGndPHYS
+1537 1085 qual_spec
+1620 1085 o_41m1-43s2
+1675 1085 HRndCOMP
+1721 1085 FINANCE
+1760 1085 CLINnd4308
+1808 1085 LOCKnd4311
+1871 1085 PLASTICS
+1907 1085 FOOT_ANLKE
+1967 1085 FAC_FIN_IS
+2039 1085 o_4329-31-21
+
+##UP
+1142 1026 CENTRAL
+	1084 1026 o_4-5
+	1194 1026 o_1-2-3
+1142 922 LUNG
+1142 856 HSKPG
+1142 796 NURSESPACE
+1142 770 SUITE4349-4995
+1142 696 SUITE4985-90
+1142 601 SUITE4970
+1142 523 SUITE4930-35
+1142 457 SUITE4950-55
+
+##Around the top
+1142 395 upperMiddle
+1235 395 SUITE48
+1235 237 SUITE47
+1194 216 SUITE45
+1142 214 TOPMIDDLE
+1085 214 SUITE43
+1051 236 S43B
+1051 348 SUITE40
+1051 395 UpLL_Corner
+
+1142 307 o_4c68
+
+Connect upperMiddle to o_4c68 to TOPMIDDLE
+Connect upperMiddle to UpLL_Corner
+
+*******************************/
         Node tempA = new Node(null, new Coordinate(271,1090,4),"MEDREC");
         Node tempB = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
         Node tempC = new Node(null, new Coordinate(441, 1090, 4), "tynanConf");
