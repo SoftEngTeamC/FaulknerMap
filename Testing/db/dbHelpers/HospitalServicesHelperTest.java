@@ -1,7 +1,9 @@
-package db.dbClasses;
+package db.dbHelpers;
 
 import db.Driver;
-import db.dbHelpers.HospitalServicesHelper;
+import db.dbClasses.HospitalService;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,8 +14,7 @@ import static org.junit.Assert.*;
  * Created by Jack Charbonneau on 4/2/17.
  * Edited by Sam Coache on 4/3/17 - Formatting
  */
-
-public class HospitalServiceTest {
+public class HospitalServicesHelperTest {
     HospitalServicesHelper hsh = Driver.getHospitalServiceHelper();
     HospitalService hs1 = new HospitalService("My Name", "My location");
     HospitalService hs2 = new HospitalService("My Name", "My location");
@@ -22,7 +23,7 @@ public class HospitalServiceTest {
     HospitalService hs5 = new HospitalService("My Name", "My location");
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
-    public HospitalServiceTest(){
+    public HospitalServicesHelperTest(){
         hsh.addHospitalService(hs1);
         hsh.addHospitalService(hs2);
         hsh.addHospitalService(hs3);

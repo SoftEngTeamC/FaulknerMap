@@ -1,4 +1,8 @@
 package db.dbHelpers;
+import db.Driver.*;
+import db.dbHelpers.*;
+import db.dbClasses.*;
+
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,6 +16,8 @@ import static org.junit.Assert.*;
 public class EdgesHelperTest {
     @Before
     public void setUp() throws Exception {
+        System.out.println("Running: setUp");
+        EdgesHelper eh = db.Driver.getEdgesHelper();
     }
 
     @After
