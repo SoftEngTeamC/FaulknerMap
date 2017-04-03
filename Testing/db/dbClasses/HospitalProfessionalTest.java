@@ -1,30 +1,40 @@
-/**
- * Created by Sam Coache on 4/2/17.
- */
+package db.dbClasses;
 
 import db.Driver;
-import db.dbClasses.HospitalProfessional;
-import db.dbHelpers.*;
+import db.dbHelpers.HospitalProfessionalsHelper;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+
 import java.util.ArrayList;
 
-public class DataBaseTesting {
+import static org.junit.Assert.*;
+
+/**
+ * Created by sam on 4/3/17.
+ */
+public class HospitalProfessionalTest {
     //Create an instance of HospitalServicesHelper
     private HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
 
     //Create instances of HosptitalProvider
-    private HospitalProfessional newProv1 = new HospitalProfessional("Gates, William", "CEO", "Room 404");
-    private HospitalProfessional newProv2 = new HospitalProfessional("Jobs, Steve", "CTO", "Room 303");
-    private HospitalProfessional newProv3 = new HospitalProfessional("Balboa, Rocky", "Secretary", "Front Desk");
-    private HospitalProfessional newProv4 = new HospitalProfessional("Eastwood, Clint", "Janitor", "Room 17");
-    private HospitalProfessional newProv5 = new HospitalProfessional("Skywalker, Luke", "Lunch Lady", "Cafeteria");
-    private HospitalProfessional compProv5 = new HospitalProfessional("B", "C", "A");
-    private HospitalProfessional newProv6 = new HospitalProfessional("Vader, Darth", "Lord", "Deathstar");
+    private HospitalProfessional newProv1 =
+            new HospitalProfessional("Gates, William", "CEO", "Room 404");
+    private HospitalProfessional newProv2 =
+            new HospitalProfessional("Jobs, Steve", "CTO", "Room 303");
+    private HospitalProfessional newProv3 =
+            new HospitalProfessional("Balboa, Rocky", "Secretary", "Front Desk");
+    private HospitalProfessional newProv4 =
+            new HospitalProfessional("Eastwood, Clint", "Janitor", "Room 17");
+    private HospitalProfessional newProv5 =
+            new HospitalProfessional("Skywalker, Luke", "Lunch Lady", "Cafeteria");
+    private HospitalProfessional compProv5 =
+            new HospitalProfessional("B", "C", "A");
+    private HospitalProfessional newProv6 =
+            new HospitalProfessional("Vader, Darth", "Lord", "Deathstar");
 
     //Class to edit the DB
-    public DataBaseTesting(){
+    public HospitalProfessionalTest(){
         //Test 1
         hs.addHospitalProfessional(newProv1);
         //Test 2
@@ -105,7 +115,7 @@ public class DataBaseTesting {
         hs.addHospitalProfessional(newProv8);
         ArrayList<HospitalProfessional> initlist = hs.getHospitalProfessionals(null);
         int initSize = initlist.size();
-        hs.deleteHospitalProfessional(newProv8)
+        hs.deleteHospitalProfessional(newProv8);
         ArrayList<HospitalProfessional> remlist = hs.getHospitalProfessionals(null);
         int remSize = remlist.size();
         assertEquals(initSize-1, remSize);
