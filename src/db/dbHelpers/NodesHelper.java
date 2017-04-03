@@ -269,12 +269,63 @@ public class NodesHelper {
 //        edge = new Edge(tempFrom, tempTo2, 5);
 //        originalList.add(tempFrom);
 //        originalList.add(tempTo);
-        Node tempFrom = new Node(null, new Coordinate(271,1090,4),"MEDREC");
-        Node tempTo = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
-        Edge edge = new Edge(tempFrom, tempTo,134);
+        Node tempA = new Node(null, new Coordinate(271,1090,4),"MEDREC");
+        Node tempB = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
+        Node tempC = new Node(null, new Coordinate(441, 1090, 4), "tynanConf");
+        Edge edge = new Edge(tempA, tempB,134);
+        originalList.add(tempA);
         edgeList.add(edge);
-        originalList.add(tempFrom);
-        originalList.add(tempTo);
+        Edge edge2 = new Edge(tempB, tempC, 36);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempA = new Node(null, new Coordinate(653,1085,4),"o_44m4and44s3");
+        edge = new Edge(tempC,tempA,204);
+        edgeList.add(edge);
+        originalList.add(tempC);
+        tempB = new Node(null, new Coordinate(783,1085,4), "dptmedoff");
+        edge2 = new Edge(tempA, tempB, 130);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempC = new Node(null, new Coordinate(810, 1085, 4),"o_4211");
+        edge = new Edge(tempB, tempC, 27);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempA = new Node(null, new Coordinate(877,1085,4),"MEDLIB");
+        edge2 = new Edge(tempC,tempA,67);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempB = new Node(null, new Coordinate(896, 1085, 4),"RAD_ADMIN");
+        edge = new Edge(tempA, tempB,19);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempC = new Node(null, new Coordinate(964, 1085, 4), "CASMNGMT");
+        edge2 = new Edge(tempB, tempC, 68);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempA = new Node(null, new Coordinate(987,1085,4)"CONF713");
+        edge = new Edge(tempC, tempA,23);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempB = new Node(null, new Coordinate(1142,1085,4)"ADMINEXE");
+        edge2 = new Edge(tempA, tempB, 155);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1284, 1085, 4), "o_4102-4");
+        edge = new Edge(tempB,tempC,142);
+        edgeList.add(edge);
+        originalList.add(tempC);
+        
+
+        originalList.add(temp);
+        originalList.add(temp);
 
 
         populateTable(originalList); //put array in database now
