@@ -2,8 +2,6 @@ package db.dbHelpers;
 
 import db.Driver;
 import db.dbClasses.HospitalService;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -24,6 +22,8 @@ public class HospitalServicesHelperTest {
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
     public HospitalServicesHelperTest(){
+        Driver.runDatabase();
+        hsh = Driver.getHospitalServiceHelper();
         hsh.addHospitalService(hs1);
         hsh.addHospitalService(hs2);
         hsh.addHospitalService(hs3);

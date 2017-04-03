@@ -2,8 +2,6 @@ package db.dbHelpers;
 
 import db.Driver;
 import db.dbClasses.HospitalProfessional;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class HospitalProfessionalsHelperTest {
     //Gets the Helper
-    HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+    HospitalProfessionalsHelper hs;
     //Create instances of HosptitalProvider
     HospitalProfessional newProv1 = new HospitalProfessional("Gates, William", "CEO", "Room 404");
     HospitalProfessional newProv2 = new HospitalProfessional("Jobs, Steve", "CTO", "Room 303");
@@ -27,6 +25,9 @@ public class HospitalProfessionalsHelperTest {
 
     //Init
     public HospitalProfessionalsHelperTest() {
+        Driver.runDatabase();
+        hs = Driver.getHospitalProfessionalHelper();
+
         hs.addHospitalProfessional(newProv1);
         hs.addHospitalProfessional(newProv2);
         hs.addHospitalProfessional(newProv3);
