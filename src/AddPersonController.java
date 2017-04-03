@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import db.Driver.*;
 import db.dbHelpers.*;
 import db.dbClasses.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 /**
@@ -27,6 +28,12 @@ public class AddPersonController {
     private TextField locationField;
     @FXML
     private TextField idField;
+    @FXML
+    private Text warningText;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private Text successField;
 
     private HospitalProfessionalsHelper professionalHelper;
 
@@ -35,6 +42,12 @@ public class AddPersonController {
         professionalHelper = Driver.getHospitalProfessionalHelper();
     }
 
+    /**
+     * @author Paul
+     *
+     * handler for the back button being pressed. Brings it back to the directory editor screen.
+     *
+     */
     public void backBtnPressed(){
         // switch screens to directory editor
             // goto genres screen
@@ -49,6 +62,12 @@ public class AddPersonController {
         }
     }
 
+    /**
+     * @author Paul
+     *
+     * Handler for the logout button. Switches back to the main screen.
+     *
+     */
     public void logoutBtnPressed(){
         // switch screens to main
         try {
@@ -62,12 +81,36 @@ public class AddPersonController {
         }
     }
 
+    /**
+     * @author Paul
+     *
+     * handler for the add person button. Adds to the hospital professional database if possible.
+     *
+     */
     public void setAddPersonBtnPressed(){
         // check if fields are entered
+        if(nameField.getText().isEmpty() || locationField.getText().isEmpty()){
+            // Display error text
+            warningText.setVisible(true);
+        }
+        else{
+            // create a new professional and add to database
+            HospitalProfessional newProfessional = new HospitalProfessional(
+                    nameField.getText(),
+                    titleField.getText(),
+                    locationField.getText()
+            );
+            professionalHelper.addHospitalProfessional(newProfessional);
+            // put the ID in the ID field
+            idField.setText(newProfessional.getId().toString());
+            // indicate success
+            warningText.setVisible(false);
+            successField.setVisible(true);
 
-        // check if not already in existence
+        }
 
-        // add to database
+        // check if not already in existence??
+
 
     }
 
