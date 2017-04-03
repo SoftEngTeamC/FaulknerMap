@@ -70,7 +70,8 @@ public class HospitalProfessionalsHelper {
         //insert HospitalProfessional into table
         String str = "INSERT INTO " + HospitalProfessionalTable.NAME + " VALUES (" +
                 "'" + professional.getId().toString() + "', '" + professional.getName() + "', '" +
-                professional.getTitle() + "', '" + professional.getLocation() + "')";
+                professional.getTitle() + "', '" + professional.getLocation() + "', '" +
+                professional.getNodeId().toString() + "')";
         try {
             statement.executeUpdate(str);
             return true;
@@ -97,7 +98,8 @@ public class HospitalProfessionalsHelper {
             String str = "UPDATE " + HospitalProfessionalTable.NAME + " SET " + HospitalProfessionalTable.Cols.NAME +
                     " = '" + professional.getName() + "', " + HospitalProfessionalTable.Cols.TITLE +
                     " = '" + professional.getTitle() + "', " + HospitalProfessionalTable.Cols.LOCATION +
-                    " = '" + professional.getLocation() + "' WHERE " + HospitalProfessionalTable.Cols.ID + " = '" +
+                    " = '" + professional.getLocation() + "', " + HospitalProfessionalTable.Cols.NODEID +
+                    " = '" + professional.getNodeId().toString() + "' WHERE " + HospitalProfessionalTable.Cols.ID + " = '" +
                     professional.getId().toString() + "'";
             try {
                 //update was successful
@@ -153,6 +155,8 @@ public class HospitalProfessionalsHelper {
                 tempProfessional = new HospitalProfessional(resultSet.getString(HospitalProfessionalTable.Cols.NAME),
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+                tempProfessional.setId(id);
             }
             return tempProfessional;
         } catch (SQLException e) {
@@ -163,11 +167,39 @@ public class HospitalProfessionalsHelper {
     }
 
     /**
+     * Function finds a HospitalProfessional by id
+     *
+     * @param name Name of HospitalProfessional
+     * @return the HospitalProfessional found or null if could not be found
+     */
+    public HospitalProfessional getHospitalProfessionalByName(String name) {
+        //query table for specific HospitalProfessional
+        String str = "SELECT * FROM " + HospitalProfessionalTable.NAME + " WHERE " +
+                HospitalProfessionalTable.Cols.NAME + " = '" + name + "'";
+        try {
+            ResultSet resultSet = statement.executeQuery(str);
+            HospitalProfessional tempProfessional = null;
+            while(resultSet.next()){
+                tempProfessional = new HospitalProfessional(name,
+                        resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
+                        resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.ID)));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+            }
+            return tempProfessional;
+        } catch (SQLException e) {
+            System.out.println("Could not select Hospital Professional with name: " + name);
+            //    e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
      * Function takes in a order by clause and generates list of all HospitalProfessional
      * if no order is needed, order gets set to null when called
      * Default sort if of name alphabetical order
      *
-     * @param order
+     * @param order Order By command
      * @return list of HospitalProfessionals
      */
     public ArrayList<HospitalProfessional> getHospitalProfessionals(String order) {
@@ -190,6 +222,8 @@ public class HospitalProfessionalsHelper {
                 HospitalProfessional tempProfessional = new HospitalProfessional(resultSet.getString(HospitalProfessionalTable.Cols.NAME),
                         resultSet.getString(HospitalProfessionalTable.Cols.TITLE),
                         resultSet.getString(HospitalProfessionalTable.Cols.LOCATION));
+                tempProfessional.setNodeId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.NODEID)));
+                tempProfessional.setId(UUID.fromString(resultSet.getString(HospitalProfessionalTable.Cols.ID)));
                 temp.add(tempProfessional); //add to array
             }
         } catch (Exception e) {
@@ -220,6 +254,7 @@ public class HospitalProfessionalsHelper {
         //populate with originalList of professionals
         System.out.println("\nStoring initial Hospital Professionals");
 
+        originalList.add(new HospitalProfessional("Ash, Samuel", "MD", "4G"));
         originalList.add(new HospitalProfessional("Bachman, William", "MD", "4G"));
         originalList.add(new HospitalProfessional("Bernstein, Carolyn", "MD", "4H"));
         originalList.add(new HospitalProfessional("Bhasin, Shalender", "MD", "4N"));
@@ -295,6 +330,35 @@ public class HospitalProfessionalsHelper {
         originalList.add(new HospitalProfessional("Whitman, Gregory", "MD", "4C"));
         originalList.add(new HospitalProfessional("Wickner, Paige", "MD", "4G"));
 
+        originalList.add(new HospitalProfessional("Alqueza, Arnold", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Altschul, Nomee", "PA-C", "5 South"));
+        originalList.add(new HospitalProfessional("Andromalos, Laura ", "RD, LDN", "5D"));
+        originalList.add(new HospitalProfessional("Angell, Trevor", "MD", "5D"));
+        originalList.add(new HospitalProfessional("Angell, Trevor", "MD", "5K"));
+        originalList.add(new HospitalProfessional("Ariagno, Meghan", "RD, LDN", "5D"));
+        originalList.add(new HospitalProfessional("Balash, Eva", "MD", "5G"));
+        originalList.add(new HospitalProfessional("Barr, Joseph Jr.", "MD", "5C"));
+        originalList.add(new HospitalProfessional("Batool-Anwar, Salma", "MD, MPH", "4K"));
+        originalList.add(new HospitalProfessional("Belkin, Michael", "MD", "5D"));
+        originalList.add(new HospitalProfessional("Berman, Stephanie", "MD", "5J"));
+        originalList.add(new HospitalProfessional("Bhattacharyya, Shamik", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Blazar, Phil", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Bluman, Eric", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Boatwright, Giuseppina", "MS, RD, LDN", "5K"));
+        originalList.add(new HospitalProfessional("Bono, Christopher", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Brick, Gregory", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Budhiraja, Rohit", "MD", "5K"));
+        originalList.add(new HospitalProfessional("Butler, Matthew", "MD", "5C"));
+        originalList.add(new HospitalProfessional("Cahan, David", "MD", "5I"));
+        originalList.add(new HospitalProfessional("Carleen, Mary Anne", "PA-C", "5 South"));
+        originalList.add(new HospitalProfessional("Chahal, Katie", "PA-C", "5 South"));
+        originalList.add(new HospitalProfessional("Chiodo, Christopher", "MD", "5 South"));
+        originalList.add(new HospitalProfessional("Davidson, Paul", "PhD", "5D"));
+
+
+
+
+
         populateTable(originalList); //put array in database now
     }
 
@@ -343,10 +407,11 @@ public class HospitalProfessionalsHelper {
 
             // Create HospitalProfessional table.
             String str = "CREATE TABLE " + HospitalProfessionalTable.NAME + "(" +
-                    HospitalProfessionalTable.Cols.ID + " CHAR(100) NOT NULL PRIMARY KEY, " +
+                    HospitalProfessionalTable.Cols.ID + " VARCHAR(100) NOT NULL PRIMARY KEY, " +
                     HospitalProfessionalTable.Cols.NAME + " VARCHAR(50) NOT NULL, " +
                     HospitalProfessionalTable.Cols.TITLE + " VARCHAR(50) NOT NULL, " +
-                    HospitalProfessionalTable.Cols.LOCATION + " VARCHAR(20) )";
+                    HospitalProfessionalTable.Cols.LOCATION + " VARCHAR(20), " +
+                    HospitalProfessionalTable.Cols.NODEID + " VARCHAR(100))";
 
             statement.execute(str);
 

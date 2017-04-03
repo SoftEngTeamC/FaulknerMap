@@ -43,17 +43,12 @@ public class Driver {
         }
         System.out.println("Java DB connection established!");
 
-   //     hospitalServicesHelper = HospitalServicesHelper.get(connection);
-   //     hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
+        hospitalServicesHelper = HospitalServicesHelper.get(connection);
+        hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
 
         //Nodes must be created before edges since the edges table references the node table
         nodesHelper = NodesHelper.get(connection);
         edgesHelper = EdgesHelper.get(connection);
-
-       // EdgesHelper edgesHelper1 = EdgesHelper.get(connection);
-
-       // nodesHelper.printAllNodes();
-       /// edgesHelper.printAllEdges();
 
     }
 

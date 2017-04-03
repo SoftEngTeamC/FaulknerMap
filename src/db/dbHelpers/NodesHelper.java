@@ -1,7 +1,6 @@
 package db.dbHelpers;
 
 
-import db.HospitalSchema;
 import db.HospitalSchema.NodeSchema.*;
 import db.HospitalSchema.EdgeSchema.*;
 import db.dbClasses.Coordinate;
@@ -47,7 +46,6 @@ public class NodesHelper {
      */
     private NodesHelper(Connection connection) {
         this.connection = connection;
-
         try {
             statement = connection.createStatement();
 
@@ -94,7 +92,7 @@ public class NodesHelper {
      */
     public boolean updateNode(Node node) {
         //check table to make sure node is already there
-        Node temp = getNode(node.getId());
+        Node temp = getNodeByID(node.getId());
         if (temp == null) { //could not find node to edit
             System.out.println("Could not find Node " + node.getName() + ": " +
                     node.getPosition().toString() + " to update");
@@ -128,7 +126,7 @@ public class NodesHelper {
      */
     public boolean deleteNode(Node node) {
         //check table to make sure node is already there
-        Node temp = getNode(node.getId());
+        Node temp = getNodeByID(node.getId());
         if (temp == null) { //could not find node to edit
             System.out.println("Could not find Node " + node.getName() + ": " +
                     node.getPosition().toString() + " to delete");
@@ -154,7 +152,7 @@ public class NodesHelper {
      * @param id
      * @return the Node found or null if could not be found
      */
-    public static Node getNode(UUID id) {
+    public static Node getNodeByID(UUID id) {
         //query table for specific Node
         String str = "SELECT * FROM " + NodeTable.NAME + " WHERE " +
                 NodeTable.Cols.ID + " = '" + id.toString() + "'";
@@ -171,6 +169,33 @@ public class NodesHelper {
         } catch (SQLException e) {
             System.out.println("Could not find Node with id: " + id.toString());
          //   e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * Function finds a Node by it's name
+     *
+     * @param name Name of node
+     * @return the Node found or null if could not be found
+     */
+    public static Node getNodeByName(String name) {
+        //query table for specific Node
+        String str = "SELECT * FROM " + NodeTable.NAME + " WHERE " +
+                NodeTable.Cols.NAME + " = '" + name + "'";
+        try {
+            ResultSet resultSet = statement.executeQuery(str);
+            Node tempNode = null;
+            while (resultSet.next()) {
+                Coordinate tempCoor = new Coordinate(resultSet.getFloat(NodeTable.Cols.X),
+                        resultSet.getFloat(NodeTable.Cols.Y), resultSet.getInt(NodeTable.Cols.Z));
+                tempNode = new Node(null, tempCoor, name);
+                tempNode.setId(UUID.fromString(resultSet.getString(NodeTable.Cols.ID)));
+            }
+            return tempNode;
+        } catch (SQLException e) {
+            System.out.println("Could not find Node with name: " + name);
+            //   e.printStackTrace();
         }
         return null;
     }
@@ -204,14 +229,12 @@ public class NodesHelper {
                 Coordinate tempCoor = new Coordinate(resultSet.getFloat(NodeTable.Cols.X),
                         resultSet.getFloat(NodeTable.Cols.Y), resultSet.getInt(NodeTable.Cols.Z));
                 Node tempNode = new Node(null, tempCoor, resultSet.getString(NodeTable.Cols.NAME));
-                System.out.println(resultSet.getString(NodeTable.Cols.ID));
-                UUID temp1 = UUID.fromString(resultSet.getString(NodeTable.Cols.ID));
-                tempNode.setId(temp1);
+                tempNode.setId(UUID.fromString(resultSet.getString(NodeTable.Cols.ID)));
                 temp.add(tempNode); //add to array
             }
         } catch (Exception e) {
             System.out.println("No Nodes available to list");
-            e.printStackTrace();
+           // e.printStackTrace();
           //  return temp;
         }
 
@@ -235,12 +258,21 @@ public class NodesHelper {
         //populate with originalList of nodes
         System.out.println("\nStoring initial Nodes");
 
+        ArrayList<Edge> edgeList = new ArrayList<>();
+
         //Example of how to add a Node:    TODO: delete this example when actually populating
-        originalList.add(new Node(null, new Coordinate(1, 2, 3), "node1"));
-        originalList.add(new Node(null, new Coordinate(4, 5, 6), "node2"));
-        originalList.add(new Node(null, new Coordinate(7, 8, 9), "node3"));
+//        Node tempFrom = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Node tempTo = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Edge edge = new Edge(tempFrom,tempTo, 10);
+//        edgeList.add(edge);
+//        edge = new Edge(tempFrom, tempTo2, 5);
+//        originalList.add(tempFrom);
+//        originalList.add(tempTo);
+
 
         populateTable(originalList); //put array in database now
+
+        EdgesHelper.get(connection).populateTable(edgeList); //pass over Edge List
     }
 
     /**
@@ -292,7 +324,7 @@ public class NodesHelper {
 
             // Create Node table.
             String str = "CREATE TABLE " + NodeTable.NAME + "(" +
-                    NodeTable.Cols.ID + " CHAR(100) NOT NULL PRIMARY KEY, " +
+                    NodeTable.Cols.ID + " VARCHAR(100) NOT NULL PRIMARY KEY, " +
                     NodeTable.Cols.NAME + " CHAR(100) NOT NULL, " +
                     NodeTable.Cols.X + " FLOAT NOT NULL, " +
                     NodeTable.Cols.Y + " FLOAT NOT NULL, " +
