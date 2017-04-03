@@ -11,16 +11,12 @@ import db.*;
 import java.util.ArrayList;
 
 public class dbTests {
-
-
     HospitalServicesHelper hsh = Driver.getHospitalServiceHelper();
-
     HospitalService hs1 = new HospitalService("My Name", "My location");
     HospitalService hs2 = new HospitalService("My Name", "My location");
     HospitalService hs3 = new HospitalService("My Name", "My location");
     HospitalService hs4 = new HospitalService("My Name", "My location");
     HospitalService hs5 = new HospitalService("My Name", "My location");
-
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
     public dbTests(){
@@ -84,8 +80,6 @@ public class dbTests {
         assertNull(hsh.getHospitalService(hs999.getId()));
     }
 
-
-
     @Test
     //test that a hospital service can have its name edited
     public void changeName(){
@@ -99,8 +93,6 @@ public class dbTests {
         hs2.setLocation("100Institute");
         assertEquals("100Institute", hs2.getLocation());
     }
-
-
 
     @Test
     //test that an element with an edited name can be
@@ -119,8 +111,6 @@ public class dbTests {
         hsh.updateHospitalService(hs5);
         assertEquals("newlocation", hsh.getHospitalService(hs5.getId()).getLocation());
     }
-
-
 
     @Test
     //test that two elements are not equal even if they

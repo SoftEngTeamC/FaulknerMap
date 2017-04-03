@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 
 public class AdminTestRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(admintesting.class);
+        Result result = JUnitCore.runClasses(AdminTesting.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());

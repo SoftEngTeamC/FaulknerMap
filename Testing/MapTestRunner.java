@@ -7,7 +7,7 @@ import org.junit.runner.notification.Failure;
 
 public class MapTestRunner {
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(maptesting.class);
+        Result result = JUnitCore.runClasses(MapTesting.class);
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
