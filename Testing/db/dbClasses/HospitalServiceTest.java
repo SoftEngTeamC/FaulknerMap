@@ -1,16 +1,19 @@
-/**
- * Created by Jack Charbonneau on 4/2/17.
- */
-import static org.junit.Assert.*;
-import org.junit.Test;
+package db.dbClasses;
 
 import db.Driver;
-import db.dbHelper.*;
-import db.*;
+import db.dbHelpers.HospitalServicesHelper;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class dbTests {
+import static org.junit.Assert.*;
+
+/**
+ * Created by Jack Charbonneau on 4/2/17.
+ * Edited by Sam Coache on 4/3/17 - Formatting
+ */
+
+public class HospitalServiceTest {
     HospitalServicesHelper hsh = Driver.getHospitalServiceHelper();
     HospitalService hs1 = new HospitalService("My Name", "My location");
     HospitalService hs2 = new HospitalService("My Name", "My location");
@@ -19,7 +22,7 @@ public class dbTests {
     HospitalService hs5 = new HospitalService("My Name", "My location");
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
-    public dbTests(){
+    public HospitalServiceTest(){
         hsh.addHospitalService(hs1);
         hsh.addHospitalService(hs2);
         hsh.addHospitalService(hs3);
