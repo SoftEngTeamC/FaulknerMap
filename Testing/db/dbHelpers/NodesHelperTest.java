@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
  * Created by sam on 4/3/17.
  */
 public class NodesHelperTest {
+    //Helper
     NodesHelper nh = db.Driver.getNodesHelper();
     //(x,y)
     Coordinate coord1 = new Coordinate(10, 20, 30);

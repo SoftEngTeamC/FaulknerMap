@@ -54,8 +54,6 @@ public class HospitalServicesHelperTest {
         assertEquals(initialSize--, newSize);
     }
 
-
-
     @Test
     //test that the element that was added first can be
     //accessed from the table
