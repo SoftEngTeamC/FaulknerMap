@@ -71,7 +71,7 @@ public class AddPersonController {
     public void logoutBtnPressed(){
         // switch screens to main
         try {
-            Stage stage = (Stage) backBtn.getScene().getWindow();
+            Stage stage = (Stage) logoutBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
             stage.setTitle("Main");
             stage.setScene(new Scene(root, 600, 400));

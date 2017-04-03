@@ -10,8 +10,8 @@
   <items>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
          <children>
-            <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" text="Back" />
-            <Button layoutX="14.0" layoutY="553.0" mnemonicParsing="false" text="Logout" />
+            <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="logoutBtn" layoutX="14.0" layoutY="553.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
             <TabPane layoutX="14.0" layoutY="187.0" prefHeight="345.0" prefWidth="278.0" tabClosingPolicy="UNAVAILABLE">
               <tabs>
                 <Tab text="Edit Node">
@@ -20,15 +20,15 @@
                            <children>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
                                  <children>
-                                    <Button layoutX="226.0" layoutY="277.0" mnemonicParsing="false" text="Undo" />
-                                    <Button layoutX="205.0" layoutY="27.0" mnemonicParsing="false" text="Update" />
-                                    <TextField layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="187.0" />
+                                    <Button fx:id="editNode_undoBtn" layoutX="226.0" layoutY="277.0" mnemonicParsing="false" onAction="#editNode_undoBtnPressed" text="Undo" />
+                                    <Button fx:id="editNode_updateBtn" layoutX="205.0" layoutY="27.0" mnemonicParsing="false" onAction="#editNode_updateBtnPressed" text="Update" />
+                                    <TextField fx:id="editNode_nameField" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="187.0" />
                                     <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                                    <ListView layoutX="14.0" layoutY="73.0" prefHeight="98.0" prefWidth="187.0" />
-                                    <Button layoutX="203.0" layoutY="72.0" mnemonicParsing="false" text="Remove" />
+                                    <ListView fx:id="editNode_routesConnected" layoutX="14.0" layoutY="73.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button fx:id="editNode_removeBtn" layoutX="203.0" layoutY="72.0" mnemonicParsing="false" onAction="#editNode_removeBtnPressed" text="Remove" />
                                     <Text layoutX="20.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Routes Connected" />
-                                    <ListView layoutX="14.0" layoutY="192.0" prefHeight="98.0" prefWidth="187.0" />
-                                    <Button layoutX="203.0" layoutY="192.0" mnemonicParsing="false" text="Connect" />
+                                    <ListView fx:id="editNode_disconnectedRoutes" layoutX="14.0" layoutY="192.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button fx:id="editNode_connectBtn" layoutX="203.0" layoutY="192.0" mnemonicParsing="false" onAction="#editNode_connectBtnPressed" text="Connect" />
                                     <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disconnected Routes" />
                                  </children>
                               </AnchorPane>
@@ -41,15 +41,15 @@
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
                               <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
-                              <TextField layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="193.0" />
-                              <Button layoutX="212.0" layoutY="23.0" mnemonicParsing="false" text="Update" />
+                              <TextField fx:id="editRoute_nameField" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="193.0" />
+                              <Button fx:id="editRoute_updateBtn" layoutX="212.0" layoutY="23.0" mnemonicParsing="false" onAction="#editRoute_updateBtnPressed" text="Update" />
                               <Text layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Node" />
                               <Text layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ending Node" />
-                              <ListView layoutX="14.0" layoutY="79.0" prefHeight="34.0" prefWidth="194.0" />
-                              <ListView layoutX="14.0" layoutY="130.0" prefHeight="32.0" prefWidth="194.0" />
-                              <Button layoutX="86.0" layoutY="263.0" mnemonicParsing="false" text="Switch" />
+                              <ListView fx:id="editRoute_startingNodes" layoutX="14.0" layoutY="79.0" prefHeight="34.0" prefWidth="194.0" />
+                              <ListView fx:id="editRoute_endingNodes" layoutX="14.0" layoutY="130.0" prefHeight="32.0" prefWidth="194.0" />
+                              <Button fx:id="editRoute_switchBtn" layoutX="86.0" layoutY="263.0" mnemonicParsing="false" onAction="#editRoute_switchBtnPressed" text="Switch" />
                               <Text layoutX="14.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Nodes" />
-                              <ListView layoutX="14.0" layoutY="185.0" prefHeight="55.0" prefWidth="195.0" />
+                              <ListView fx:id="editRoute_availableNodes" layoutX="14.0" layoutY="185.0" prefHeight="55.0" prefWidth="195.0" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -64,9 +64,9 @@
               <tabs>
                 <Tab text="1st Floor">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                    <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageView" fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../Resources/floor1.png" />
                                  </image>
