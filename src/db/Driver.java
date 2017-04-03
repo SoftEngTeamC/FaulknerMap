@@ -2,7 +2,7 @@ package db;
 
 import java.sql.*;
 
-import db.dbHelper.*;
+import db.dbHelpers.*;
 
 /**
  * Created by Gina on 3/27/17.
@@ -10,8 +10,9 @@ import db.dbHelper.*;
 public class Driver {
 
     private static HospitalServicesHelper hospitalServicesHelper;
-
     private static HospitalProfessionalsHelper hospitalProfessionalsHelper;
+    private static NodesHelper nodesHelper;
+    private static EdgesHelper edgesHelper;
 
     public static void main(String[] args) {
         System.out.println("-------Embedded Java DB Connection Testing --------");
@@ -44,6 +45,11 @@ public class Driver {
 
         hospitalServicesHelper = HospitalServicesHelper.get(connection);
         hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
+
+        //Nodes must be created before edges since the edges table references the node table
+        nodesHelper = NodesHelper.get(connection);
+        edgesHelper = EdgesHelper.get(connection);
+
     }
 
     //getter for all other classes to access the HospitalService table
@@ -54,6 +60,16 @@ public class Driver {
     //getter for all other classes to access the HospitalProfessional table
     public static HospitalProfessionalsHelper getHospitalProfessionalHelper() {
         return hospitalProfessionalsHelper;
+    }
+
+    //getter for all other classes to access the Edges table
+    public static EdgesHelper getEdgesHelper() {
+        return edgesHelper;
+    }
+
+    //getter for all other classes to access the Nodes table
+    public static NodesHelper getNodesHelper() {
+        return nodesHelper;
     }
 
 }

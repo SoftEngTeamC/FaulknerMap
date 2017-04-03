@@ -1,9 +1,14 @@
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.List;
+
+import db.dbClasses.Edge;
+import db.dbClasses.Node;
+
 
 /**
  * Created by jack on 3/30/17.
