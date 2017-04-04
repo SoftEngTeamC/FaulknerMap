@@ -36,11 +36,26 @@ public class AdminToolController {
     private Button abutton;
     @FXML
     private Button button2;
-
     @FXML
-    public void editMap(){
+    private Button mapEditorBtn;
 
-        System.out.println("map");
+    /**
+     * @author Paul
+     *
+     * When map editor button is pressed, it goes to the map editing screen.
+     *
+     */
+    public void editMap(){
+        try {
+            Stage stage = (Stage) mapEditorBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MapEditor.fxml"));
+            stage.setTitle("AdminToolMenu");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
+        } catch (Exception E){
+            System.out.println("Could not switch screens to map editor");
+        }
+
     }
     @FXML
     public void editHours(){
