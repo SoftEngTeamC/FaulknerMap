@@ -28,7 +28,7 @@ public class Driver extends Application{
     // Override the application start method
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
         primaryStage.setTitle("Faulkner Kiosk");
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();

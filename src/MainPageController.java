@@ -1,4 +1,3 @@
-package MainPage;
 
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.DoubleProperty;
@@ -45,20 +44,6 @@ public class MainPageController {
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
 
-        //creating a list of points to test with
-        point p1 = new point(100, 100);
-        point p2 = new point(200, 200);
-        point p3 = new point(300, 300);
-        point p4 = new point(400, 400);
-        point p5 = new point(500, 500);
-        LinkedList<point> Nodes = new LinkedList<point>();
-        Nodes.add(p1);
-        Nodes.add(p2);
-        Nodes.add(p3);
-        Nodes.add(p4);
-        Nodes.add(p5);
-        DisplayMap(Nodes);
-
         //creating an ObservableList of strings to test with
         ObservableList<String> names = FXCollections.observableArrayList("Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
         SearchResults.setItems(names);
@@ -66,14 +51,6 @@ public class MainPageController {
     }
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
-    public void DisplayMap(LinkedList<point> nodes){
-        for(int i=0;i<nodes.size();i++){
-            MakeCircle(nodes.get(i).getX(),nodes.get(i).getY());
-            if(i>0){
-                MakeLine(nodes.get(i-1).getX(),nodes.get(i-1).getY(),nodes.get(i).getX(),nodes.get(i).getY());
-            }
-        }
-    }
 
     //MakeCircle creates a circle centered at the given X,Y relative to the initial size of the image
     //It locks the points to their position on the image,
