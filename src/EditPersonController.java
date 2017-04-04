@@ -1,8 +1,4 @@
-import com.sun.tools.javac.util.Name;
-import db.dbClasses.*;
-
-
-import db.Driver;
+import db.Driver.*;
 import db.dbHelpers.*;
 import db.dbClasses.*;
 import javafx.event.ActionEvent;
@@ -11,57 +7,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.List;
 
-
-public class DirectoryEditorController {
-    HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+public class EditPersonController {
     @FXML
     private Button abutton;
     @FXML
     private Button button2;
-    @FXML
-    private TextField searchtext;
-    @FXML
-    private List tablelist;
 
-    String usertext;
-
-    @FXML
-    public void initialize(){}
-
-    @FXML
-    public void back(){}
-
-    @FXML
-    public void logout(){}
-
-
-    //@FXML
-    //public Person addPerson(){return null;}
-
-
-
-    @FXML
-    public void search(){
-    //hs.getHospitalProfessionalByName(null);
-        usertext=searchtext.getText();
-
-    }
-
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
+        @FXML
+        public void back(){}
+        @FXML
+        public void logout(){}
+        @FXML
+        public void update(){}
+        @FXML
+        private void handleButtonAction(ActionEvent event) throws IOException {
         Stage stage;
         Parent root;
         if(event.getSource()==abutton){
             //get reference to the button's stage
             stage=(Stage) abutton.getScene().getWindow();
             //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("AdminToolMenu.fxml"));
+            root = FXMLLoader.load(getClass().getResource("DirectoryEditor.fxml"));
         }
         else {
             stage=(Stage) button2.getScene().getWindow();
@@ -72,4 +42,6 @@ public class DirectoryEditorController {
         stage.setScene(scene);
         stage.show();
     }
-}
+    }
+
+
