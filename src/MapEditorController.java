@@ -1,3 +1,4 @@
+import db.Driver;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.util.List;
+
+import db.Driver.*;
+import db.dbHelpers.*;
+import db.dbClasses.*;
 
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
@@ -84,7 +89,8 @@ public class MapEditorController implements AdminController {
     @FXML
     private AnchorPane anchorPane;
 
-
+    // database helper
+    NodesHelper nodesHelper;
 
 
     public void initialize(){
@@ -101,9 +107,12 @@ public class MapEditorController implements AdminController {
                 double y = event.getY();
                 // send to function
                 mouseClicked(x,y);
+            }});
 
-            }
-        });
+        // Make database helpers
+        nodesHelper = Driver.getNodesHelper();
+
+
 
     }
 
@@ -152,7 +161,6 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
-
     }
 
     /**
