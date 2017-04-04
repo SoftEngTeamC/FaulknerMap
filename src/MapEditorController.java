@@ -1,4 +1,3 @@
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,35 +33,50 @@ public class MapEditorController implements AdminController {
     @FXML
     private Button logoutBtn;
 
-    // Edit Node objects
+    // Remove Node objects
     @FXML
-    private ListView<String> editNode_routesConnected;
+    private TextField removeNode_searchField;
     @FXML
-    private ListView<String> editNode_disconnectedRoutes;
+    private ListView<String> removeNode_searchList;
     @FXML
-    private Button editNode_updateBtn;
+    private Button removeNode_searchBtn;
     @FXML
-    private Button editNode_removeBtn;
-    @FXML
-    private Button editNode_connectBtn;
-    @FXML
-    private Button editNode_undoBtn;
-    @FXML
-    private TextField editNode_nameField;
+    private Button removeNode_removeBtn;
 
-    // Edit Route objects
+
+    // Add node objects
     @FXML
-    private TextField editRoute_nameField;
+    private TextField addNode_nameField;
     @FXML
-    private Button editRoute_updateBtn;
+    private TextField addNode_xPos;
     @FXML
-    private ListView<String> editRoute_startingNodes;
+    private TextField addNode_yPos;
     @FXML
-    private ListView<String> editRoute_endingNodes;
+    private ListView<String> addNode_connectedNodesList;
     @FXML
-    private ListView<String> editRoute_availableNodes;
+    private Button addNode_createNodeBtn;
     @FXML
-    private Button editRoute_switchBtn;
+    private ListView<String> addNode_unconnectedNodesList;
+    @FXML
+    private Button addNode_connectToNodeBtn;
+
+    // Edit node objects
+    @FXML
+    private TextField editNode_searchField;
+    @FXML
+    private Button editNode_searchBtn;
+    @FXML
+    private ListView<String> editNode_searchResultsList;
+    @FXML
+    private ListView<String> editNode_neighborsList;
+    @FXML
+    private Button editNode_removeNeighborBtn;
+    @FXML
+    private TextField editNode_addField;
+    @FXML
+    private Button editNode_addBtn;
+
+
 
     // Map imageview and anchorpane
     @FXML
@@ -129,65 +143,84 @@ public class MapEditorController implements AdminController {
         }
     }
 
+    // Methods for the remove node tab
     /**
      * @author Paul
      *
-     * event handler for update name button in edit node tab
+     * remove node tab: search button event handler
      *
      */
-    public void editNode_updateBtnPressed(){
+    public void removeNode_searchBtnPressed(){
 
     }
 
     /**
      * @author Paul
      *
-     * event handler for remove  button in edit node tab
+     * remove node tab: remove button event handler
      *
      */
-    public void editNode_removeBtnPressed(){
+    public void removeNode_removeBtnPressed(){
+
+    }
+
+    // Methods for the add node tab
+
+    /**
+     * @author Paul
+     *
+     * add node tab: remove button event handler
+     *
+     */
+    public void addNode_connectToNodeBtnPressed(){
 
     }
 
     /**
      * @author Paul
      *
-     * event handler for connect button in edit node tab
+     * add node tab: create node button event handler
      *
      */
-    public void editNode_connectBtnPressed(){
+    public void addNode_createNodeBtnPressed(){
+
+    }
+
+    // methods for the edit node tab
+
+    /**
+     * @author Paul
+     *
+     * edit node tab: search button event handler
+     *
+     */
+    public void editNode_searchBtnPressed(){
 
     }
 
     /**
      * @author Paul
      *
-     * event handler for update name button in edit node tab
+     * edit node tab: remove neighbor button event handler
      *
      */
-    public void editNode_undoBtnPressed(){
+    public void editNode_removeNeighborBtnPressed(){
 
     }
 
     /**
      * @author Paul
      *
-     * event handler for update button in edit route tab
+     * edit node tab: Add node button event handler
      *
      */
-    public void editRoute_updateBtnPressed(){
+    public void editNode_addBtnPressed(){
 
     }
 
-    /**
-     * @author Paul
-     *
-     * event handler for switch button in edit route tab
-     *
-     */
-    public void editRoute_switchBtnPressed(){
 
-    }
+
+    // methods for the image and anchor pane
 
     /**
      * @author Paul
