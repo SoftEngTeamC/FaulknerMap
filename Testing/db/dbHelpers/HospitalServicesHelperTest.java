@@ -45,6 +45,8 @@ public class HospitalServicesHelperTest {
     }
 
     @Test
+    //test that the number of elements in the table decreases
+    //by one when an element is removed from the table
     public void deleteTest(){
         ArrayList<HospitalService> initialList = hsh.getHospitalServices(null);
         int initialSize = initialList.size();
