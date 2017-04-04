@@ -1,3 +1,5 @@
+import db.dbHelpers.NodesHelper;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,7 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
@@ -152,7 +156,15 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
-
+        try {
+            String searchField = String.valueOf(removeNode_searchField);
+            String selectedName = NodesHelper.getNodeByName(searchField).getName();
+            ArrayList<String> nodeName = new ArrayList<>();
+            nodeName.add(selectedName);
+            removeNode_searchList.setItems((ObservableList<String>) nodeName);
+        } catch (Exception E) {
+            System.out.println("Search error");
+        }
     }
 
     /**
@@ -162,7 +174,11 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_removeBtnPressed(){
-
+        String selectedItem = removeNode_searchList.getSelectionModel().getSelectedItem();
+        Node selectNode = NodesHelper.getNodeByName(selectedItem);
+        NodesHelper.deleteNode(selectNode);
+        ArrayList<String> emptyList = new ArrayList<String>();
+        removeNode_searchList.setItems((ObservableList<String>) emptyList);
     }
 
     // Methods for the add node tab

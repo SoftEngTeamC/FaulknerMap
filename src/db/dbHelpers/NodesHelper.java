@@ -124,7 +124,7 @@ public class NodesHelper {
      * @param node Node
      * @return success
      */
-    public boolean deleteNode(Node node) {
+    public static boolean deleteNode(Node node) {
         //check table to make sure node is already there
         Node temp = getNodeByID(node.getId());
         if (temp == null) { //could not find node to edit
