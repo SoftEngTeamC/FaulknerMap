@@ -1,28 +1,42 @@
 package pathfinding;
 
-import java.awt.*;
-import java.util.Collection;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 
-public abstract class MapNode {
-    private Point position;
-    private int floor;
-    private Map<MapNode, Double> neighbors;  // Weighted adjacency list
+public class MapNode implements Node<MapNode> {
+    private Coordinate location;
+    private Set<MapNode> neighbors;
 
-    protected Point getPosition() {
-        return position;
+    public MapNode(Coordinate location) {
+        this.location = location;
+        this.neighbors = new HashSet<>();
     }
 
-    Collection<MapNode> getNeighbors() {
-        return neighbors.keySet();
+    public MapNode(Coordinate location, Set<MapNode> neighbors) {
+        this.location = location;
+        this.neighbors = neighbors;
     }
 
-    protected double heuristicDistanceTo(MapNode otherNode) {
-        return Math.sqrt(Math.pow(position.x - otherNode.position.x, 2) + Math.pow(position.y - otherNode.position.y, 2));
+    public double heuristicCost(MapNode goal) {
+        return distanceTo(goal);
     }
 
-    protected double distanceTo(MapNode otherNode) {
-        return neighbors.get(otherNode);
+    public double traversalCost(MapNode neighbor) {
+        return distanceTo(neighbor);
+    }
+
+    public Set<MapNode> neighbors() {
+        return this.neighbors;
+    }
+
+    private double distanceTo(MapNode n) {
+        double xDelta = this.location.getX() - n.location.getX();
+        double yDelta = this.location.getY() - n.location.getY();
+        return Math.sqrt(Math.pow(xDelta, 2) + Math.pow(yDelta, 2));
+    }
+
+    public void addNeighbor(MapNode n) {
+        neighbors.add(n);
     }
 }
