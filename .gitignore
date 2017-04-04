@@ -41,7 +41,7 @@ hs_err_pid*
 ## Plugin-specific files:
 
 # IntelliJ
-/out/
+out
 
 # mpeltonen/sbt-idea plugin
 .idea_modules/
@@ -58,14 +58,8 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 .idea/*
-faulknerDatabase/seg0/c6b0.dat
-faulknerDatabase/seg0/c6c1.dat
-faulknerDatabase/seg0/d690.dat
-faulknerDatabase/seg0/d6a1.dat
-faulknerDatabase/*
-faulknerDatabase/seg0/*
+faulknerDatabase
 output/*
 
 
-/derby.log
-/FaulknerMap.iml
+derby.log
