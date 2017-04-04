@@ -39,7 +39,7 @@ public class HospitalProfessionalsHelperTest {
     //Tests
     @Test
     public void test1() {
-        assertEquals(newProv1, hs.getHospitalProfessional(newProv1.getId()));
+        assertEquals(newProv1.getName(), (hs.getHospitalProfessional(newProv1.getId())).getName());
     }
 
     //Testing trying to access a Provider not in the DB
