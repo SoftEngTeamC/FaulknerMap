@@ -27,9 +27,8 @@ public class HospitalProfessionalsHelperTest {
     public HospitalProfessionalsHelperTest() {
         Driver.runDatabase();
         hs = Driver.getHospitalProfessionalHelper();
-
         hs.addHospitalProfessional(newProv1);
-        hs.addHospitalProfessional(newProv2);
+        //hs.addHospitalProfessional(newProv2);
         hs.addHospitalProfessional(newProv3);
         hs.addHospitalProfessional(newProv4);
         hs.addHospitalProfessional(newProv5);
@@ -40,12 +39,12 @@ public class HospitalProfessionalsHelperTest {
     //Tests
     @Test
     public void test1() {
-        assertEquals(newProv1, hs.getHospitalProfessional(newProv1.getId()));
+        assertEquals(newProv1.getName(), (hs.getHospitalProfessional(newProv1.getId())).getName());
     }
 
     //Testing trying to access a Provider not in the DB
     @Test
-    public void distanceTo() throws Exception {
+    public void test2() throws Exception {
         assertNull(hs.getHospitalProfessional(newProv2.getId()));
     }
 
@@ -53,7 +52,7 @@ public class HospitalProfessionalsHelperTest {
     @Test
     public void test3() {
         newProv3.setName("Drago, Ivan");
-        hs.updateHospitalProfessional(newProv1);
+        hs.updateHospitalProfessional(newProv3);
         assertEquals("Drago, Ivan", (hs.getHospitalProfessional(newProv3.getId())).getName());
     }
 
