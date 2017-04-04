@@ -99,8 +99,6 @@ public class MapEditorController implements AdminController {
 
     public void initialize(){
 
-        // set image width and height to that of the anchorpane that it is on
-        imageView.setSize((float)anchorPane.getWidth(), (float)anchorPane.getHeight());
 
         //mouse clicked handler, send x,y data to function
         anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {

@@ -99,7 +99,7 @@ public class MainController{
     public void OpenAdminTool() throws Exception {
         // goto genres screen
         Stage stage = (Stage) AdminToolButton.getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource("AdminToolMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AdminToolMenu.fxml"));
         stage.setTitle("AdminToolMenu");
         stage.setScene(new Scene(root, 600, 400));
         stage.show();

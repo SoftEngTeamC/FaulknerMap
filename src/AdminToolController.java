@@ -45,17 +45,12 @@ public class AdminToolController {
      * When map editor button is pressed, it goes to the map editing screen.
      *
      */
-    public void editMap(){
-        try {
+    public void editMap() throws Exception{
             Stage stage = (Stage) mapEditorBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MapEditor.fxml"));
-            stage.setTitle("AdminToolMenu");
+            stage.setTitle("Map Editor");
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
-        } catch (Exception E){
-            System.out.println("Could not switch screens to map editor");
-        }
-
     }
     @FXML
     public void editHours(){
@@ -79,23 +74,4 @@ public class AdminToolController {
         System.out.println("logout");
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
-        Stage stage;
-        Parent root;
-        if(event.getSource()==abutton){
-            //get reference to the button's stage
-            stage=(Stage) abutton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("DirectoryEditor.fxml"));
-        }
-        else {
-            stage=(Stage) button2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("EditPersonScreen.fxml"));
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }
