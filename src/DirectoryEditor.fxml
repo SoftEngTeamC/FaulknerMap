@@ -27,7 +27,7 @@
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <ListView fx:id="tablelist" layoutX="-1.0" prefHeight="166.0" prefWidth="349.0" />
+                  <ListView layoutX="-1.0" prefHeight="166.0" prefWidth="349.0" />
                </children></AnchorPane>
             </items>
         </SplitPane>

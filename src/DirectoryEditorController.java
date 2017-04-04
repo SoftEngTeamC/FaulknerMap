@@ -30,6 +30,7 @@ public class DirectoryEditorController {
     private List tablelist;
 
     String usertext;
+    String personname;
 
     @FXML
     public void initialize(){}
@@ -50,6 +51,8 @@ public class DirectoryEditorController {
     public void search(){
     //hs.getHospitalProfessionalByName(null);
         usertext=searchtext.getText();
+        personname=hs.getHospitalProfessionalByName(usertext).getName();
+        System.out.print(personname);
 
     }
 
