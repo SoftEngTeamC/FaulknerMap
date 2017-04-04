@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import db.dbHelpers.NodesHelper;
 import javafx.collections.ObservableList;
-=======
 import db.Driver;
->>>>>>> 28c4bd89d598e242ff9ca9ad34fcbde989ef8ed7
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -168,7 +165,6 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
-<<<<<<< HEAD
         try {
             String searchField = String.valueOf(removeNode_searchField);
             String selectedName = NodesHelper.getNodeByName(searchField).getName();
@@ -178,8 +174,6 @@ public class MapEditorController implements AdminController {
         } catch (Exception E) {
             System.out.println("Search error");
         }
-=======
->>>>>>> 28c4bd89d598e242ff9ca9ad34fcbde989ef8ed7
     }
 
     /**
