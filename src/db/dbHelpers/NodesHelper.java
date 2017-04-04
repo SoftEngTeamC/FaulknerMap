@@ -335,6 +335,8 @@ Connect upperMiddle to UpLL_Corner
         Node tempA = new Node(null, new Coordinate(271,1090,4),"MEDREC");
         Node tempB = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
         Node tempC = new Node(null, new Coordinate(441, 1090, 4), "tynanConf");
+        Node tempUpperMiddle;
+        Node tempTopMiddle;
         Edge edge = new Edge(tempA, tempB,134);
         originalList.add(tempA);
         originalList.add(tempB);
@@ -491,6 +493,76 @@ Connect upperMiddle to UpLL_Corner
         edge2 = new Edge(tempA, tempC, 74);
         edgeList.add(edge2);
         originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1142, 601, 4), "SUITE4970");
+        edge = new Edge(tempB, tempA, 95);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1142, 523, 4), "SUITE4930-35");
+        edge2 = new Edge(tempC, tempB, 78);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1142, 457, 4), "SUITE4950-55");
+        edge = new Edge(tempA, tempC, 66);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempUpperMiddle = new Node(null, new Coordinate(1142, 395, 4), "upperMiddle");
+        edge2 = new Edge(tempUpperMiddle, tempA, 62);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1235, 395, 4), "SUITE48");
+        edge = new Edge(tempC, tempB, 93);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1235, 237, 4), "SUITE47");
+        edge2 = new Edge(tempA, tempC, 158);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1194, 216, 4), "SUITE45");
+        edge = new Edge(tempB, tempA, 46);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempTopMiddle = new Node(null, new Coordinate(1142, 214, 4), "TOPMIDDLE");
+        edge2 = new Edge(tempTopMiddle, tempB, 52);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1085, 214, 4), "SUITE43");
+        edge = new Edge(tempA, tempTopMiddle, 57);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1051, 236, 4), "S43B");
+        edge2 = new Edge(tempB, tempA, 40);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1051, 348, 4), "SUITE40");
+        edge = new Edge(tempC, tempB, 112);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1051, 395, 4), "UpLL_Corner");
+        edge2 = new Edge(tempA, tempC, 47);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1142, 307, 4), "o_4c68");
+        edge = new Edge(tempB, tempTopMiddle, 93);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        edge2 = new Edge(tempB, tempUpperMiddle, 88);
+        edgeList.add(edge2);
+
+        edge = new Edge(tempA, tempUpperMiddle, 91);
 
         populateTable(originalList); //put array in database now
 
