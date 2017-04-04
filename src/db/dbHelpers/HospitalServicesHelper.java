@@ -283,9 +283,25 @@ public class HospitalServicesHelper {
         originalList.add(new HospitalService("Center for Metabolic Health and Bariatric Surgery", "5D"));
         originalList.add(new HospitalService("Center for Weight Management and Metabolic Surgery", "5K"));
         originalList.add(new HospitalService("Colorectal Surgery", "5D"));
-        originalList.add(new HospitalService("Urology", "4N"));
-        originalList.add(new HospitalService("Urology", "4N"));
-        originalList.add(new HospitalService("Urology", "4N"));
+        originalList.add(new HospitalService("Diabetes Program ", "5K"));
+        originalList.add(new HospitalService("Endocrinology", "5K"));
+        originalList.add(new HospitalService("Family Care Associates", "5H"));
+        originalList.add(new HospitalService("Foot and Ankle Center", "5 South"));
+        originalList.add(new HospitalService("General Surgery", "5D"));
+        originalList.add(new HospitalService("Hand and Upper Extremity Center", "5 South"));
+        originalList.add(new HospitalService("ICU", "5 North"));
+        originalList.add(new HospitalService("Inpatient Hemodialysis", "5 North"));
+        originalList.add(new HospitalService("Nutrition - Weight Loss Surgery", "5D"));
+        originalList.add(new HospitalService("Nutrition Clinic", "5A"));
+        originalList.add(new HospitalService("Orthopaedics Associates", "5C"));
+        originalList.add(new HospitalService("Orthopedics Center", "5 South"));
+        originalList.add(new HospitalService("Outpatient Infusion Center", "5 North"));
+        originalList.add(new HospitalService("Psychology - Weight Loss Surgery", "5D"));
+        originalList.add(new HospitalService("Sleep Medicine and Endocrinology Center", "5K"));
+        originalList.add(new HospitalService("Sleep Testing Center", "5M"));
+        originalList.add(new HospitalService("Spine Center", "5 South"));
+        originalList.add(new HospitalService("Surgical Specialties", "5D"));
+        originalList.add(new HospitalService("Vascular Surgery", "5D"));
 
         populateTable(originalList); //put array in database now
     }
