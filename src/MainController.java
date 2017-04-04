@@ -1,26 +1,18 @@
-import javafx.beans.InvalidationListener;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
+
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ListView;
-import javafx.scene.paint.Color;
 
 import java.awt.*;
 import java.util.*;
-import java.util.List;
 
 
 import javafx.scene.paint.Paint;
@@ -45,13 +37,27 @@ public class MainController{
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
 
-        //creating an ObservableList of strings to test with
-        ObservableList<String> names = FXCollections.observableArrayList("Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
-        SearchResults.setItems(names);
+        //test List of Strings
+        LinkedList<String> names = new LinkedList<String>();
+        names.add("Jon");
+        names.add("Jon is cool");
+        names.add("Jon is the best");
+        names.add("Jon sure is good looking");
+        UpdateSearchResults(names);
 
     }
 
+
+    //NEED TO INTEGRATE COORDINATE CLASS I was using 'point' class when I made it
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
+    //public void DisplayMap(LinkedList<point> nodes){
+    //    for(int i=0;i<nodes.size();i++){
+    //        MakeCircle(nodes.get(i).getX(),nodes.get(i).getY());
+    //        if(i>0){
+    //            MakeLine(nodes.get(i-1).getX(),nodes.get(i-1).getY(),nodes.get(i).getX(),nodes.get(i).getY());
+    //        }
+    //    }
+    //}
 
     //MakeCircle creates a circle centered at the given X,Y relative to the initial size of the image
     //It locks the points to their position on the image,
@@ -88,6 +94,19 @@ public class MainController{
         MapAnchor.getChildren().add(edge);
     }
 
+    //This function takes a list of strings and updates the SearchResult ListView to contain those strings
+    public void UpdateSearchResults(LinkedList<String> results){
+        ObservableList<String> data = FXCollections.observableArrayList();
+        data.addAll(results);
+        SearchResults.setItems(data);
+    }
+
+    //This function is called when the user clicks on a Search Result.
+    //Information unique to the ListView Item can be accessed
+    //aka, we should be able to associate this click to a database object to pullup Info on the object and Display its Map Directions
+    public void handleClickedOnSearchResult() {
+        System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
+    }
     public void Search() {
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
