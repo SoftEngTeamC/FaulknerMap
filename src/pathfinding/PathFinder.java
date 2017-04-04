@@ -1,69 +1,58 @@
 package pathfinding;
+
+
 import java.util.*;
 
-
-
+/**
+ * This implementation is based off of Ben Ruijl's gist (https://gist.github.com/benruijl/3385624) and the wikipedia
+ * page https://en.wikipedia.org/wiki/A*_search_algorithm
+ */
 public class PathFinder {
-    /**
-     * Calculate the shortest path from the start node to the end node
-     * @param start the starting node
-     * @param destination the destination node
-     * @return the shortest path from start to destination
-     */
-    public List<MapNode> shortestPath(MapNode start, MapNode destination) throws Exception {
-        Set<MapNode> closedSet = new HashSet<>(); // Nodes that have already been looked at
-        Set<MapNode> openSet = new HashSet<>(); // Candidate nodes
-        openSet.add(start);
+    public static <T extends Node<T>> List<T> shortestPath(T start, T goal) {
+        Set<T> closed = new HashSet<>();
+        Map<T, T> cameFrom = new HashMap<>();
 
-        Map<MapNode, Double> nodeCost = new HashMap<>();  // The cost of getting to each node from the start
-        nodeCost.put(start, 0.0);
+        Map<T, Double> gScore = new HashMap<>();
+        gScore.put(start, 0.0);
 
-        Map<MapNode, Double> heuristicCost = new HashMap<>();
-        heuristicCost.put(start, start.heuristicDistanceTo(destination));
+        final Map<T, Double> fScore = new HashMap<>();
+        fScore.put(start, start.heuristicCost(goal));
 
-        Map<MapNode, MapNode> cameFrom = new HashMap<>();
+        PriorityQueue<T> fringe = new PriorityQueue<>(32, Comparator.comparingDouble(fScore::get));
+        fringe.add(start);
 
-        while (!openSet.isEmpty()) {
-            // Get the node with the minimum f score
-            MapNode currentNode = null;
-            for (MapNode n : openSet) {
-                if (currentNode == null) {
-                    currentNode = n;
-                    continue;
-                }
-                double bestFScore = nodeCost.get(currentNode) + heuristicCost.get(currentNode);
-                double fScore = nodeCost.get(n) + heuristicCost.get(n);
-                if (fScore < bestFScore) {
-                    currentNode = n;
+        while (!fringe.isEmpty()) {
+            T currentNode = fringe.poll();
+
+            if (currentNode.equals(goal)) return reconstructPath(currentNode, cameFrom);
+
+            closed.add(currentNode);
+
+            for (T neighbor : currentNode.neighbors()) {
+                if (closed.contains(neighbor)) continue;
+
+                double tentativeG = gScore.get(currentNode) + currentNode.traversalCost(neighbor);
+                boolean onFringe = fringe.contains(neighbor);
+                if (!onFringe || tentativeG < gScore.get(neighbor)) {
+                    gScore.put(neighbor, tentativeG);
+                    fScore.put(neighbor, tentativeG + neighbor.heuristicCost(goal));
+
+                    if (onFringe) fringe.remove(neighbor);
+
+                    fringe.offer(neighbor);
+                    cameFrom.put(neighbor, currentNode);
                 }
             }
-            if (currentNode == destination) return backTrack(cameFrom, currentNode);
 
-            // Move the current node to the closed set
-            openSet.remove(currentNode);
-            closedSet.add(currentNode);
-
-            for (MapNode n : currentNode.getNeighbors()) {
-                if (closedSet.contains(n)) continue;
-                double tentativeGScore = heuristicCost.get(currentNode) + currentNode.distanceTo(n);
-                if (!openSet.contains(n)) {
-                    openSet.add(n);
-                } else if (tentativeGScore >= heuristicCost.get(n)) {
-                    continue;
-                }
-                cameFrom.put(n, currentNode);
-                heuristicCost.put(n, tentativeGScore);
-                nodeCost.put(n, heuristicCost.get(n) + n.distanceTo(destination));
-            }
         }
-        throw new Exception("Path not found.");
+        return null;
     }
 
-    private List<MapNode> backTrack(Map<MapNode, MapNode> cameFrom, MapNode current) {
-        List<MapNode> path = new LinkedList<>();
-        while (cameFrom.containsKey(current)) {
-            current = cameFrom.get(current);
-            path.add(current);
+    private static <T extends Node<T>> List<T> reconstructPath(T end, Map<T, T> cameFrom) {
+        LinkedList<T> path = new LinkedList<>();
+        while (end != null) {
+            path.addFirst(end);
+            end = cameFrom.get(end);
         }
         return path;
     }
