@@ -263,12 +263,234 @@ public class NodesHelper {
         //Example of how to add a Node:    TODO: delete this example when actually populating
 //        Node tempFrom = new Node(null, new Coordinate(1, 2, 3), "node1");
 //        Node tempTo = new Node(null, new Coordinate(1, 2, 3), "node1");
+//        Node tempTo2 = new Node(null, new Coordinate(1, 2, 3), "node1");
 //        Edge edge = new Edge(tempFrom,tempTo, 10);
 //        edgeList.add(edge);
 //        edge = new Edge(tempFrom, tempTo2, 5);
 //        originalList.add(tempFrom);
 //        originalList.add(tempTo);
+/******************************
 
+Here's how all the things are connected:
+
+##Left
+271 1090 MEDREC
+405 1090 UROLOGY
+441 1090 tynanConf
+653 1085 o_44m4and44s3
+783 1085 dptmedoff
+810 1085 o_4211
+877 1085 MEDLIB
+896 1085 RAD_ADMIN
+964 1085 CASMNGMT
+987 1085 CONF713
+##MIDDLE
+1142 1085 ADMINEXE
+
+##Right
+1284 1085 o_4102-4
+1327 1085 PATSAFE
+1407 1085 SURGndPHYS
+1537 1085 qual_spec
+1620 1085 o_41m1-43s2
+1675 1085 HRndCOMP
+1721 1085 FINANCE
+1760 1085 CLINnd4308
+1808 1085 LOCKnd4311
+1871 1085 PLASTICS
+1907 1085 FOOT_ANLKE
+1967 1085 FAC_FIN_IS
+2039 1085 o_4329-31-21
+
+##UP
+1142 1026 CENTRAL
+	1084 1026 o_4-5
+	1194 1026 o_1-2-3
+1142 922 LUNG
+1142 856 HSKPG
+1142 796 NURSESPACE
+1142 770 SUITE4349-4995
+1142 696 SUITE4985-90
+1142 601 SUITE4970
+1142 523 SUITE4930-35
+1142 457 SUITE4950-55
+
+##Around the top
+1142 395 upperMiddle
+1235 395 SUITE48
+1235 237 SUITE47
+1194 216 SUITE45
+1142 214 TOPMIDDLE
+1085 214 SUITE43
+1051 236 S43B
+1051 348 SUITE40
+1051 395 UpLL_Corner
+
+1142 307 o_4c68
+
+Connect upperMiddle to o_4c68 to TOPMIDDLE
+Connect upperMiddle to UpLL_Corner
+
+*******************************/
+        Node tempA = new Node(null, new Coordinate(271,1090,4),"MEDREC");
+        Node tempB = new Node(null, new Coordinate(405,1090,4), "UROLOGY");
+        Node tempC = new Node(null, new Coordinate(441, 1090, 4), "tynanConf");
+        Edge edge = new Edge(tempA, tempB,134);
+        originalList.add(tempA);
+        originalList.add(tempB);
+        originalList.add(tempC);
+        edgeList.add(edge);
+        Edge edge2 = new Edge(tempB, tempC, 36);
+        edgeList.add(edge2);
+
+
+        tempA = new Node(null, new Coordinate(653,1085,4),"o_44m4and44s3");
+        edge = new Edge(tempC,tempA,204);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(783,1085,4), "dptmedoff");
+        edge2 = new Edge(tempA, tempB, 130);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(810, 1085, 4),"o_4211");
+        edge = new Edge(tempB, tempC, 27);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(877,1085,4),"MEDLIB");
+        edge2 = new Edge(tempC,tempA,67);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(896, 1085, 4),"RAD_ADMIN");
+        edge = new Edge(tempA, tempB,19);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(964, 1085, 4), "CASMNGMT");
+        edge2 = new Edge(tempB, tempC, 68);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(987,1085,4),"CONF713");
+        edge = new Edge(tempC, tempA,23);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1142,1085,4),"ADMINEXE");
+        edge2 = new Edge(tempA, tempB, 155);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        //##Central##//
+        Node midNode = new Node(null, new Coordinate(1142, 1026, 4),"CENTRAL");
+        edge = new Edge(tempB, midNode, 59);
+        edgeList.add(edge);
+        originalList.add(midNode);
+        //This node will come up again later. You'll see. It'll be there.
+
+        tempC = new Node(null, new Coordinate(1284, 1085, 4), "o_4102-4");
+        edge = new Edge(tempB,tempC,142);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1327,1085,4),"PATSAFE");
+        edge2 = new Edge(tempC,tempA,43);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1407,1085,4),"SURGndPHYS");
+        edge = new Edge(tempA,tempB,80);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1537,1085,4),"qual_spec");
+        edge2 = new Edge(tempB,tempC,130);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1620,1085,4),"o_41m1-43s2");
+        edge = new Edge(tempC,tempA,83);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1675,1085,4),"HRndCOMP");
+        edge2 = new Edge(tempA,tempB,55);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1721,1085,4),"FINANCE");
+        edge = new Edge(tempB,tempC,46);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1760,1085,4),"CLINnd4308");
+        edge2 = new Edge(tempC,tempA,39);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1808,1085,4),"LOCKnd4311");
+        edge = new Edge(tempA,tempB,48);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1871,1085,4),"PLASTICS");
+        edge2 = new Edge(tempB,tempC,63);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1907,1085,4),"FOOT_ANKLE");
+        edge = new Edge(tempC,tempA,36);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1967,1085,4),"FAC_FIN_IS");
+        edge2 = new Edge(tempA,tempB,60);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(2039,1085,4),"o_4329-31-21");
+        edge = new Edge(tempB,tempC,72);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        //Eyyy, there it is! I told you the node would come up again!
+        tempA = new Node(null, new Coordinate(1084,1026, 4), "o_4-5");
+        edge2 = new Edge(tempA, midNode, 58);
+        edgeList.add(edge2);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1194, 1026, 4), "o_1-2-3");
+        edge = new Edge(tempB, midNode, 52);
+        edgeList.add(edge);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1142, 922, 4), "LUNG");
+        edge2 = new Edge(tempC, midNode, 104);
+        edgeList.add(edge2);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1142, 856, 4), "HSKPG");
+        edge = new Edge(tempA, tempC, 66);
+        edgeList.add(edge);
+        originalList.add(tempA);
+
+        tempB = new Node(null, new Coordinate(1142, 796, 4), "NURSESPACE");
+        edge2 = new Edge(tempB, tempA, 60);
+        edgeList.add(edge2);
+        originalList.add(tempB);
+
+        tempC = new Node(null, new Coordinate(1142, 770, 4), "SUITE4349-4995");
+        edge = new Edge(tempC, tempB, 26);
+        edgeList.add(edge);
+        originalList.add(tempC);
+
+        tempA = new Node(null, new Coordinate(1142, 696, 4), "SUITE4985-90");
+        edge2 = new Edge(tempA, tempC, 74);
+        edgeList.add(edge2);
+        originalList.add(tempA);
 
         populateTable(originalList); //put array in database now
 
