@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import db.dbHelpers.NodesHelper;
 import javafx.collections.ObservableList;
+=======
+import db.Driver;
+>>>>>>> 28c4bd89d598e242ff9ca9ad34fcbde989ef8ed7
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +16,10 @@ import javafx.scene.control.TextField;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
+
+import db.Driver.*;
+import db.dbHelpers.*;
+import db.dbClasses.*;
 
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
@@ -88,7 +96,8 @@ public class MapEditorController implements AdminController {
     @FXML
     private AnchorPane anchorPane;
 
-
+    // database helper
+    NodesHelper nodesHelper;
 
 
     public void initialize(){
@@ -105,9 +114,12 @@ public class MapEditorController implements AdminController {
                 double y = event.getY();
                 // send to function
                 mouseClicked(x,y);
+            }});
 
-            }
-        });
+        // Make database helpers
+        nodesHelper = Driver.getNodesHelper();
+
+
 
     }
 
@@ -156,6 +168,7 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
+<<<<<<< HEAD
         try {
             String searchField = String.valueOf(removeNode_searchField);
             String selectedName = NodesHelper.getNodeByName(searchField).getName();
@@ -165,6 +178,8 @@ public class MapEditorController implements AdminController {
         } catch (Exception E) {
             System.out.println("Search error");
         }
+=======
+>>>>>>> 28c4bd89d598e242ff9ca9ad34fcbde989ef8ed7
     }
 
     /**
