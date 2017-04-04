@@ -58,21 +58,21 @@ public class HospitalServicesHelperTest {
     //test that the element that was added first can be
     //accessed from the table
     public void accessFirst(){
-        assertEquals(hs1,hsh.getHospitalService(hs1.getId()));
+        assertEquals(hs1.getId(),hsh.getHospitalService(hs1.getId()).getId());
     }
 
     @Test
     //test that the element that was added most recently
     //can be accessed from the table
     public void accessLast(){
-        assertEquals(hs1,hsh.getHospitalService(hs1.getId()));
+        assertEquals(hs1.getId(),hsh.getHospitalService(hs1.getId()).getId());
     }
 
     @Test
     //test that an elements in the middle of the table
     //can be accessed from the table
     public void accessMiddle(){
-        assertEquals(hs1,hsh.getHospitalService(hs1.getId()));
+        assertEquals(hs1.getId(),hsh.getHospitalService(hs1.getId()).getId());
     }
 
     @Test
