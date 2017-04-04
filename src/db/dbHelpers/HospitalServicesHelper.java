@@ -283,9 +283,9 @@ public class HospitalServicesHelper {
         originalList.add(new HospitalService("Center for Metabolic Health and Bariatric Surgery", "5D"));
         originalList.add(new HospitalService("Center for Weight Management and Metabolic Surgery", "5K"));
         originalList.add(new HospitalService("Colorectal Surgery", "5D"));
-        originalList.add(new HospitalService("Urology", "4N"));
-        originalList.add(new HospitalService("Urology", "4N"));
-        originalList.add(new HospitalService("Urology", "4N"));
+//        originalList.add(new HospitalService("Urology", "4N"));
+//        originalList.add(new HospitalService("Urology", "4N"));
+//        originalList.add(new HospitalService("Urology", "4N"));
 
         populateTable(originalList); //put array in database now
     }

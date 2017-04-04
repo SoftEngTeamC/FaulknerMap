@@ -1,8 +1,13 @@
 package db;
 
-import java.sql.*;
+import db.dbHelpers.EdgesHelper;
+import db.dbHelpers.HospitalProfessionalsHelper;
+import db.dbHelpers.HospitalServicesHelper;
+import db.dbHelpers.NodesHelper;
 
-import db.dbHelpers.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Created by Gina on 3/27/17.
@@ -15,6 +20,11 @@ public class Driver {
     private static EdgesHelper edgesHelper;
 
     public static void main(String[] args) {
+
+        runDatabase();
+    }
+
+    public static void runDatabase(){
         System.out.println("-------Embedded Java DB Connection Testing --------");
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
@@ -47,8 +57,8 @@ public class Driver {
         hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
 
         //Nodes must be created before edges since the edges table references the node table
-        nodesHelper = NodesHelper.get(connection);
-        edgesHelper = EdgesHelper.get(connection);
+   //     nodesHelper = NodesHelper.get(connection);
+   //     edgesHelper = EdgesHelper.get(connection);
 
     }
 

@@ -2,8 +2,6 @@ package db.dbHelpers;
 
 import db.Driver;
 import db.dbClasses.HospitalProfessional;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -15,7 +13,7 @@ import static org.junit.Assert.*;
  */
 public class HospitalProfessionalsHelperTest {
     //Gets the Helper
-    HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+    HospitalProfessionalsHelper hs;
     //Create instances of HosptitalProvider
     HospitalProfessional newProv1 = new HospitalProfessional("Gates, William", "CEO", "Room 404");
     HospitalProfessional newProv2 = new HospitalProfessional("Jobs, Steve", "CTO", "Room 303");
@@ -27,8 +25,10 @@ public class HospitalProfessionalsHelperTest {
 
     //Init
     public HospitalProfessionalsHelperTest() {
+        Driver.runDatabase();
+        hs = Driver.getHospitalProfessionalHelper();
         hs.addHospitalProfessional(newProv1);
-        hs.addHospitalProfessional(newProv2);
+        //hs.addHospitalProfessional(newProv2);
         hs.addHospitalProfessional(newProv3);
         hs.addHospitalProfessional(newProv4);
         hs.addHospitalProfessional(newProv5);
@@ -44,7 +44,7 @@ public class HospitalProfessionalsHelperTest {
 
     //Testing trying to access a Provider not in the DB
     @Test
-    public void distanceTo() throws Exception {
+    public void test2() throws Exception {
         assertNull(hs.getHospitalProfessional(newProv2.getId()));
     }
 
@@ -52,7 +52,7 @@ public class HospitalProfessionalsHelperTest {
     @Test
     public void test3() {
         newProv3.setName("Drago, Ivan");
-        hs.updateHospitalProfessional(newProv1);
+        hs.updateHospitalProfessional(newProv3);
         assertEquals("Drago, Ivan", (hs.getHospitalProfessional(newProv3.getId())).getName());
     }
 
