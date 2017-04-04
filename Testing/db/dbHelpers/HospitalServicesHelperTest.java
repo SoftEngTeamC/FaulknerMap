@@ -22,7 +22,8 @@ public class HospitalServicesHelperTest {
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
     public HospitalServicesHelperTest(){
-        Driver.runDatabase();
+        Driver.registerDriver(false);
+        Driver.runDatabase(false);
         hsh = Driver.getHospitalServiceHelper();
         hsh.addHospitalService(hs1);
         hsh.addHospitalService(hs2);
