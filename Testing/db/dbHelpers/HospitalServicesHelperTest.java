@@ -41,7 +41,7 @@ public class HospitalServicesHelperTest {
         hsh.addHospitalService(temp);
         ArrayList<HospitalService> newList = hsh.getHospitalServices(null);
         int newSize = newList.size();
-        assertEquals(initialSize++, newSize);
+        assertEquals((initialSize + 1), newSize);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class HospitalServicesHelperTest {
         hsh.deleteHospitalService(hs3);
         ArrayList<HospitalService> newList = hsh.getHospitalServices(null);
         int newSize = newList.size();
-        assertEquals(initialSize--, newSize);
+        assertEquals((initialSize - 1), newSize);
     }
 
     @Test
