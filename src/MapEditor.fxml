@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="594.0" prefWidth="1038.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MapEditorController">
+  <items>
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
+         <children>
+            <Button fx:id="backBtn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="Back" />
+            <Button fx:id="logoutBtn" layoutX="14.0" layoutY="553.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+            <TabPane layoutX="14.0" layoutY="187.0" prefHeight="345.0" prefWidth="278.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Edit Node">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="169.0" prefWidth="158.0">
+                                 <children>
+                                    <Button fx:id="editNode_undoBtn" layoutX="226.0" layoutY="277.0" mnemonicParsing="false" onAction="#editNode_undoBtnPressed" text="Undo" />
+                                    <Button fx:id="editNode_updateBtn" layoutX="205.0" layoutY="27.0" mnemonicParsing="false" onAction="#editNode_updateBtnPressed" text="Update" />
+                                    <TextField fx:id="editNode_nameField" layoutX="15.0" layoutY="27.0" prefHeight="25.0" prefWidth="187.0" />
+                                    <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                                    <ListView fx:id="editNode_routesConnected" layoutX="14.0" layoutY="73.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button fx:id="editNode_removeBtn" layoutX="203.0" layoutY="72.0" mnemonicParsing="false" onAction="#editNode_removeBtnPressed" text="Remove" />
+                                    <Text layoutX="20.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Routes Connected" />
+                                    <ListView fx:id="editNode_disconnectedRoutes" layoutX="14.0" layoutY="192.0" prefHeight="98.0" prefWidth="187.0" />
+                                    <Button fx:id="editNode_connectBtn" layoutX="203.0" layoutY="192.0" mnemonicParsing="false" onAction="#editNode_connectBtnPressed" text="Connect" />
+                                    <Text layoutX="14.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disconnected Routes" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Edit Route">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
+                              <TextField fx:id="editRoute_nameField" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="193.0" />
+                              <Button fx:id="editRoute_updateBtn" layoutX="212.0" layoutY="23.0" mnemonicParsing="false" onAction="#editRoute_updateBtnPressed" text="Update" />
+                              <Text layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Starting Node" />
+                              <Text layoutX="14.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ending Node" />
+                              <ListView fx:id="editRoute_startingNodes" layoutX="14.0" layoutY="79.0" prefHeight="34.0" prefWidth="194.0" />
+                              <ListView fx:id="editRoute_endingNodes" layoutX="14.0" layoutY="130.0" prefHeight="32.0" prefWidth="194.0" />
+                              <Button fx:id="editRoute_switchBtn" layoutX="86.0" layoutY="263.0" mnemonicParsing="false" onAction="#editRoute_switchBtnPressed" text="Switch" />
+                              <Text layoutX="14.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Available Nodes" />
+                              <ListView fx:id="editRoute_availableNodes" layoutX="14.0" layoutY="185.0" prefHeight="55.0" prefWidth="195.0" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+            <Text layoutX="14.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To edit nodes or routes, select them on the map for more options." wrappingWidth="278.0" />
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="516.0" prefWidth="648.0">
+         <children>
+            <TabPane layoutX="2.0" prefHeight="592.0" prefWidth="724.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="1st Floor">
+                  <content>
+                    <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fx:id="imageView" fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor1.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="2nd Floor">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="565.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor2.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="3rd Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor3.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="4th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="563.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor4.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="5th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="561.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor5.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="6th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="561.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor6.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+                  <Tab text="7th Floor">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="562.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../Resources/floor7.png" />
+                                 </image></ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
