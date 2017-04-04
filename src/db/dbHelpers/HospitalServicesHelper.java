@@ -283,6 +283,7 @@ public class HospitalServicesHelper {
         originalList.add(new HospitalService("Center for Metabolic Health and Bariatric Surgery", "5D"));
         originalList.add(new HospitalService("Center for Weight Management and Metabolic Surgery", "5K"));
         originalList.add(new HospitalService("Colorectal Surgery", "5D"));
+<<<<<<< HEAD
         originalList.add(new HospitalService("Diabetes Program ", "5K"));
         originalList.add(new HospitalService("Endocrinology", "5K"));
         originalList.add(new HospitalService("Family Care Associates", "5H"));
@@ -302,6 +303,11 @@ public class HospitalServicesHelper {
         originalList.add(new HospitalService("Spine Center", "5 South"));
         originalList.add(new HospitalService("Surgical Specialties", "5D"));
         originalList.add(new HospitalService("Vascular Surgery", "5D"));
+=======
+//        originalList.add(new HospitalService("Urology", "4N"));
+//        originalList.add(new HospitalService("Urology", "4N"));
+//        originalList.add(new HospitalService("Urology", "4N"));
+>>>>>>> 1bcf4c65404d8485f66c7356b52d647d52fb2e3c
 
         populateTable(originalList); //put array in database now
     }
