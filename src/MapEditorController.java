@@ -144,6 +144,7 @@ public class MapEditorController implements AdminController {
     }
 
     // Methods for the remove node tab
+
     /**
      * @author Paul
      *
