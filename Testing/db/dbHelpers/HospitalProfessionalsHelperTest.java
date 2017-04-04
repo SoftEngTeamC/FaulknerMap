@@ -25,7 +25,8 @@ public class HospitalProfessionalsHelperTest {
 
     //Init
     public HospitalProfessionalsHelperTest() {
-        Driver.runDatabase();
+        Driver.registerDriver(false);
+        Driver.runDatabase(false);
         hs = Driver.getHospitalProfessionalHelper();
         hs.addHospitalProfessional(newProv1);
         //hs.addHospitalProfessional(newProv2);
