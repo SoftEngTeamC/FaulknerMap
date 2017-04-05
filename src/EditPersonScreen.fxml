@@ -25,8 +25,10 @@
       <Text layoutX="183.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
       <TextField fx:id="idField" layoutX="226.0" layoutY="217.0" />
 
-      <Button fx:id="updateBtn" layoutX="246.0" layoutY="261.0" mnemonicParsing="false" onAction="#updateBtnPressed" prefHeight="44.0" prefWidth="98.0" text="Update" textFill="#4ba418" />
+      <Button fx:id="updateBtn" layoutX="190.0" layoutY="261.0" mnemonicParsing="false" onAction="#updateBtnPressed" prefHeight="44.0" prefWidth="98.0" text="Update" textFill="#4ba418" />
+      <Button fx:id="deleteBtn" layoutX="310.0" layoutY="261.0" mnemonicParsing="false" onAction="#deleteBtnPressed" prefHeight="44.0" prefWidth="98.0" text="Delete" textFill="#4ba418" />
       <Button fx:id="logoutBtn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#logout" text="logout" />
+      <Text fx:id="warningText" fill="RED" layoutX="216.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Deleted Professional" visible="false" />
       <Text layoutX="233.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Person">
          <font>
             <Font size="25.0" />

@@ -1,8 +1,6 @@
 import db.Driver;
-import db.Driver.*;
-import db.dbHelpers.*;
-import db.dbClasses.*;
-import javafx.event.ActionEvent;
+import db.dbClasses.HospitalProfessional;
+import db.dbHelpers.HospitalProfessionalsHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,8 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class EditPersonController {
 
@@ -36,15 +32,17 @@ public class EditPersonController {
     private Button updateBtn;
 
     @FXML
-    public void initialize(){
-        hph = Driver.getHospitalProfessionalHelper();
+    private Text warningText;
 
+    @FXML
+    public void initialize() {
+        hph = Driver.getHospitalProfessionalHelper();
 
 
     }
 
     @FXML
-    public void back() throws Exception{
+    public void back() throws Exception {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DirectoryEditor.fxml"));
         stage.setTitle("Directory Editor");
@@ -53,7 +51,7 @@ public class EditPersonController {
     }
 
     @FXML
-    public void logout()throws Exception {
+    public void logout() throws Exception {
         Stage stage = (Stage) logoutBtn.getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
         stage.setTitle("Main");
@@ -62,24 +60,30 @@ public class EditPersonController {
     }
 
 
-        public void setSelectedUser(HospitalProfessional hp){
+    public void setSelectedUser(HospitalProfessional hp) {
 
-            this.hp = hp;
-            nameField.setText(this.hp.getName());
-            titleField.setText(this.hp.getTitle());
-            locationField.setText(this.hp.getLocation());
-            idField.setText(this.hp.getId().toString());
-
-        }
-
-        public void updateBtnPressed(){
-            // push to database
-            hp.setName(nameField.getText());
-            hp.setTitle(titleField.getText());
-            hp.setLocation(locationField.getText());
-            hph.updateHospitalProfessional(hp);
-        }
+        this.hp = hp;
+        nameField.setText(this.hp.getName());
+        titleField.setText(this.hp.getTitle());
+        locationField.setText(this.hp.getLocation());
+        idField.setText(this.hp.getId().toString());
 
     }
+
+    public void updateBtnPressed() {
+        // push to database
+        hp.setName(nameField.getText());
+        hp.setTitle(titleField.getText());
+        hp.setLocation(locationField.getText());
+        hph.updateHospitalProfessional(hp);
+    }
+
+    public void deleteBtnPressed() {
+        // push to database
+        hph.deleteHospitalProfessional(hp);
+        warningText.setVisible(true);
+    }
+
+}
 
 

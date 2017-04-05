@@ -1,5 +1,4 @@
 import db.Driver;
-import db.dbClasses.Coordinate;
 import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
 import db.dbHelpers.HospitalProfessionalsHelper;
@@ -40,37 +39,35 @@ public class AddPersonController {
     private HospitalProfessionalsHelper professionalHelper;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
         professionalHelper = Driver.getHospitalProfessionalHelper();
     }
 
     /**
      * @author Paul
-     *
+     * <p>
      * handler for the back button being pressed. Brings it back to the directory editor screen.
-     *
      */
-    public void backBtnPressed(){
+    public void backBtnPressed() {
         // switch screens to directory editor
-            // goto genres screen
+        // goto genres screen
         try {
             Stage stage = (Stage) backBtn.getScene().getWindow();
             Parent root = FXMLLoader.load(getClass().getResource("DirectoryEditor.fxml"));
             stage.setTitle("Directory Editor");
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
-        } catch (Exception E){
+        } catch (Exception E) {
             System.out.println("Couldn't switch scenes");
         }
     }
 
     /**
      * @author Paul
-     *
+     * <p>
      * Handler for the logout button. Switches back to the main screen.
-     *
      */
-    public void logoutBtnPressed(){
+    public void logoutBtnPressed() {
         // switch screens to main
         try {
             Stage stage = (Stage) logoutBtn.getScene().getWindow();
@@ -78,37 +75,36 @@ public class AddPersonController {
             stage.setTitle("Main");
             stage.setScene(new Scene(root, 600, 400));
             stage.show();
-        } catch (Exception E){
+        } catch (Exception E) {
             System.out.println("Couldn't switch scenes");
         }
     }
 
     /**
      * @author Paul
-     *
+     * <p>
      * handler for the add person button. Adds to the hospital professional database if possible.
-     *
      */
-    public void setAddPersonBtnPressed(){
+    public void setAddPersonBtnPressed() {
+        NodesHelper nh = Driver.getNodesHelper();
         // check if fields are entered
-        if(nameField.getText().isEmpty() || locationField.getText().isEmpty()){
+        if (nameField.getText().isEmpty() || locationField.getText().isEmpty()) {
             // Display error text
+            warningText.setText("Not enough information added");
             warningText.setVisible(true);
-        }
-        else{
+        } else if (nh.getNodeByName(locationField.getText()) == null) {
+            warningText.setText("Location not found");
+            warningText.setVisible(true);
+        } else {
             // create a new professional and add to database
             HospitalProfessional newProfessional = new HospitalProfessional(
                     nameField.getText(),
                     titleField.getText(),
                     locationField.getText()
             );
-            Node newNode = new Node(null, new Coordinate(0,0,0),
-                    newProfessional.getName());
+
+            Node newNode = nh.getNodeByName(locationField.getText());
             newProfessional.setNodeId(newNode.getId());
-
-            NodesHelper nh = Driver.getNodesHelper();
-            nh.addNode(newNode);
-
             professionalHelper.addHospitalProfessional(newProfessional);
 
 
@@ -125,9 +121,6 @@ public class AddPersonController {
 
 
     }
-
-
-
 
 
 }
