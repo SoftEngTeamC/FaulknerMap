@@ -2,6 +2,7 @@ import db.Driver;
 import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
 import db.dbHelpers.HospitalProfessionalsHelper;
+import db.dbHelpers.NodesHelper;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -24,6 +25,9 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+import pathfinding.Coordinate;
+import pathfinding.MapNode;
+import pathfinding.PathFinder;
 
 public class MainController{
     @FXML
@@ -113,11 +117,17 @@ public class MainController{
         ObservableList<String> names = FXCollections.observableArrayList();
         System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
         PopulateInformationDisplay(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
-        //FindandDisplayPath(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
+        FindandDisplayPath(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
     }
 
-    //public void FindandDisplayPath(HospitalProfessional){
-    
+    public void FindandDisplayPath(HospitalProfessional HP){
+        NodesHelper NH = Driver.getNodesHelper();
+        Map map = new Map(NH.getNodes(null));
+        MapNode start = null;
+        MapNode dest = map.getNode(HP.getNodeId());
+        List<MapNode> path = PathFinder.shortestPath(start, dest);
+    }
+
 
     //triggered on key release in SearchBar
     //runs PopulateSearchResults with the Search input

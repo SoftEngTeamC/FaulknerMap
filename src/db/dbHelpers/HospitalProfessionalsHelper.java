@@ -340,7 +340,7 @@ public class HospitalProfessionalsHelper {
         originalList.add(new HospitalProfessional("Ariagno, Meghan", "RD, LDN", "5D"));
         originalList.add(new HospitalProfessional("Balash, Eva", "MD", "5G"));
         originalList.add(new HospitalProfessional("Barr, Joseph Jr.", "MD", "5C"));
-        originalList.add(new HospitalProfessional("Batool-Anwar, Salma", "MD, MPH", "4K"));
+        originalList.add(new HospitalProfessional("Batool-Anwar, Salma", "MD, MPH", "5K"));
         originalList.add(new HospitalProfessional("Belkin, Michael", "MD", "5D"));
         originalList.add(new HospitalProfessional("Berman, Stephanie", "MD", "5J"));
         originalList.add(new HospitalProfessional("Bhattacharyya, Shamik", "MD", "5 South"));
@@ -404,7 +404,7 @@ public class HospitalProfessionalsHelper {
         originalList.add(new HospitalProfessional("Nehs, Matthew", "MD", "5D"));
         originalList.add(new HospitalProfessional("Nelson, Ehren", "MD", "5 South"));
         originalList.add(new HospitalProfessional("Nuspl, Kristen", "PA-C", "5J"));
-        originalList.add(new HospitalProfessional("O'Hare, Kitty", "MD", "5H"));
+        originalList.add(new HospitalProfessional("O''Hare, Kitty", "MD", "5H"));
         originalList.add(new HospitalProfessional("Oliveira, Nancy", "MS, RDN, LDN", "5A"));
         originalList.add(new HospitalProfessional("Omobomi, Olabimpe", "MD", "5K"));
         originalList.add(new HospitalProfessional("Palermo, Nadine", "MD", "5K"));
