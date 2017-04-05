@@ -1,3 +1,4 @@
+import db.Driver;
 import db.Driver.*;
 import db.dbHelpers.*;
 import db.dbClasses.*;
@@ -7,15 +8,40 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class EditPersonController {
+
+    //hospital professional on which we are editing
+    HospitalProfessional hp;
+    HospitalProfessionalsHelper hph;
+
     @FXML
     private Button logoutBtn;
     @FXML
     private Button backBtn;
+    @FXML
+    private TextField nameField;
+    @FXML
+    private TextField titleField;
+    @FXML
+    private TextField locationField;
+    @FXML
+    private TextField idField;
+    @FXML
+    private Button updateBtn;
+
+    @FXML
+    public void initialize(){
+        hph = Driver.getHospitalProfessionalHelper();
+
+
+
+    }
 
     @FXML
     public void back() throws Exception{
@@ -34,8 +60,25 @@ public class EditPersonController {
         stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
-        @FXML
-        public void update(){}
+
+
+        public void setSelectedUser(HospitalProfessional hp){
+
+            this.hp = hp;
+            nameField.setText(hp.getName());
+            titleField.setText(hp.getTitle());
+            locationField.setText(hp.getLocation());
+            idField.setText(hp.getId().toString());
+
+        }
+
+        public void updateBtnPressed(){
+            // push to database
+            hp.setName(nameField.getText());
+            hp.setTitle(titleField.getText());
+            hp.setLocation(locationField.getText());
+            hph.updateHospitalProfessional(hp);
+        }
 
     }
 
