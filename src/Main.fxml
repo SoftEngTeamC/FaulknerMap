@@ -33,11 +33,7 @@
         <!--</AnchorPane>-->
         <AnchorPane fx:id="MapAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
-<<<<<<< HEAD
-                <ImageView fx:id="FourthFloor" fitHeight="300.0" fitWidth="2250.0" pickOnBounds="true" preserveRatio="true">
-=======
                 <ImageView fx:id="FourthFloor" fitHeight="300.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> bc7aac9f3c2d294f071d19d602794974eacdc857
                     <image>
                         <Image url="@Resources/floor4.png" />
                     </image>
