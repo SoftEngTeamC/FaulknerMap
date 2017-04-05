@@ -56,7 +56,7 @@ public class CustomMapBTests {
 
     //Checks reverse directionality of addNeighbor()
     @Test
-    public void test1() throws Exception {
+    public void testReversePath() throws Exception {
         List<MapNode> path = new LinkedList<>();
         path.add(B);
         path.add(A);
