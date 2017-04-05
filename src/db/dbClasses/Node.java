@@ -64,8 +64,10 @@ public class Node {
         float length = (float)Math.sqrt((Math.pow(this.position.getXpos() - from.position.getXpos(),2)+
                         (Math.pow(this.position.getYpos() - from.position.getYpos(),2))));
 
-        Edge temp = new Edge(this, from, length);
-        eh.addEdge(temp);
+        Edge edge1 = new Edge(this, from, length);
+        Edge edge2 = new Edge(from, this, length);
+        eh.addEdge(edge1);
+        eh.addEdge(edge2);
     }
 
 }

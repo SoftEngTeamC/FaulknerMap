@@ -571,6 +571,7 @@ Connect upperMiddle to UpLL_Corner
 
         populateTable(originalList); //put array in database now
 
+        EdgesHelper eh = EdgesHelper.get(connection);
         EdgesHelper.populateTable(edgeList); //pass over Edge List
 
         updateNodes();

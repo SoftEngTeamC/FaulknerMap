@@ -1,6 +1,12 @@
-import db.dbHelpers.NodesHelper;
-import javafx.collections.ObservableList;
 import db.Driver;
+import db.dbClasses.Edge;
+import db.dbClasses.Node;
+import db.dbHelpers.EdgesHelper;
+import db.dbHelpers.NodesHelper;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,22 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-
-import db.Driver.*;
-import db.dbHelpers.*;
-import db.dbClasses.*;
-
-import db.dbClasses.Edge;
-import db.dbClasses.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import javax.swing.text.html.ImageView;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -35,6 +32,8 @@ public class MapEditorController implements AdminController {
     // Currently selected node and edge
     private Node selectedNode;
     private Edge selectedEdge;
+
+    private final Node[] currNodes = new Node[2];
 
     // Back and logout buttons
     @FXML
@@ -96,6 +95,8 @@ public class MapEditorController implements AdminController {
     // database helper
     NodesHelper nodesHelper;
 
+    EdgesHelper edgesHelper;
+
 
     public void initialize(){
 
@@ -114,7 +115,7 @@ public class MapEditorController implements AdminController {
         // Make database helpers
         nodesHelper = Driver.getNodesHelper();
 
-
+        edgesHelper = Driver.getEdgesHelper();
 
     }
 
@@ -165,7 +166,7 @@ public class MapEditorController implements AdminController {
     public void removeNode_searchBtnPressed(){
         try {
             String searchField = String.valueOf(removeNode_searchField);
-            String selectedName = NodesHelper.getNodeByName(searchField).getName();
+            String selectedName = nodesHelper.getNodeByName(searchField).getName();
             ArrayList<String> nodeName = new ArrayList<>();
             nodeName.add(selectedName);
             removeNode_searchList.setItems((ObservableList<String>) nodeName);
@@ -219,7 +220,38 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_searchBtnPressed(){
+        List<Node> list = nodesHelper.getNodes(null);
+        ArrayList<String> nameList = new ArrayList<>();
+        for(Node node: list){
+            nameList.add(node.getName());
+        }
 
+        ObservableList<String> obList = FXCollections.observableArrayList(nameList);
+
+        editNode_searchResultsList.setItems(obList);
+
+        editNode_searchResultsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                Node selectedNode = nodesHelper.getNodeByName(newValue);
+                currNodes[0] = selectedNode;
+                ArrayList<Node> neighbors = edgesHelper.getNeighbors(selectedNode);
+                ArrayList<String> neighborsS = new ArrayList<>();
+                for(Node node: neighbors){
+                    neighborsS.add(node.getName());
+                }
+                ObservableList<String> nList = FXCollections.observableArrayList(neighborsS);
+                editNode_neighborsList.setItems(nList);
+            }
+        });
+
+        editNode_neighborsList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                Node selectedNode = nodesHelper.getNodeByName(newValue);
+                currNodes[1] = selectedNode;
+            }
+        });
     }
 
     /**
@@ -229,6 +261,19 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_removeNeighborBtnPressed(){
+        ArrayList<Edge> currEdges = edgesHelper.getEdgeByNode(currNodes[0], currNodes[1]);
+
+        for(Edge curr : currEdges){
+            edgesHelper.deleteEdge(curr);
+        }
+
+        ArrayList<Node> neighbors = edgesHelper.getNeighbors(currNodes[0]);
+        ArrayList<String> neighborsS = new ArrayList<>();
+        for(Node node: neighbors){
+            neighborsS.add(node.getName());
+        }
+        ObservableList<String> nList = FXCollections.observableArrayList(neighborsS);
+        editNode_neighborsList.setItems(nList);
 
     }
 
