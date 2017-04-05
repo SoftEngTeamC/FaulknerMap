@@ -39,14 +39,9 @@
                               <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" />
                               <TextField fx:id="addNode_nameField" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="193.0" />
                               <Text layoutX="14.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="x-position" />
-                              <Button fx:id="addNode_connectToNodeBtn" layoutX="59.0" layoutY="186.0" mnemonicParsing="false" onAction="#addNode_connectToNodeBtnPressed" text="Connect to node" />
-                              <Text layoutX="14.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Unconnected Nodes:" />
-                              <ListView fx:id="addNode_unconnectedNodesList" layoutX="14.0" layoutY="131.0" prefHeight="55.0" prefWidth="195.0" />
                               <TextField fx:id="addNode_xPos" layoutX="14.0" layoutY="79.0" prefHeight="25.0" prefWidth="54.0" />
                               <Text layoutX="84.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="y-position" />
                               <TextField fx:id="addNode_yPos" layoutX="84.0" layoutY="79.0" prefHeight="25.0" prefWidth="54.0" />
-                              <Text layoutX="14.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Connected Nodes" />
-                              <ListView fx:id="addNode_connectedNodesList" layoutX="14.0" layoutY="236.0" prefHeight="52.0" prefWidth="201.0" />
                               <Button fx:id="addNode_createNodeBtn" layoutX="73.0" layoutY="290.0" mnemonicParsing="false" onAction="#addNode_createNodeBtnPressed" text="Create Node" />
                            </children></AnchorPane>
                   </content>
@@ -122,11 +117,7 @@
                     <content>
                       <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="563.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../Resources/floor4.png" />
-                                 </image>
-                              </ImageView>
+                              <ImageView fx:id="imageView" fitHeight="563.0" fitWidth="724.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" />
                            </children>
                         </AnchorPane>
                     </content>

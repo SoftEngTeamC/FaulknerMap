@@ -20,11 +20,12 @@ import db.dbClasses.*;
 
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 
 
 /**
@@ -93,12 +94,19 @@ public class MapEditorController implements AdminController {
     @FXML
     private AnchorPane anchorPane;
 
+    // Images
+    Image floor4Image;
+
     // database helper
     NodesHelper nodesHelper;
 
 
     public void initialize(){
 
+        // Set the image view to populate the image
+        System.out.println("we're in this");
+        floor4Image = new Image("file:../Resources/floor4.png");
+        imageView = new ImageView(floor4Image);
 
         //mouse clicked handler, send x,y data to function
         anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -229,7 +237,6 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_removeNeighborBtnPressed(){
-
     }
 
     /**
