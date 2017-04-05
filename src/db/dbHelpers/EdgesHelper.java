@@ -192,22 +192,22 @@ public class EdgesHelper {
                 }
             }
 
-            str = "SELECT * FROM " + EdgeTable.NAME + " WHERE " +
-                    EdgeTable.Cols.TO_NODE + " = '" + node.getId().toString() + "'";
+//            str = "SELECT * FROM " + EdgeTable.NAME + " WHERE " +
+//                    EdgeTable.Cols.TO_NODE + " = '" + node.getId().toString() + "'";
+//
+//            resultSet = statement.executeQuery(str);
+//
+//            //iterate through result
+//            while (resultSet.next()) {
+//                //get neighbor Nodes from resultSet
+//                Node neighbor = NodesHelper.getNodeByID(UUID.fromString(resultSet.getString(EdgeTable.Cols.FROM_NODE)));
+//                if(!neighbor.getId().equals(node.getId())){
+//                    temp.add(neighbor); //add to array
+//                }
+//            }
 
-            resultSet = statement.executeQuery(str);
-
-            //iterate through result
-            while (resultSet.next()) {
-                //get neighbor Nodes from resultSet
-                Node neighbor = NodesHelper.getNodeByID(UUID.fromString(resultSet.getString(EdgeTable.Cols.FROM_NODE)));
-                if(!neighbor.getId().equals(node.getId())){
-                    temp.add(neighbor); //add to array
-                }
-
-            }
         } catch (Exception e) {
-          //  System.out.println("No neighbors where found for node : " + node.toString());
+            //System.out.println("No neighbors where found for node : " + node.toString());
             //  e.printStackTrace();
             return temp;
         }

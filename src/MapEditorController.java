@@ -332,6 +332,7 @@ public class MapEditorController {
         Node newNode = nodesHelper.getNodeByName(editNode_addField.getText());
         if (newNode != null){
             currNodes[0].addEdge(newNode);
+
             ArrayList<Node> neighbors = edgesHelper.getNeighbors(currNodes[0]);
             ArrayList<String> neighborsS = new ArrayList<>();
             for(Node node: neighbors){

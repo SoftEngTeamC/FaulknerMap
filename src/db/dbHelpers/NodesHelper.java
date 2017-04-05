@@ -83,7 +83,7 @@ public class NodesHelper {
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add Node " + node.getName() + ": " + node.getPosition().toString());
-         //   e.printStackTrace();
+           e.printStackTrace();
             return false;
         }
     }

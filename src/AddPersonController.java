@@ -1,13 +1,15 @@
 import db.Driver;
+import db.dbClasses.Coordinate;
+import db.dbClasses.HospitalProfessional;
+import db.dbClasses.Node;
+import db.dbHelpers.HospitalProfessionalsHelper;
+import db.dbHelpers.NodesHelper;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import db.Driver.*;
-import db.dbHelpers.*;
-import db.dbClasses.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -100,7 +102,16 @@ public class AddPersonController {
                     titleField.getText(),
                     locationField.getText()
             );
+            Node newNode = new Node(null, new Coordinate(0,0,0),
+                    newProfessional.getName());
+            newProfessional.setNodeId(newNode.getId());
+
+            NodesHelper nh = Driver.getNodesHelper();
+            nh.addNode(newNode);
+
             professionalHelper.addHospitalProfessional(newProfessional);
+
+
             // put the ID in the ID field
             idField.setText(newProfessional.getId().toString());
             // indicate success
