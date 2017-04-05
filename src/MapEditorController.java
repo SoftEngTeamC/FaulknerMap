@@ -18,7 +18,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -34,11 +33,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
 
 
 /**
@@ -189,7 +183,6 @@ public class MapEditorController implements AdminController {
      */
     public void removeNode_searchBtnPressed(){
         try {
-
             String searchField = removeNode_searchField.getText();
             System.out.println("searchField is: " + searchField);
             String selectedName = NodesHelper.getNodeByName(searchField).getName();
