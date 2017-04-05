@@ -48,6 +48,8 @@ public class MainController{
         MakeCircle(1024,150);
     }
 
+
+
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(LinkedList<Node> nodes){
        for(int i=0;i<nodes.size();i++){
@@ -111,7 +113,11 @@ public class MainController{
         ObservableList<String> names = FXCollections.observableArrayList();
         System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
         PopulateInformationDisplay(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
+        //FindandDisplayPath(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
     }
+
+    //public void FindandDisplayPath(HospitalProfessional){
+    
 
     //triggered on key release in SearchBar
     //runs PopulateSearchResults with the Search input
