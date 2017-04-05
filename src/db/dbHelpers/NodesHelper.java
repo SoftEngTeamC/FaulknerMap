@@ -2,10 +2,7 @@ package db.dbHelpers;
 
 
 import db.HospitalSchema.NodeSchema.NodeTable;
-import db.dbClasses.Coordinate;
-import db.dbClasses.Edge;
-import db.dbClasses.HospitalProfessional;
-import db.dbClasses.Node;
+import db.dbClasses.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +12,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import static db.dbHelpers.HospitalProfessionalsHelper.*;
+import static db.dbHelpers.HospitalServicesHelper.*;
 
 /**
  * Created by Gina on 3/31/17.
@@ -359,6 +357,14 @@ Connect upperMiddle to UpLL_Corner
         temphs.setNodeId(tempB.getId());
         updateHospitalProfessional(temphs);
 
+        HospitalService tempService = HospitalServicesHelper.getHospitalServiceByName("Urology");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Men''s Healthcare");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
         temphs = getHospitalProfessionalByName("Kathrins, Martin");
         temphs.setNodeId(tempB.getId());
         updateHospitalProfessional(temphs);
@@ -440,6 +446,10 @@ Connect upperMiddle to UpLL_Corner
         edge = new Edge(tempA,tempB,80);
         edgeList.add(edge);
         originalList.add(tempB);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Brigham and Women''s Primary Physicians");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Goldman, Jill");
         temphs.setNodeId(tempB.getId());
@@ -534,6 +544,10 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         originalList.add(tempC);
 
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Mohs and Dermatologic Surgery");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
         temphs = getHospitalProfessionalByName("Ruiz, Emily");
         temphs.setNodeId(tempC.getId());
         updateHospitalProfessional(temphs);
@@ -568,10 +582,50 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         originalList.add(tempB);
 
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Headache Center");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Neurology");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
         tempC = new Node(null, new Coordinate(1142, 523, 4), "SUITE4930-35");
         edge2 = new Edge(tempC, tempB, 78);
         edgeList.add(edge2);
         originalList.add(tempC);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Cardiology");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Endocrinology");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Gastroenterology");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Geriatrics/Senior Health");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Hematology");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Medical Specialties");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Pulmonary");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Renal");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Ash, Samuel");
         temphs.setNodeId(tempC.getId());
@@ -682,6 +736,10 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         originalList.add(tempA);
 
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Infectious Diseases");
+        tempService.setNodeId(tempA.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
         temphs = getHospitalProfessionalByName("Clark, Roger");
         temphs.setNodeId(tempA.getId());
         updateHospitalProfessional(temphs);
@@ -700,6 +758,14 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         originalList.add(tempC);
 
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Arthritis Center");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Rheumatology Center");
+        tempService.setNodeId(tempC.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
+
         temphs = getHospitalProfessionalByName("Hoover, Paul");
         temphs.setNodeId(tempC.getId());
         updateHospitalProfessional(temphs);
@@ -716,6 +782,10 @@ Connect upperMiddle to UpLL_Corner
         edge2 = new Edge(tempA, tempC, 158);
         edgeList.add(edge2);
         originalList.add(tempA);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Neurology/Sleep Division");
+        tempService.setNodeId(tempA.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Mullally, William");
         temphs.setNodeId(tempA.getId());
@@ -745,6 +815,10 @@ Connect upperMiddle to UpLL_Corner
         edge = new Edge(tempB, tempA, 46);
         edgeList.add(edge);
         originalList.add(tempB);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Gastroenterology Associates");
+        tempService.setNodeId(tempB.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Conant, Alene");
         temphs.setNodeId(tempB.getId());
@@ -791,6 +865,10 @@ Connect upperMiddle to UpLL_Corner
         edge = new Edge(tempA, tempTopMiddle, 57);
         edgeList.add(edge);
         originalList.add(tempA);
+
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Brigham and Women''s Primary Physicians");
+        tempService.setNodeId(tempA.getId());
+        HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Caplan, Laura");
         temphs.setNodeId(tempA.getId());
