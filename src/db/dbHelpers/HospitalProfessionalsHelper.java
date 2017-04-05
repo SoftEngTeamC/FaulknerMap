@@ -338,7 +338,7 @@ public class HospitalProfessionalsHelper {
         originalList.add(new HospitalProfessional("Ariagno, Meghan", "RD, LDN", "5D"));
         originalList.add(new HospitalProfessional("Balash, Eva", "MD", "5G"));
         originalList.add(new HospitalProfessional("Barr, Joseph Jr.", "MD", "5C"));
-        originalList.add(new HospitalProfessional("Batool-Anwar, Salma", "MD, MPH", "4K"));
+        originalList.add(new HospitalProfessional("Batool-Anwar, Salma", "MD, MPH", "5K"));
         originalList.add(new HospitalProfessional("Belkin, Michael", "MD", "5D"));
         originalList.add(new HospitalProfessional("Berman, Stephanie", "MD", "5J"));
         originalList.add(new HospitalProfessional("Bhattacharyya, Shamik", "MD", "5 South"));
