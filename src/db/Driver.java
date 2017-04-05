@@ -68,7 +68,7 @@ public class Driver extends Application{
         Connection connection = null;
 
         try {
-            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase;create=true");
+            connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase");
 
         } catch (SQLException e) {
             if(print) {
