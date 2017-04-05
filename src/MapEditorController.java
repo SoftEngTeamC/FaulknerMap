@@ -1,4 +1,5 @@
 import db.dbHelpers.NodesHelper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import db.Driver;
 import javafx.event.EventHandler;
@@ -170,11 +171,21 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
-        String searchField = String.valueOf(removeNode_searchField);
-        String selectedName = NodesHelper.getNodeByName(searchField).getName();
-        ArrayList<String> nodeName = new ArrayList<>();
-        nodeName.add(selectedName);
-        removeNode_searchList.setItems((ObservableList<String>) nodeName);
+        try {
+            String searchField = removeNode_searchField.getText();
+            System.out.println("searchField is: " + searchField);
+            String selectedName = NodesHelper.getNodeByName(searchField).getName();
+            System.out.println("selectName is: " + selectedName);
+            ArrayList<String> nodeName = new ArrayList<>();
+            nodeName.add(selectedName);
+            System.out.println("nodeName is: " + nodeName);
+            ObservableList<String> OList = FXCollections.observableArrayList(nodeName);
+            removeNode_searchList.setItems(OList);
+        }
+        catch (Exception E){
+            System.out.println("Searching Error");
+            E.printStackTrace();
+        }
     }
 
     /**
@@ -185,10 +196,14 @@ public class MapEditorController implements AdminController {
      */
     public void removeNode_removeBtnPressed(){
         String selectedItem = removeNode_searchList.getSelectionModel().getSelectedItem();
-        Node selectNode = NodesHelper.getNodeByName(selectedItem);
-        NodesHelper.deleteNode(selectNode);
-        ArrayList<String> emptyList = new ArrayList<String>();
-        removeNode_searchList.setItems((ObservableList<String>) emptyList);
+        System.out.println(selectedItem);
+        if(selectedItem != "") {
+            Node selectNode = NodesHelper.getNodeByName(selectedItem);
+            NodesHelper.deleteNode(selectNode);
+            ArrayList<String> emptyList = new ArrayList<String>();
+            ObservableList<String> OList = FXCollections.observableArrayList(emptyList);
+            removeNode_searchList.setItems(OList);
+        }
     }
 
     // Methods for the add node tab
