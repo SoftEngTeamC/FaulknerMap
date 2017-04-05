@@ -1,20 +1,18 @@
 
+import db.dbClasses.Node;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.ListView;
-
-import java.awt.*;
+import javafx.scene.control.TextArea;
 import java.util.*;
-
-
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
@@ -32,6 +30,10 @@ public class MainController{
     private TextField SearchBar;
     @FXML
     private ListView SearchResults;
+    @FXML
+    private TextArea DisplayInformation;
+    @FXML
+    private Button HelpButton;
 
     public void initialize() {
         //the bind function locks an element property to another elements property
@@ -45,24 +47,28 @@ public class MainController{
         names.add("Jon sure is good looking");
         UpdateSearchResults(names);
 
+        MakeCircle(1024,150);
     }
 
 
     //NEED TO INTEGRATE COORDINATE CLASS I was using 'point' class when I made it
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
-    //public void DisplayMap(LinkedList<point> nodes){
-    //    for(int i=0;i<nodes.size();i++){
-    //        MakeCircle(nodes.get(i).getX(),nodes.get(i).getY());
-    //        if(i>0){
-    //            MakeLine(nodes.get(i-1).getX(),nodes.get(i-1).getY(),nodes.get(i).getX(),nodes.get(i).getY());
-    //        }
-    //    }
-    //}
+    public void DisplayMap(LinkedList<Node> nodes){
+       for(int i=0;i<nodes.size();i++){
+           MakeCircle(nodes.get(i).getPosition().getXpos(),nodes.get(i).getPosition().getYpos());
+            if(i>0){
+                MakeLine(nodes.get(i-1).getPosition().getXpos(),
+                         nodes.get(i-1).getPosition().getYpos(),
+                         nodes.get(i).getPosition().getXpos(),
+                         nodes.get(i).getPosition().getYpos());
+            }
+        }
+    }
 
     //MakeCircle creates a circle centered at the given X,Y relative to the initial size of the image
     //It locks the points to their position on the image,
     //Resizing the image does not effect the relative position of the nodes and the image
-    public void MakeCircle(int x, int y) {
+    public void MakeCircle(float x, float y) {
         // initial size of image and the image ratior
         double ImgW = FourthFloor.getImage().getWidth();
         double ImgH = FourthFloor.getImage().getHeight();
@@ -80,7 +86,7 @@ public class MainController{
 
     //MakeLine take 2 points (effectively) and draws a line from point to point
     //this line is bounded to the image such that resizing does not effect the relative position of the line and image
-    public void MakeLine(int x1, int y1, int x2, int y2) {
+    public void MakeLine(float x1, float y1, float x2, float y2) {
         double ImgW = FourthFloor.getImage().getWidth();
         double ImgH = FourthFloor.getImage().getHeight();
         double ImgR = ImgH / ImgW;
@@ -106,10 +112,18 @@ public class MainController{
     //aka, we should be able to associate this click to a database object to pullup Info on the object and Display its Map Directions
     public void handleClickedOnSearchResult() {
         System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
+        System.out.println(SearchResults.getSelectionModel().getSelectedItem());
+        DisplayInformation.setText(SearchResults.getSelectionModel().getSelectedItem().toString());
     }
     public void Search() {
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
+    }
+
+    //function for Help Button
+    public void HandleHelpButton(){
+        System.out.println("HELP");
+        DisplayInformation.setText("Use the App by Using the App. \nIf you need help get some help");
     }
 
 
