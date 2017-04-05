@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * Created by jack on 3/30/17.
  */
-public class MapEditorController implements AdminController {
+public class MapEditorController {
 
     // Currently selected node and edge
     private Node selectedNode;

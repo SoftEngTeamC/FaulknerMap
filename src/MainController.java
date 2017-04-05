@@ -57,6 +57,10 @@ public class MainController{
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(List<MapNode> nodes){
+        if (nodes == null) {
+            System.out.println("There is no path.");
+            return;
+        }
        for(int i=0;i<nodes.size();i++){
            MakeCircle(nodes.get(i).getLocation().getX(),nodes.get(i).getLocation().getY());
             if(i>0){
@@ -129,9 +133,8 @@ public class MainController{
         System.out.println(leHP);
         UUID nId = leHP.getNodeId();
         System.out.println(nId);
-        MapNode start = map.getNode(nId);
-        if (start == null) System.out.println("What the fuck.");
-        MapNode dest = map.getNode(HP.getNodeId());
+        MapNode start = map.getNode(NH.getNodeByName("UROLOGY").getId());
+        MapNode dest = map.getNode(nId);
         List<MapNode> path = PathFinder.shortestPath(start, dest);
         DisplayMap(path);
     }

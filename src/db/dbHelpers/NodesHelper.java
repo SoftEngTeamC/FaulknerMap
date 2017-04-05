@@ -579,10 +579,10 @@ Connect upperMiddle to UpLL_Corner
         EdgesHelper.get(connection).populateTable(edgeList); //pass over Edge List
 
         HospitalProfessional temphs = getHospitalProfessionalByName("Bhasin, Shalender");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
-        HospitalService tempService = HospitalServicesHelper.getHospitalServiceByName("Urology");
+        HospitalService tempService = HospitalServicesHelper.getHospitalServiceByName("UROLOGY");
         tempService.setNodeId(tempB.getId());
         HospitalServicesHelper.updateHospitalService(tempService);
 
@@ -591,23 +591,23 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Kathrins, Martin");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Malone, Michael");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("McDonald, Michael");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("O''Leary, Michael");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Steele, Graeme");
-        temphs.setNodeId(getNodeByName("Urology").getId());
+        temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Mohs and Dermatologic Surgery");
