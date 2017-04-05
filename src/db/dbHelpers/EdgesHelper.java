@@ -172,7 +172,7 @@ public class EdgesHelper {
     }
 
 
-    public ArrayList<Node> getNeighbors(Node node) {
+    public static ArrayList<Node> getNeighbors(Node node) {
         ArrayList<Node> temp = new ArrayList<>();
         try {
             String str;
@@ -181,6 +181,18 @@ public class EdgesHelper {
                     EdgeTable.Cols.FROM_NODE + " = '" + node.getId().toString() + "'";
 
             ResultSet resultSet = statement.executeQuery(str);
+
+            //iterate through result
+            while (resultSet.next()) {
+                //get neighbor Nodes from resultSet
+                Node neighbor = NodesHelper.getNodeByID(UUID.fromString(resultSet.getString(EdgeTable.Cols.TO_NODE)));
+                temp.add(neighbor); //add to array
+            }
+
+            str = "SELECT * FROM " + EdgeTable.NAME + " WHERE " +
+                    EdgeTable.Cols.TO_NODE + " = '" + node.getId().toString() + "'";
+
+            resultSet = statement.executeQuery(str);
 
             //iterate through result
             while (resultSet.next()) {
@@ -263,7 +275,7 @@ public class EdgesHelper {
     /**
      * This function populates the database table from the array
      */
-    public void populateTable(ArrayList<Edge> list) {
+    public static void populateTable(ArrayList<Edge> list) {
         dropTable();
         buildTable();
 
