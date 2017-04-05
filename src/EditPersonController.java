@@ -13,35 +13,30 @@ import java.io.IOException;
 
 public class EditPersonController {
     @FXML
-    private Button abutton;
+    private Button logoutBtn;
     @FXML
-    private Button button2;
+    private Button backBtn;
 
-        @FXML
-        public void back(){}
-        @FXML
-        public void logout(){}
-        @FXML
-        public void update(){}
-        @FXML
-        private void handleButtonAction(ActionEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        if(event.getSource()==abutton){
-            //get reference to the button's stage
-            stage=(Stage) abutton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("DirectoryEditor.fxml"));
-        }
-        else {
-            stage=(Stage) button2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("EditPersonScreen.fxml"));
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+    @FXML
+    public void back() throws Exception{
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DirectoryEditor.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
         stage.show();
     }
+
+    @FXML
+    public void logout()throws Exception {
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+        stage.setTitle("Main");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+        @FXML
+        public void update(){}
+
     }
 
 
