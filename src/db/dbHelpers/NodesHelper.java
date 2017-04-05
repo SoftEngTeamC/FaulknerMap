@@ -615,15 +615,15 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Ruiz, Emily");
-        temphs.setNodeId(getNodeByName("Ruiz, Emily").getId());
+        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Schmults, Chrysalyne");
-        temphs.setNodeId(getNodeByName("Schmults, Chrysalyne").getId());
+        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Waldman, Abigail");
-        temphs.setNodeId(getNodeByName("Waldman, Abigail").getId());
+        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Cua, Christopher");
