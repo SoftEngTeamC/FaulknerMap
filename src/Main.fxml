@@ -19,6 +19,7 @@
                 <TextField fx:id="SearchBar" layoutX="6.0" layoutY="4.0" onKeyReleased="#Search" prefHeight="25.0" prefWidth="227.0" promptText="Search" />
                 <ListView fx:id="SearchResults" editable="true" onMouseClicked="#handleClickedOnSearchResult" prefHeight="108.0" prefWidth="246.0" />
                 <TextArea fx:id="DisplayInformation" editable="false" layoutX="6.0" layoutY="132.0" prefHeight="227.0" prefWidth="227.0" text="This is where the information goes&#10;Here is even more information, now on two lines&#10;" />
+
                 <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                     <children>
                         <Button fx:id="PanicButton" mnemonicParsing="false" text="Panic" />
@@ -32,7 +33,11 @@
         <!--</AnchorPane>-->
         <AnchorPane fx:id="MapAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
+<<<<<<< HEAD
                 <ImageView fx:id="FourthFloor" fitHeight="300.0" fitWidth="2250.0" pickOnBounds="true" preserveRatio="true">
+=======
+                <ImageView fx:id="FourthFloor" fitHeight="300.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> bc7aac9f3c2d294f071d19d602794974eacdc857
                     <image>
                         <Image url="@Resources/floor4.png" />
                     </image>

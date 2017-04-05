@@ -1,4 +1,3 @@
-
 import db.dbClasses.Node;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
@@ -8,16 +7,20 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ListView;
+import javafx.scene.paint.Color;
 import javafx.scene.control.TextArea;
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-
 
 public class MainController{
     @FXML
@@ -39,19 +42,13 @@ public class MainController{
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
 
-        //test List of Strings
-        LinkedList<String> names = new LinkedList<String>();
-        names.add("Jon");
-        names.add("Jon is cool");
-        names.add("Jon is the best");
-        names.add("Jon sure is good looking");
-        UpdateSearchResults(names);
+        //creating an ObservableList of strings to test with
+        ObservableList<String> names = FXCollections.observableArrayList("Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
+        SearchResults.setItems(names);
 
         MakeCircle(1024,150);
     }
 
-
-    //NEED TO INTEGRATE COORDINATE CLASS I was using 'point' class when I made it
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(LinkedList<Node> nodes){
        for(int i=0;i<nodes.size();i++){
@@ -115,6 +112,7 @@ public class MainController{
         System.out.println(SearchResults.getSelectionModel().getSelectedItem());
         DisplayInformation.setText(SearchResults.getSelectionModel().getSelectedItem().toString());
     }
+
     public void Search() {
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
