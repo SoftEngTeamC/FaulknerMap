@@ -106,6 +106,7 @@ public class AddPersonController {
             // indicate success
             warningText.setVisible(false);
             successField.setVisible(true);
+            //professionalHelper.printAllProfessionalRows();
 
         }
 

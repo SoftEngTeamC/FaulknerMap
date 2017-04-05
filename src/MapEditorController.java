@@ -3,6 +3,7 @@ import db.dbClasses.Edge;
 import db.dbClasses.Node;
 import db.dbHelpers.EdgesHelper;
 import db.dbHelpers.NodesHelper;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -15,6 +16,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Observable;
+
+import db.Driver.*;
+import db.dbHelpers.*;
+import db.dbClasses.*;
+import db.dbClasses.Edge;
+import db.dbClasses.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -92,6 +105,9 @@ public class MapEditorController implements AdminController {
     @FXML
     private AnchorPane anchorPane;
 
+    // Images
+    Image floor4Image;
+
     // database helper
     NodesHelper nodesHelper;
 
@@ -100,6 +116,10 @@ public class MapEditorController implements AdminController {
 
     public void initialize(){
 
+        // Set the image view to populate the image
+        System.out.println("we're in this");
+        floor4Image = new Image("file:../Resources/floor4.png");
+        imageView = new ImageView(floor4Image);
 
         //mouse clicked handler, send x,y data to function
         anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -158,57 +178,72 @@ public class MapEditorController implements AdminController {
     // Methods for the remove node tab
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: search button event handler
      *
      */
     public void removeNode_searchBtnPressed(){
         try {
-            String searchField = String.valueOf(removeNode_searchField);
-            String selectedName = nodesHelper.getNodeByName(searchField).getName();
+            String searchField = removeNode_searchField.getText();
+            System.out.println("searchField is: " + searchField);
+            String selectedName = NodesHelper.getNodeByName(searchField).getName();
+            System.out.println("selectName is: " + selectedName);
+          
             ArrayList<String> nodeName = new ArrayList<>();
             nodeName.add(selectedName);
-            removeNode_searchList.setItems((ObservableList<String>) nodeName);
-        } catch (Exception E) {
-            System.out.println("Search error");
+            System.out.println("nodeName is: " + nodeName);
+            ObservableList<String> OList = FXCollections.observableArrayList(nodeName);
+            removeNode_searchList.setItems(OList);
+        }
+        catch (Exception E){
+            System.out.println("Searching Error");
+            E.printStackTrace();
         }
     }
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: remove button event handler
      *
      */
     public void removeNode_removeBtnPressed(){
         String selectedItem = removeNode_searchList.getSelectionModel().getSelectedItem();
-        Node selectNode = NodesHelper.getNodeByName(selectedItem);
-        NodesHelper.deleteNode(selectNode);
-        ArrayList<String> emptyList = new ArrayList<String>();
-        removeNode_searchList.setItems((ObservableList<String>) emptyList);
+        System.out.println(selectedItem);
+        if(selectedItem != "") {
+            Node selectNode = NodesHelper.getNodeByName(selectedItem);
+            NodesHelper.deleteNode(selectNode);
+            ArrayList<String> emptyList = new ArrayList<String>();
+            ObservableList<String> OList = FXCollections.observableArrayList(emptyList);
+            removeNode_searchList.setItems(OList);
+        }
     }
 
     // Methods for the add node tab
 
-    /**
-     * @author Paul
-     *
-     * add node tab: remove button event handler
-     *
-     */
-    public void addNode_connectToNodeBtnPressed(){
+//    /**
+//     * @author Paul
+//     *
+//     * add node tab: remove button event handler
+//     *
+//     */
+//    public void addNode_connectToNodeBtnPressed(){
+//
+//    }
 
-    }
-
     /**
-     * @author Paul
+     * @author Feng
      *
      * add node tab: create node button event handler
      *
      */
     public void addNode_createNodeBtnPressed(){
 
+        float x = Float.parseFloat(addNode_xPos.getText());
+        float y = Float.parseFloat(addNode_yPos.getText());
+        Node newNode = new Node(null, new Coordinate(x, y, 4), addNode_nameField.getText());
+        nodesHelper.addNode(newNode);
     }
 
     // methods for the edit node tab
@@ -261,6 +296,7 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_removeNeighborBtnPressed(){
+
         ArrayList<Edge> currEdges = edgesHelper.getEdgeByNode(currNodes[0], currNodes[1]);
 
         for(Edge curr : currEdges){
@@ -274,7 +310,6 @@ public class MapEditorController implements AdminController {
         }
         ObservableList<String> nList = FXCollections.observableArrayList(neighborsS);
         editNode_neighborsList.setItems(nList);
-
     }
 
     /**

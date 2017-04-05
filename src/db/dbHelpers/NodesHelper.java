@@ -4,6 +4,7 @@ package db.dbHelpers;
 import db.HospitalSchema.NodeSchema.NodeTable;
 import db.dbClasses.Coordinate;
 import db.dbClasses.Edge;
+import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
 
 import java.sql.Connection;
@@ -12,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
+
+import static db.dbHelpers.HospitalProfessionalsHelper.*;
 
 /**
  * Created by Gina on 3/31/17.
@@ -349,6 +352,11 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         Edge edge2 = new Edge(tempB, tempC, 36);
         edgeList.add(edge2);
+
+        HospitalProfessional temphs = getHospitalProfessionalByName("Ash, Samuel");
+        temphs.setNodeId(tempA.getId());
+        updateHospitalProfessional(temphs);
+
 
 
         tempA = new Node(null, new Coordinate(653,1085,4),"o_44m4and44s3");

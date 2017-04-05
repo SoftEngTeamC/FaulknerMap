@@ -11,19 +11,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane dividerPositions="0.41638795986622074" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
+<SplitPane dividerPositions="0.362876254180602" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainController">
     <items>
         <!--<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">-->
         <VBox>
             <children>
                 <TextField fx:id="SearchBar" layoutX="6.0" layoutY="4.0" onKeyReleased="#Search" prefHeight="25.0" prefWidth="227.0" promptText="Search" />
-                <ListView fx:id="SearchResults" editable="true" prefHeight="108.0" prefWidth="246.0" />
-                <TextArea editable="false" layoutX="6.0" layoutY="132.0" prefHeight="227.0" prefWidth="227.0" text="This is where the information goes&#10;Here is even more information, now on two lines&#10;" />
+                <ListView fx:id="SearchResults" editable="true" onMouseClicked="#handleClickedOnSearchResult" prefHeight="108.0" prefWidth="246.0" />
+                <TextArea fx:id="DisplayInformation" editable="false" layoutX="6.0" layoutY="132.0" prefHeight="227.0" prefWidth="227.0" text="This is where the information goes&#10;Here is even more information, now on two lines&#10;" />
+
                 <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
                     <children>
                         <Button fx:id="PanicButton" mnemonicParsing="false" text="Panic" />
                         <Button fx:id="AdminToolButton" mnemonicParsing="false" onAction="#OpenAdminTool" text="Admin Tool" />
-                        <Button mnemonicParsing="false" text="Help" />
+                        <Button fx:id="HelpButton" mnemonicParsing="false" onAction="#HandleHelpButton" text="Help" />
                     </children>
                 </HBox>
             </children>
@@ -34,7 +35,7 @@
             <children>
                 <ImageView fx:id="FourthFloor" fitHeight="300.0" layoutX="7.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../Resources/floor4.png" />
+                        <Image url="@Resources/floor4.png" />
                     </image>
                 </ImageView>
             </children>

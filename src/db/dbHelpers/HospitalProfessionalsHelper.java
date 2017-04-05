@@ -15,7 +15,7 @@ public class HospitalProfessionalsHelper {
     private static HospitalProfessionalsHelper hospitalProfessionalsHelper;
 
     private Connection connection;
-    private Statement statement;
+    private static Statement statement;
     private ArrayList<HospitalProfessional> originalList;
 
     /**
@@ -87,7 +87,7 @@ public class HospitalProfessionalsHelper {
      * @param professional HospitalProfessional being updated
      * @return success
      */
-    public boolean updateHospitalProfessional(HospitalProfessional professional) {
+    public static boolean updateHospitalProfessional(HospitalProfessional professional) {
         //check table to make sure professional is already there
         HospitalProfessional temp = getHospitalProfessional(professional.getId());
         if (temp == null) { //could not find HospitalProfessional to edit
@@ -144,7 +144,7 @@ public class HospitalProfessionalsHelper {
      * @param id ID of HospitalProfessional
      * @return the HospitalProfessional found or null if could not be found
      */
-    public HospitalProfessional getHospitalProfessional(UUID id) {
+    public static HospitalProfessional getHospitalProfessional(UUID id) {
         //query table for specific HospitalProfessional
         String str = "SELECT * FROM " + HospitalProfessionalTable.NAME + " WHERE " +
                 HospitalProfessionalTable.Cols.ID + " = '" + id.toString() + "'";
@@ -172,7 +172,7 @@ public class HospitalProfessionalsHelper {
      * @param name Name of HospitalProfessional
      * @return the HospitalProfessional found or null if could not be found
      */
-    public HospitalProfessional getHospitalProfessionalByName(String name) {
+    public static HospitalProfessional getHospitalProfessionalByName(String name) {
         //query table for specific HospitalProfessional
         String str = "SELECT * FROM " + HospitalProfessionalTable.NAME + " WHERE " +
                 HospitalProfessionalTable.Cols.NAME + " = '" + name + "'";
