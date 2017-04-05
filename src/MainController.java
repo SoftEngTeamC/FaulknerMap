@@ -105,12 +105,16 @@ public class MainController{
 
     //This function is called when the user clicks on a Search Result.
     //Information unique to the ListView Item can be accessed
-    //aka, we should be able to associate this click to a database object to pullup Info on the object and Display its Map Directions
     public void handleClickedOnSearchResult() {
+        HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+        ArrayList<HospitalProfessional> Professionals = hs.getHospitalProfessionals(null);
+        ObservableList<String> names = FXCollections.observableArrayList();
         System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
-        System.out.println(SearchResults.getSelectionModel().getSelectedItem());
-        DisplayInformation.setText(SearchResults.getSelectionModel().getSelectedItem().toString());
+        PopulateInformationDisplay(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
     }
+
+    //triggered on key release in SearchBar
+    //runs PopulateSearchResults with the Search input
     public void Search(){
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
@@ -139,12 +143,17 @@ public class MainController{
         }
     }
 
+    //This function takes a HospitalProfessional edits the DisplayInformation TextArea
+    //with all the HP's associated information
+    public void PopulateInformationDisplay(HospitalProfessional HP){
+        DisplayInformation.setText(HP.getName()+"\n\n"+HP.getTitle()+"\n"+HP.getLocation());
+    }
+
     //function for Help Button
     public void HandleHelpButton(){
         System.out.println("HELP");
         DisplayInformation.setText("Use the App by Using the App. \nIf you need help get some help");
     }
-
 
     //SCREEN CHANGING FUNCTIONS
     @FXML
