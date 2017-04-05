@@ -2,6 +2,7 @@ package pathfinding;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class MapNode implements Node<MapNode> {
@@ -16,6 +17,11 @@ public class MapNode implements Node<MapNode> {
     public MapNode(Coordinate location, Set<MapNode> neighbors) {
         this.location = location;
         this.neighbors = neighbors;
+    }
+
+    public MapNode(db.dbClasses.Node dbNode) {
+        db.dbClasses.Coordinate c = dbNode.getPosition();
+        this.location = new Coordinate(c.getXpos(), c.getYpos(), c.getZpos());
     }
 
     public double heuristicCost(MapNode goal) {
