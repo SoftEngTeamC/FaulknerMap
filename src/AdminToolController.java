@@ -33,9 +33,11 @@ import javafx.scene.layout.StackPane;
 public class AdminToolController {
 
     @FXML
-    private Button abutton;
+    private Button logoutBtn;
     @FXML
-    private Button button2;
+    private Button editDirectoryBtn;
+    @FXML
+    private Button editHoursBtn;
     @FXML
     private Button mapEditorBtn;
 
@@ -53,25 +55,30 @@ public class AdminToolController {
             stage.show();
     }
     @FXML
-    public void editHours(){
-
-        System.out.println("hours");
+    public void editHours()throws Exception{
+        Stage stage = (Stage) editHoursBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HoursEditorScreen.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
     }
     @FXML
-    public void editDirectory() {
-
-        System.out.println("Directory");
+    public void editDirectory() throws Exception{
+        Stage stage = (Stage) editDirectoryBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DirectoryEditor.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
 
     }
-    @FXML
-    public void editPerson() {
 
-        System.out.println("person");
-    }
     @FXML
-    public void logout(){
-
-        System.out.println("logout");
+    public void logout() throws Exception{
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
     }
 
 }

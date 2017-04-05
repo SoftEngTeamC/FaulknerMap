@@ -20,9 +20,13 @@ import java.util.List;
 public class DirectoryEditorController {
     HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
     @FXML
-    private Button abutton;
+    private Button logoutBtn;
     @FXML
-    private Button button2;
+    private Button backBtn;
+    @FXML
+    private Button editPrsnBtn;
+    @FXML
+    private Button addPrsnBtn;
     @FXML
     private TextField searchtext;
     @FXML
@@ -35,14 +39,39 @@ public class DirectoryEditorController {
     public void initialize(){}
 
     @FXML
-    public void back(){}
+    public void back() throws Exception{
+        Stage stage = (Stage) backBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AdminToolMenu.fxml"));
+        stage.setTitle("Admin Tool");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
 
     @FXML
-    public void logout(){}
+    public void logout()throws Exception {
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+        stage.setTitle("Main");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
+    @FXML
+    public void editPerson()throws Exception {
+        Stage stage = (Stage) editPrsnBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("EditPersonScreen.fxml"));
+        stage.setTitle("Edit Person");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
 
-
-    //@FXML
-    //public Person addPerson(){return null;}
+    @FXML
+    public void addPerson()throws Exception{
+        Stage stage = (Stage) addPrsnBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("AddPerson.fxml"));
+        stage.setTitle("Add Person");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();
+    }
 
 
 
@@ -55,23 +84,4 @@ public class DirectoryEditorController {
 
     }
 
-    @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException {
-        Stage stage;
-        Parent root;
-        if(event.getSource()==abutton){
-            //get reference to the button's stage
-            stage=(Stage) abutton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("AdminToolMenu.fxml"));
-        }
-        else {
-            stage=(Stage) button2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("EditPersonScreen.fxml"));
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
 }
