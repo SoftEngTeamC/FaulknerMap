@@ -1,3 +1,5 @@
+import db.dbHelpers.NodesHelper;
+import javafx.collections.ObservableList;
 import db.Driver;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,19 +10,21 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Observable;
 
 import db.Driver.*;
 import db.dbHelpers.*;
 import db.dbClasses.*;
-
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.text.html.ImageView;
 
 
 /**
@@ -89,14 +93,19 @@ public class MapEditorController implements AdminController {
     @FXML
     private AnchorPane anchorPane;
 
+    // Images
+    Image floor4Image;
+
     // database helper
     NodesHelper nodesHelper;
 
 
     public void initialize(){
 
-        // set image width and height to that of the anchorpane that it is on
-        imageView.setSize((float)anchorPane.getWidth(), (float)anchorPane.getHeight());
+        // Set the image view to populate the image
+        System.out.println("we're in this");
+        floor4Image = new Image("file:../Resources/floor4.png");
+        imageView = new ImageView(floor4Image);
 
         //mouse clicked handler, send x,y data to function
         anchorPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -155,44 +164,57 @@ public class MapEditorController implements AdminController {
     // Methods for the remove node tab
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: search button event handler
      *
      */
     public void removeNode_searchBtnPressed(){
+        String searchField = String.valueOf(removeNode_searchField);
+        String selectedName = NodesHelper.getNodeByName(searchField).getName();
+        ArrayList<String> nodeName = new ArrayList<>();
+        nodeName.add(selectedName);
+        removeNode_searchList.setItems((ObservableList<String>) nodeName);
     }
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: remove button event handler
      *
      */
     public void removeNode_removeBtnPressed(){
-
+        String selectedItem = removeNode_searchList.getSelectionModel().getSelectedItem();
+        Node selectNode = NodesHelper.getNodeByName(selectedItem);
+        NodesHelper.deleteNode(selectNode);
+        ArrayList<String> emptyList = new ArrayList<String>();
+        removeNode_searchList.setItems((ObservableList<String>) emptyList);
     }
 
     // Methods for the add node tab
 
-    /**
-     * @author Paul
-     *
-     * add node tab: remove button event handler
-     *
-     */
-    public void addNode_connectToNodeBtnPressed(){
+//    /**
+//     * @author Paul
+//     *
+//     * add node tab: remove button event handler
+//     *
+//     */
+//    public void addNode_connectToNodeBtnPressed(){
+//
+//    }
 
-    }
-
     /**
-     * @author Paul
+     * @author Feng
      *
      * add node tab: create node button event handler
      *
      */
     public void addNode_createNodeBtnPressed(){
 
+        float x = Float.parseFloat(addNode_xPos.getText());
+        float y = Float.parseFloat(addNode_yPos.getText());
+        Node newNode = new Node(null, new Coordinate(x, y, 4), addNode_nameField.getText());
+        nodesHelper.addNode(newNode);
     }
 
     // methods for the edit node tab
@@ -214,7 +236,6 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_removeNeighborBtnPressed(){
-
     }
 
     /**

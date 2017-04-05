@@ -1,15 +1,20 @@
 package db.dbHelpers;
 
 
-import db.HospitalSchema.NodeSchema.*;
-import db.HospitalSchema.EdgeSchema.*;
+import db.HospitalSchema.NodeSchema.NodeTable;
 import db.dbClasses.Coordinate;
 import db.dbClasses.Edge;
+import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.UUID;
+
+import static db.dbHelpers.HospitalProfessionalsHelper.*;
 
 /**
  * Created by Gina on 3/31/17.
@@ -124,7 +129,7 @@ public class NodesHelper {
      * @param node Node
      * @return success
      */
-    public boolean deleteNode(Node node) {
+    public static boolean deleteNode(Node node) {
         //check table to make sure node is already there
         Node temp = getNodeByID(node.getId());
         if (temp == null) { //could not find node to edit
@@ -344,6 +349,11 @@ Connect upperMiddle to UpLL_Corner
         edgeList.add(edge);
         Edge edge2 = new Edge(tempB, tempC, 36);
         edgeList.add(edge2);
+
+        HospitalProfessional temphs = getHospitalProfessionalByName("Ash, Samuel");
+        temphs.setNodeId(tempA.getId());
+        updateHospitalProfessional(temphs);
+
 
 
         tempA = new Node(null, new Coordinate(653,1085,4),"o_44m4and44s3");

@@ -33,54 +33,52 @@ import javafx.scene.layout.StackPane;
 public class AdminToolController {
 
     @FXML
-    private Button abutton;
+    private Button logoutBtn;
     @FXML
-    private Button button2;
-
+    private Button editDirectoryBtn;
     @FXML
-    public void editMap(){
+    private Button editHoursBtn;
+    @FXML
+    private Button mapEditorBtn;
 
-        System.out.println("map");
+    /**
+     * @author Paul
+     *
+     * When map editor button is pressed, it goes to the map editing screen.
+     *
+     */
+    public void editMap() throws Exception{
+            Stage stage = (Stage) mapEditorBtn.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("MapEditor.fxml"));
+            stage.setTitle("Map Editor");
+            stage.setScene(new Scene(root, 600, 400));
+            stage.show();
     }
     @FXML
-    public void editHours(){
-
-        System.out.println("hours");
+    public void editHours()throws Exception{
+        Stage stage = (Stage) editHoursBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("HoursEditorScreen.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
     }
     @FXML
-    public void editDirectory() {
+    public void editDirectory() throws Exception{
+        Stage stage = (Stage) editDirectoryBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("DirectoryEditor.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
 
-        System.out.println("Directory");
-
-    }
-    @FXML
-    public void editPerson() {
-
-        System.out.println("person");
-    }
-    @FXML
-    public void logout(){
-
-        System.out.println("logout");
     }
 
     @FXML
-    private void handleButtonAction(ActionEvent event) throws IOException{
-        Stage stage;
-        Parent root;
-        if(event.getSource()==abutton){
-            //get reference to the button's stage
-            stage=(Stage) abutton.getScene().getWindow();
-            //load up OTHER FXML document
-            root = FXMLLoader.load(getClass().getResource("DirectoryEditor.fxml"));
-        }
-        else {
-            stage=(Stage) button2.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("EditPersonScreen.fxml"));
-        }
-        //create a new scene with root and set the stage
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void logout() throws Exception{
+        Stage stage = (Stage) logoutBtn.getScene().getWindow();
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Main.fxml"));
+        stage.setTitle("Directory Editor");
+        stage.setScene(new Scene(root, 600, 400));
+        stage.show();;
     }
+
 }
