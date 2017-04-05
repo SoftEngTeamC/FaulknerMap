@@ -22,7 +22,8 @@ public class HospitalServicesHelperTest {
     HospitalService hs999 = new HospitalService("My Name", "My location");
 
     public HospitalServicesHelperTest(){
-        Driver.runDatabase();
+        Driver.registerDriver(false);
+        Driver.runDatabase(false);
         hsh = Driver.getHospitalServiceHelper();
         hsh.addHospitalService(hs1);
         hsh.addHospitalService(hs2);
@@ -45,6 +46,8 @@ public class HospitalServicesHelperTest {
     }
 
     @Test
+    //test that the number of elements in the table decreases
+    //by one when an element is removed from the table
     public void deleteTest(){
         ArrayList<HospitalService> initialList = hsh.getHospitalServices(null);
         int initialSize = initialList.size();

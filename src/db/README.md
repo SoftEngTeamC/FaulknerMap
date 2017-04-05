@@ -14,6 +14,14 @@ respective Helper Object like this:
 ```
         HospitalServicesHelper hs = Driver.getHospitalServiceHelper();
 ```
+***If you are running the app not through Driver as the main class, before calling
+any helper function you need to first call both of these functions: 
+```
+        Driver.registerDriver(false);
+        Driver.runDatabase(false);
+```
+***The parameter false simply states if you want error/success messages 
+printed to the console or not
 
 3. You now have access to all the helper functions
     Here is an example of all the functions you can call and how they work:

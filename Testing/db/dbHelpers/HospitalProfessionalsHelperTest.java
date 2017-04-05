@@ -25,7 +25,8 @@ public class HospitalProfessionalsHelperTest {
 
     //Init
     public HospitalProfessionalsHelperTest() {
-        Driver.runDatabase();
+        Driver.registerDriver(false);
+        Driver.runDatabase(false);
         hs = Driver.getHospitalProfessionalHelper();
         hs.addHospitalProfessional(newProv1);
         //hs.addHospitalProfessional(newProv2);
@@ -37,20 +38,21 @@ public class HospitalProfessionalsHelperTest {
     }
 
     //Tests
+    //Checks to see if the name is the given name in the data base
     @Test
-    public void test1() {
+    public void checkName() {
         assertEquals(newProv1.getName(), (hs.getHospitalProfessional(newProv1.getId())).getName());
     }
 
     //Testing trying to access a Provider not in the DB
     @Test
-    public void test2() throws Exception {
+    public void notInDB() throws Exception {
         assertNull(hs.getHospitalProfessional(newProv2.getId()));
     }
 
     //Changed name of a Provider in the DB
     @Test
-    public void test3() {
+    public void checkUpdatedName() {
         newProv3.setName("Drago, Ivan");
         hs.updateHospitalProfessional(newProv3);
         assertEquals("Drago, Ivan", (hs.getHospitalProfessional(newProv3.getId())).getName());
@@ -58,14 +60,14 @@ public class HospitalProfessionalsHelperTest {
 
     //Changed name of a Provider but did not update the DB, should return name of original
     @Test
-    public void test4() {
+    public void checkNameNotInDB() {
         newProv4.setName("Dirty Harry");
         assertEquals("Eastwood, Clint", (hs.getHospitalProfessional(newProv4.getId())).getName());
     }
 
     //Compares a Provider that has had it's fields changed to appear similar to another Provider
     @Test
-    public void test5() {
+    public void compareSimilar() {
         newProv5.setLocation("A");
         newProv5.setName("B");
         newProv5.setTitle("C");
@@ -75,14 +77,14 @@ public class HospitalProfessionalsHelperTest {
 
     //Add and remove a Provider from the DB and then check to see if still present
     @Test
-    public void test6() {
+    public void stillPresent() {
         hs.deleteHospitalProfessional(newProv6);
         assertNull(hs.getHospitalProfessional(newProv6.getId()));
     }
 
     //Add a Provider and then check the size of the DB
     @Test
-    public void test7() {
+    public void increasedCount() {
         ArrayList<HospitalProfessional> initlist = hs.getHospitalProfessionals(null);
         int initSize = initlist.size();
         HospitalProfessional newProv7 = new HospitalProfessional("Potter, Harry", "Student", "Cupboard");
@@ -94,7 +96,7 @@ public class HospitalProfessionalsHelperTest {
 
     //Add and remove a Provider from the DB and then check to see if still present
     @Test
-    public void test8() {
+    public void decreasedCount() {
         HospitalProfessional newProv8 = new HospitalProfessional("Potter, Harry", "Student", "Cupboard");
         hs.addHospitalProfessional(newProv8);
         ArrayList<HospitalProfessional> initlist = hs.getHospitalProfessionals(null);

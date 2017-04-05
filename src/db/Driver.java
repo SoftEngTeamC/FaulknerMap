@@ -20,45 +20,58 @@ public class Driver {
     private static EdgesHelper edgesHelper;
 
     public static void main(String[] args) {
-
-        runDatabase();
+        registerDriver(true);
+        runDatabase(true);
     }
 
-    public static void runDatabase(){
-        System.out.println("-------Embedded Java DB Connection Testing --------");
+    public static void registerDriver(boolean print){
+        if(print) {
+            System.out.println("-------Embedded Java DB Connection Testing --------");
+        }
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Java DB db.Driver not found. Add the classpath to your module.");
-            System.out.println("For IntelliJ do the following:");
-            System.out.println("File | Project Structure, Modules, Dependency tab");
-            System.out.println("Add by clicking on the green plus icon on the right of the window");
-            System.out.println("Select JARs or directories. Go to the folder where the Java JDK is installed");
-            System.out.println("Select the folder java/jdk1.8.xxx/db/lib where xxx is the version.");
-            System.out.println("Click OK, compile the code and run it.");
-            e.printStackTrace();
+            if(print) {
+                System.out.println("Java DB db.Driver not found. Add the classpath to your module.");
+                System.out.println("For IntelliJ do the following:");
+                System.out.println("File | Project Structure, Modules, Dependency tab");
+                System.out.println("Add by clicking on the green plus icon on the right of the window");
+                System.out.println("Select JARs or directories. Go to the folder where the Java JDK is installed");
+                System.out.println("Select the folder java/jdk1.8.xxx/db/lib where xxx is the version.");
+                System.out.println("Click OK, compile the code and run it.");
+
+                e.printStackTrace();
+            }
             return;
         }
+        if(print) {
+            System.out.println("Java DB db.Driver registered!");
+        }
+    }
 
-        System.out.println("Java DB db.Driver registered!");
+    public static void runDatabase(boolean print){
         Connection connection = null;
 
         try {
             connection = DriverManager.getConnection("jdbc:derby:faulknerDatabase;create=True");
 
         } catch (SQLException e) {
-            System.out.println("Connection failed. Check output console.");
-            e.printStackTrace();
+            if(print) {
+                System.out.println("Connection failed. Check output console.");
+                e.printStackTrace();
+            }
             return;
         }
-        System.out.println("Java DB connection established!");
+        if(print) {
+            System.out.println("Java DB connection established!");
+        }
 
         hospitalServicesHelper = HospitalServicesHelper.get(connection);
         hospitalProfessionalsHelper = HospitalProfessionalsHelper.get(connection);
 
         //Nodes must be created before edges since the edges table references the node table
-   //     nodesHelper = NodesHelper.get(connection);
-   //     edgesHelper = EdgesHelper.get(connection);
+        nodesHelper = NodesHelper.get(connection);
+        edgesHelper = EdgesHelper.get(connection);
 
     }
 
