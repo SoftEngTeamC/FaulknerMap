@@ -17,7 +17,6 @@ import java.util.Observable;
 import db.Driver.*;
 import db.dbHelpers.*;
 import db.dbClasses.*;
-
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
 import javafx.scene.image.Image;
@@ -165,25 +164,21 @@ public class MapEditorController implements AdminController {
     // Methods for the remove node tab
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: search button event handler
      *
      */
     public void removeNode_searchBtnPressed(){
-        try {
-            String searchField = String.valueOf(removeNode_searchField);
-            String selectedName = NodesHelper.getNodeByName(searchField).getName();
-            ArrayList<String> nodeName = new ArrayList<>();
-            nodeName.add(selectedName);
-            removeNode_searchList.setItems((ObservableList<String>) nodeName);
-        } catch (Exception E) {
-            System.out.println("Search error");
-        }
+        String searchField = String.valueOf(removeNode_searchField);
+        String selectedName = NodesHelper.getNodeByName(searchField).getName();
+        ArrayList<String> nodeName = new ArrayList<>();
+        nodeName.add(selectedName);
+        removeNode_searchList.setItems((ObservableList<String>) nodeName);
     }
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * remove node tab: remove button event handler
      *
@@ -198,24 +193,28 @@ public class MapEditorController implements AdminController {
 
     // Methods for the add node tab
 
-    /**
-     * @author Paul
-     *
-     * add node tab: remove button event handler
-     *
-     */
-    public void addNode_connectToNodeBtnPressed(){
+//    /**
+//     * @author Paul
+//     *
+//     * add node tab: remove button event handler
+//     *
+//     */
+//    public void addNode_connectToNodeBtnPressed(){
+//
+//    }
 
-    }
-
     /**
-     * @author Paul
+     * @author Feng
      *
      * add node tab: create node button event handler
      *
      */
     public void addNode_createNodeBtnPressed(){
 
+        float x = Float.parseFloat(addNode_xPos.getText());
+        float y = Float.parseFloat(addNode_yPos.getText());
+        Node newNode = new Node(null, new Coordinate(x, y, 4), addNode_nameField.getText());
+        nodesHelper.addNode(newNode);
     }
 
     // methods for the edit node tab
