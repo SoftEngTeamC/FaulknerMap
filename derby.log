@@ -1,5 +1,5 @@
-Tue Apr 04 22:20:46 EDT 2017 Thread[main,5,main] Cleanup action starting
-java.sql.SQLException: Failed to start database 'faulknerDatabase' with class loader sun.misc.Launcher$AppClassLoader@3fee733d, see the next exception for details.
+Wed Apr 05 00:07:45 EDT 2017 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'faulknerDatabase' with class loader sun.misc.Launcher$AppClassLoader@4617c264, see the next exception for details.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
@@ -18,11 +18,11 @@ java.sql.SQLException: Failed to start database 'faulknerDatabase' with class lo
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
-Caused by: ERROR XJ040: Failed to start database 'faulknerDatabase' with class loader sun.misc.Launcher$AppClassLoader@3fee733d, see the next exception for details.
+Caused by: ERROR XJ040: Failed to start database 'faulknerDatabase' with class loader sun.misc.Launcher$AppClassLoader@4617c264, see the next exception for details.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.wrapArgsForTransportAcrossDRDA(Unknown Source)
 	... 18 more
-Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /Users/Guillermo/FaulknerMap/faulknerDatabase.
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database C:\Users\Tony\IdeaProjects\FaulknerMap\faulknerDatabase.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
@@ -58,7 +58,7 @@ Caused by: ERROR XSDB6: Another instance of Derby may have already booted the da
 	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
 	... 15 more
 ============= begin nested exception, level (1) ===========
-java.sql.SQLException: Another instance of Derby may have already booted the database /Users/Guillermo/FaulknerMap/faulknerDatabase.
+java.sql.SQLException: Another instance of Derby may have already booted the database C:\Users\Tony\IdeaProjects\FaulknerMap\faulknerDatabase.
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
@@ -76,7 +76,7 @@ java.sql.SQLException: Another instance of Derby may have already booted the dat
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.lang.reflect.Method.invoke(Method.java:498)
 	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
-Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database /Users/Guillermo/FaulknerMap/faulknerDatabase.
+Caused by: ERROR XSDB6: Another instance of Derby may have already booted the database C:\Users\Tony\IdeaProjects\FaulknerMap\faulknerDatabase.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
@@ -113,7 +113,7 @@ Caused by: ERROR XSDB6: Another instance of Derby may have already booted the da
 	... 15 more
 ============= end nested exception, level (1) ===========
 ============= begin nested exception, level (2) ===========
-ERROR XSDB6: Another instance of Derby may have already booted the database /Users/Guillermo/FaulknerMap/faulknerDatabase.
+ERROR XSDB6: Another instance of Derby may have already booted the database C:\Users\Tony\IdeaProjects\FaulknerMap\faulknerDatabase.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.impl.store.raw.data.BaseDataFileFactory.privGetJBMSLockOnDB(Unknown Source)
