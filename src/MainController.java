@@ -51,10 +51,7 @@ public class MainController{
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
         PopulateSearchResults(null);
-        MakeCircle(1024,150);
     }
-
-
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(List<MapNode> nodes){
@@ -62,11 +59,9 @@ public class MainController{
         ImageView mapPic = new ImageView();
         Image floorImage = new Image("Resources/floor4.png");
         mapPic.setImage(floorImage);
-        mapPic.setId("FourthFloor");
-        mapPic.setFitHeight(300);
+        mapPic.fitWidthProperty().bind(MapAnchor.widthProperty());
         mapPic.setPreserveRatio(true);
         mapPic.setPickOnBounds(true);
-        FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
         MapAnchor.getChildren().add(mapPic);
 
         if (nodes == null) {
@@ -141,9 +136,8 @@ public class MainController{
         HospitalProfessionalsHelper hph = Driver.getHospitalProfessionalHelper();
         NodesHelper NH = Driver.getNodesHelper();
         Map map = new Map(NH.getNodes(null));
-        HospitalProfessional leHP = HospitalProfessionalsHelper.getHospitalProfessionalByName("Hoover, Paul");
        // System.out.println(leHP);
-        UUID nId = leHP.getNodeId();
+        UUID nId = HP.getNodeId();
       //  System.out.println(nId);
         MapNode start = map.getNode(NH.getNodeByName("UROLOGY").getId());
         MapNode dest = map.getNode(nId);

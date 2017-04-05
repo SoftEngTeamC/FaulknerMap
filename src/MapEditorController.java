@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.beans.property.ReadOnlyDoubleProperty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -110,6 +111,7 @@ public class MapEditorController {
         // Set the image view to populate the image
         System.out.println("we're in this");
         floor4Image = new Image("file:../Resources/floor4.png");
+        //floor4Image.widthProperty().bind(anchorPane.widthProperty());
         imageView = new ImageView(floor4Image);
 
         //mouse clicked handler, send x,y data to function
