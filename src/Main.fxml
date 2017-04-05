@@ -32,7 +32,7 @@
         <!--</AnchorPane>-->
         <AnchorPane fx:id="MapAnchor" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
             <children>
-                <ImageView fx:id="FourthFloor" fitHeight="300.0" fitWidth="2250.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fx:id="FourthFloor" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@Resources/floor4.png" />
                     </image>
