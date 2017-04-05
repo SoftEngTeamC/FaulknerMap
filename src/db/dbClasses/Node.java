@@ -65,10 +65,10 @@ public class Node {
                         (Math.pow(this.position.getYpos() - from.position.getYpos(),2))));
 
         Edge edge1 = new Edge(this, from, length);
-        Edge edge2 = new Edge( from, this, length);
+      //  Edge edge2 = new Edge( from, this, length);
 
         eh.addEdge(edge1);
-        eh.addEdge(edge2);
+    //    eh.addEdge(edge2);
     }
 
 }
