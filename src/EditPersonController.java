@@ -17,8 +17,8 @@ import java.io.IOException;
 public class EditPersonController {
 
     //hospital professional on which we are editing
-    HospitalProfessional hp;
-    HospitalProfessionalsHelper hph;
+    private HospitalProfessional hp;
+    private HospitalProfessionalsHelper hph;
 
     @FXML
     private Button logoutBtn;
@@ -65,10 +65,10 @@ public class EditPersonController {
         public void setSelectedUser(HospitalProfessional hp){
 
             this.hp = hp;
-            nameField.setText(hp.getName());
-            titleField.setText(hp.getTitle());
-            locationField.setText(hp.getLocation());
-            idField.setText(hp.getId().toString());
+            nameField.setText(this.hp.getName());
+            titleField.setText(this.hp.getTitle());
+            locationField.setText(this.hp.getLocation());
+            idField.setText(this.hp.getId().toString());
 
         }
 
