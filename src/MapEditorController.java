@@ -170,15 +170,11 @@ public class MapEditorController implements AdminController {
      *
      */
     public void removeNode_searchBtnPressed(){
-        try {
-            String searchField = String.valueOf(removeNode_searchField);
-            String selectedName = NodesHelper.getNodeByName(searchField).getName();
-            ArrayList<String> nodeName = new ArrayList<>();
-            nodeName.add(selectedName);
-            removeNode_searchList.setItems((ObservableList<String>) nodeName);
-        } catch (Exception E) {
-            System.out.println("Search error");
-        }
+        String searchField = String.valueOf(removeNode_searchField);
+        String selectedName = NodesHelper.getNodeByName(searchField).getName();
+        ArrayList<String> nodeName = new ArrayList<>();
+        nodeName.add(selectedName);
+        removeNode_searchList.setItems((ObservableList<String>) nodeName);
     }
 
     /**
@@ -208,7 +204,7 @@ public class MapEditorController implements AdminController {
 //    }
 
     /**
-     * @author Paul
+     * @author Feng
      *
      * add node tab: create node button event handler
      *
