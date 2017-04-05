@@ -22,6 +22,7 @@ public class MapNode implements Node<MapNode> {
     public MapNode(db.dbClasses.Node dbNode) {
         db.dbClasses.Coordinate c = dbNode.getPosition();
         this.location = new Coordinate(c.getXpos(), c.getYpos(), c.getZpos());
+        this.neighbors = new HashSet<>();
     }
 
     public double heuristicCost(MapNode goal) {
@@ -40,6 +41,10 @@ public class MapNode implements Node<MapNode> {
         double xDelta = this.location.getX() - n.location.getX();
         double yDelta = this.location.getY() - n.location.getY();
         return Math.sqrt(Math.pow(xDelta, 2) + Math.pow(yDelta, 2));
+    }
+
+    public Coordinate getLocation() {
+        return location;
     }
 
     public void addNeighbor(MapNode n) {

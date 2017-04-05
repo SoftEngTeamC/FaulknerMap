@@ -1,4 +1,5 @@
 import db.Driver;
+import db.HospitalSchema;
 import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
 import db.dbHelpers.HospitalProfessionalsHelper;
@@ -55,14 +56,14 @@ public class MainController{
 
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
-    public void DisplayMap(LinkedList<Node> nodes){
+    public void DisplayMap(List<MapNode> nodes){
        for(int i=0;i<nodes.size();i++){
-           MakeCircle(nodes.get(i).getPosition().getXpos(),nodes.get(i).getPosition().getYpos());
+           MakeCircle(nodes.get(i).getLocation().getX(),nodes.get(i).getLocation().getY());
             if(i>0){
-                MakeLine(nodes.get(i-1).getPosition().getXpos(),
-                         nodes.get(i-1).getPosition().getYpos(),
-                         nodes.get(i).getPosition().getXpos(),
-                         nodes.get(i).getPosition().getYpos());
+                MakeLine(nodes.get(i-1).getLocation().getX(),
+                         nodes.get(i-1).getLocation().getY(),
+                         nodes.get(i).getLocation().getX(),
+                         nodes.get(i).getLocation().getY());
             }
         }
     }
@@ -70,7 +71,7 @@ public class MainController{
     //MakeCircle creates a circle centered at the given X,Y relative to the initial size of the image
     //It locks the points to their position on the image,
     //Resizing the image does not effect the relative position of the nodes and the image
-    public void MakeCircle(float x, float y) {
+    public void MakeCircle(double x, double y) {
         // initial size of image and the image ratior
         double ImgW = FourthFloor.getImage().getWidth();
         double ImgH = FourthFloor.getImage().getHeight();
@@ -88,7 +89,7 @@ public class MainController{
 
     //MakeLine take 2 points (effectively) and draws a line from point to point
     //this line is bounded to the image such that resizing does not effect the relative position of the line and image
-    public void MakeLine(float x1, float y1, float x2, float y2) {
+    public void MakeLine(double x1, double y1, double x2, double y2) {
         double ImgW = FourthFloor.getImage().getWidth();
         double ImgH = FourthFloor.getImage().getHeight();
         double ImgR = ImgH / ImgW;
@@ -121,13 +122,19 @@ public class MainController{
     }
 
     public void FindandDisplayPath(HospitalProfessional HP){
+        HospitalProfessionalsHelper hph = Driver.getHospitalProfessionalHelper();
         NodesHelper NH = Driver.getNodesHelper();
         Map map = new Map(NH.getNodes(null));
-        MapNode start = null;
+        HospitalProfessional leHP = HospitalProfessionalsHelper.getHospitalProfessionalByName("Hoover, Paul");
+        System.out.println(leHP);
+        UUID nId = leHP.getNodeId();
+        System.out.println(nId);
+        MapNode start = map.getNode(nId);
+        if (start == null) System.out.println("What the fuck.");
         MapNode dest = map.getNode(HP.getNodeId());
         List<MapNode> path = PathFinder.shortestPath(start, dest);
+        DisplayMap(path);
     }
-
 
     //triggered on key release in SearchBar
     //runs PopulateSearchResults with the Search input
@@ -168,7 +175,11 @@ public class MainController{
     //function for Help Button
     public void HandleHelpButton(){
         System.out.println("HELP");
-        DisplayInformation.setText("Use the App by Using the App. \nIf you need help get some help");
+        DisplayInformation.setText("To contact a hospital worker\nplease call 774-278-8517");
+    }
+    //function for Panic Button
+    public void HandlePanicButton(){
+        DisplayInformation.setText("Don't Panic");
     }
 
     //SCREEN CHANGING FUNCTIONS

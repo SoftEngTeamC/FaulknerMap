@@ -6,6 +6,7 @@ import db.dbHelpers.EdgesHelper;
 import db.dbHelpers.NodesHelper;
 import pathfinding.MapNode;
 
+import javax.sound.midi.SysexMessage;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -25,8 +26,13 @@ public class Map {
             nodeMap.put(n.getId(), new MapNode(n));
         }
         for (UUID id : nodeMap.keySet()) {
-            for (Node n : edgeHelper.getNeighbors(nodeHelper.getNodeByID(id))) {
-                nodeMap.get(id).addNeighbor(nodeMap.get(n.getId()));
+            System.out.println(id);
+            for (Node n : edgeHelper.getNeighbors(NodesHelper.getNodeByID(id))) {
+                if (n == null) continue;
+                MapNode neighbor = nodeMap.get(n.getId());
+                MapNode currentNode = nodeMap.get(id);
+                if (neighbor == null || currentNode == null) continue;
+                currentNode.addNeighbor(neighbor);
             }
         }
     }
