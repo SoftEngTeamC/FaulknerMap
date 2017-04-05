@@ -12,22 +12,26 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="EditPersonController">
    <children>
-      <Button fx:id="logoutBtn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#logout" text="logout" />
-      <Button fx:id="updateBtn" layoutX="246.0" layoutY="261.0" mnemonicParsing="false" onAction="#updateBtnPressed" prefHeight="44.0" prefWidth="98.0" text="Update" textFill="#4ba418" />
-      <TextField fx:id="nameField" layoutX="226.0" layoutY="95.0" />
+
+
+
+      <Button fx:id="backBtn" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" text="Back" />
       <Text layoutX="147.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" />
-      <TextField fx:id="idField" editable="false" layoutX="226.0" layoutY="217.0" />
+      <TextField layoutX="226.0" layoutY="95.0" />
+      <Text layoutX="164.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" textAlignment="CENTER" />
+      <TextField layoutX="226.0" layoutY="133.0" />
+      <Text layoutX="155.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" />
+      <TextField layoutX="226.0" layoutY="173.0" />
       <Text layoutX="183.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID:" />
+      <TextField layoutX="226.0" layoutY="217.0" />
+
+      <Button fx:id="updateBtn" layoutX="246.0" layoutY="261.0" mnemonicParsing="false" onAction="#updateBtnPressed" prefHeight="44.0" prefWidth="98.0" text="Update" textFill="#4ba418" />
+      <Button fx:id="logoutBtn" layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#logout" text="logout" />
       <Text layoutX="233.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Person">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
       <Text layoutX="284.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error" visible="false" />
-      <Text layoutX="155.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Location:" />
-      <TextField fx:id="locationField" layoutX="226.0" layoutY="173.0" />
-      <Text layoutX="164.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" textAlignment="CENTER" />
-      <TextField fx:id="titleField" layoutX="226.0" layoutY="133.0" />
-      <Button fx:id="backBtn" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#back" text="Back" />
    </children>
 </AnchorPane>
