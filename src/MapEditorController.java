@@ -207,14 +207,7 @@ public class MapEditorController implements AdminController {
                 ObservableList<String> OList = FXCollections.observableArrayList(nodeName);
                 removeNode_searchList.setItems(OList);
             }
-            String selectedName = NodesHelper.getNodeByName(searchField).getName();
-            System.out.println("selectName is: " + selectedName);
 
-            ArrayList<String> nodeName = new ArrayList<>();
-            nodeName.add(selectedName);
-            System.out.println("nodeName is: " + nodeName);
-            ObservableList<String> OList = FXCollections.observableArrayList(nodeName);
-            removeNode_searchList.setItems(OList);
         }
         catch (Exception E){
             System.out.println("Searching Error");
