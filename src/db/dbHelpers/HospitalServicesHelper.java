@@ -171,7 +171,7 @@ public class HospitalServicesHelper {
     public static HospitalService getHospitalServiceByName(String name) {
         //query table for specific HospitalService
         String str = "SELECT * FROM " + HospitalServiceTable.NAME + " WHERE " +
-                HospitalServiceTable.Cols.ID + " = '" + name + "'";
+                HospitalServiceTable.Cols.NAME + " = '" + name + "'";
         try {
             ResultSet resultSet = statement.executeQuery(str);
             HospitalService tempService = null;
@@ -184,7 +184,7 @@ public class HospitalServicesHelper {
             return tempService;
         } catch (SQLException e) {
             System.out.println("Could not select Hospital Service with name: " + name);
-            //   e.printStackTrace();
+               e.printStackTrace();
         }
         return null;
     }

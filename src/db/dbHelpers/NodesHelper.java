@@ -582,11 +582,12 @@ Connect upperMiddle to UpLL_Corner
         temphs.setNodeId(getNodeByName("UROLOGY").getId());
         updateHospitalProfessional(temphs);
 
-        HospitalService tempService = HospitalServicesHelper.getHospitalServiceByName("UROLOGY");
+        HospitalService tempService = getHospitalServiceByName("Urology");
+        System.out.print(tempService.getName());
         tempService.setNodeId(tempB.getId());
         HospitalServicesHelper.updateHospitalService(tempService);
 
-        tempService = HospitalServicesHelper.getHospitalServiceByName("Men''s Healthcare");
+        tempService = HospitalServicesHelper.getHospitalServiceByName("Men''s Health Center");
         tempService.setNodeId(tempB.getId());
         HospitalServicesHelper.updateHospitalService(tempService);
 
@@ -615,27 +616,27 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Ruiz, Emily");
-        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
+        temphs.setNodeId(getNodeByName("SUITE4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Schmults, Chrysalyne");
-        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
+        temphs.setNodeId(getNodeByName("SUITE4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Waldman, Abigail");
-        temphs.setNodeId(getNodeByName("Suite4349-4995").getId());
+        temphs.setNodeId(getNodeByName("SUITE4349-4995").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Cua, Christopher");
-        temphs.setNodeId(getNodeByName("Suite4985-90").getId());
+        temphs.setNodeId(getNodeByName("SUITE4985-90").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Tarpy, Robert");
-        temphs.setNodeId(getNodeByName("Suite4985-90").getId());
+        temphs.setNodeId(getNodeByName("SUITE4985-90").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Lahive, Karen");
-        temphs.setNodeId(getNodeByName("Suite4985-90").getId());
+        temphs.setNodeId(getNodeByName("SUITE4985-90").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Brigham and Women''s Primary Physicians");
@@ -695,135 +696,135 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Ash, Samuel");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Bachman, William");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Bonaca, Marc");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Cardet, Juan Carlos");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Cardin, Kristin");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Chan, Walter");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Connell, Nathan");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("D''Ambrosio, Carolyn");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Dave, Jatin");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Fanta, Christopher");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Hentschel, Dirk");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Hsu, Joyce");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Lilly, Leonard Stuart");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("McMahon, Gearoid");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Parnes, Aric");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Ramirez, Alberto");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Romano, Keith");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Ruff, Christian");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Saldana, Fidencio");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Schissel, Scott");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Shah, Amil");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Sheth, Samira");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Sweeney, Michael");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Tucker, Kevin");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Voiculescu, Adina");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Wickner, Paige");
-        temphs.setNodeId(getNodeByName("Suite4930-35").getId());
+        temphs.setNodeId(getNodeByName("SUITE4930-35").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Bernstein, Carolyn");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Burch, Rebecca");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Cochrane, Thomas");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Friedman, Pamela");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Loder, Elizabeth");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Mathew, Paul");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Rizzoli, Paul");
-        temphs.setNodeId(getNodeByName("Suite4970").getId());
+        temphs.setNodeId(getNodeByName("SUITE4970").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Arthritis Center");
@@ -835,15 +836,15 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Hoover, Paul");
-        temphs.setNodeId(getNodeByName("Suite48").getId());
+        temphs.setNodeId(getNodeByName("SUITE48").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Pariser, Kenneth");
-        temphs.setNodeId(getNodeByName("Suite48").getId());
+        temphs.setNodeId(getNodeByName("SUITE48").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Todd, Derrick");
-        temphs.setNodeId(getNodeByName("Suite48").getId());
+        temphs.setNodeId(getNodeByName("SUITE48").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Neurology/Sleep Division");
@@ -851,27 +852,27 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Mullally, William");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Novak, Peter");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Pilgrim, David");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Vardeh, Daniel");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Weisholtz, Daniel");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Whitman, Gregory");
-        temphs.setNodeId(getNodeByName("Suite47").getId());
+        temphs.setNodeId(getNodeByName("SUITE47").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Infectious Diseases");
@@ -879,11 +880,11 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Clark, Roger");
-        temphs.setNodeId(getNodeByName("Suite4950-55").getId());
+        temphs.setNodeId(getNodeByName("SUITE4950-55").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("McGowan, Katherine");
-        temphs.setNodeId(getNodeByName("Suite4950-55").getId());
+        temphs.setNodeId(getNodeByName("SUITE4950-55").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Brigham and Women''s Primary Physicians");
@@ -891,39 +892,39 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Caplan, Laura");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Copello, Maria");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Copello, Maria");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Healy, Barbara");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Lauretti, Linda");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Oliver, Lynn");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Walsh Samp, Kathy");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Walsh Samp, Kathy");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Welker, Roy");
-        temphs.setNodeId(getNodeByName("Suite43").getId());
+        temphs.setNodeId(getNodeByName("SUITE43").getId());
         updateHospitalProfessional(temphs);
 
         tempService = HospitalServicesHelper.getHospitalServiceByName("Gastroenterology Associates");
@@ -931,40 +932,40 @@ Connect upperMiddle to UpLL_Corner
         HospitalServicesHelper.updateHospitalService(tempService);
 
         temphs = getHospitalProfessionalByName("Conant, Alene");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Drewniak, Stephen");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Homenko, Daria");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Lo, Amy");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Matloff, Daniel");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("McNabb-Balter, Julia");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
 
         temphs = getHospitalProfessionalByName("Mutinga, Muthoka");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Preneta, Ewa");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         temphs = getHospitalProfessionalByName("Smith, Benjamin");
-        temphs.setNodeId(getNodeByName("Suite45").getId());
+        temphs.setNodeId(getNodeByName("SUITE45").getId());
         updateHospitalProfessional(temphs);
 
         EdgesHelper eh = EdgesHelper.get(connection);

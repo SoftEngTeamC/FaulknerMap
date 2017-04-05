@@ -26,7 +26,7 @@ public class Map {
             nodeMap.put(n.getId(), new MapNode(n));
         }
         for (UUID id : nodeMap.keySet()) {
-            System.out.println(id);
+        //    System.out.println(id);
             for (Node n : edgeHelper.getNeighbors(NodesHelper.getNodeByID(id))) {
                 if (n == null) continue;
                 MapNode neighbor = nodeMap.get(n.getId());

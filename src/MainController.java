@@ -14,7 +14,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+import javafx.scene.image.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.ListView;
 import javafx.scene.paint.Color;
@@ -57,6 +58,17 @@ public class MainController{
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(List<MapNode> nodes){
+        MapAnchor.getChildren().clear();
+        ImageView mapPic = new ImageView();
+        Image floorImage = new Image("Resources/floor4.png");
+        mapPic.setImage(floorImage);
+        mapPic.setId("FourthFloor");
+        mapPic.setFitHeight(300);
+        mapPic.setPreserveRatio(true);
+        mapPic.setPickOnBounds(true);
+        FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
+        MapAnchor.getChildren().add(mapPic);
+
         if (nodes == null) {
             System.out.println("There is no path.");
             return;
@@ -130,9 +142,9 @@ public class MainController{
         NodesHelper NH = Driver.getNodesHelper();
         Map map = new Map(NH.getNodes(null));
         HospitalProfessional leHP = HospitalProfessionalsHelper.getHospitalProfessionalByName("Hoover, Paul");
-        System.out.println(leHP);
+       // System.out.println(leHP);
         UUID nId = leHP.getNodeId();
-        System.out.println(nId);
+      //  System.out.println(nId);
         MapNode start = map.getNode(NH.getNodeByName("UROLOGY").getId());
         MapNode dest = map.getNode(nId);
         List<MapNode> path = PathFinder.shortestPath(start, dest);
