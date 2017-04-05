@@ -81,6 +81,7 @@ public class NodesHelper {
                 + ")";
         try {
             statement.executeUpdate(str);
+            updateNodes();
             return true;
         } catch (SQLException e) {
             System.out.println("Could not add Node " + node.getName() + ": " + node.getPosition().toString());
@@ -113,6 +114,7 @@ public class NodesHelper {
                     node.getId().toString() + "'";
             try {
                 statement.executeUpdate(str);
+                updateNodes();
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not update Node " + node.getName() + ": " +
@@ -141,6 +143,7 @@ public class NodesHelper {
                     NodeTable.Cols.ID + " = '" + node.getId().toString() + "'";
             try {
                 statement.execute(str);
+                updateNodes();
                 return true;
             } catch (SQLException e) {
                 System.out.println("Could not delete Node " + node.getName() + ": " +
@@ -576,7 +579,10 @@ Connect upperMiddle to UpLL_Corner
 
         populateTable(originalList); //put array in database now
 
-        EdgesHelper.get(connection).populateTable(edgeList); //pass over Edge List
+        EdgesHelper eh = EdgesHelper.get(connection);
+        EdgesHelper.populateTable(edgeList); //pass over Edge List
+
+        updateNodes();
     }
 
     /**
@@ -641,6 +647,14 @@ Connect upperMiddle to UpLL_Corner
         } catch (SQLException e) {
             System.out.println("Could not build Node table");
          //   e.printStackTrace();
+        }
+    }
+
+    public static void updateNodes(){
+        ArrayList<Node> list = getNodes(null);
+        for(Node node: list){
+            ArrayList<Node> neighbors = EdgesHelper.getNeighbors(node);
+            node.setNeighbors(neighbors);
         }
     }
 

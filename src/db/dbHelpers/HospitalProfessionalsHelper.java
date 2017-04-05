@@ -404,7 +404,7 @@ public class HospitalProfessionalsHelper {
         originalList.add(new HospitalProfessional("Nehs, Matthew", "MD", "5D"));
         originalList.add(new HospitalProfessional("Nelson, Ehren", "MD", "5 South"));
         originalList.add(new HospitalProfessional("Nuspl, Kristen", "PA-C", "5J"));
-        originalList.add(new HospitalProfessional("O'Hare, Kitty", "MD", "5H"));
+        originalList.add(new HospitalProfessional("O''Hare, Kitty", "MD", "5H"));
         originalList.add(new HospitalProfessional("Oliveira, Nancy", "MS, RDN, LDN", "5A"));
         originalList.add(new HospitalProfessional("Omobomi, Olabimpe", "MD", "5K"));
         originalList.add(new HospitalProfessional("Palermo, Nadine", "MD", "5K"));
