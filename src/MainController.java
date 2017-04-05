@@ -1,4 +1,7 @@
+import db.Driver;
+import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
+import db.dbHelpers.HospitalProfessionalsHelper;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -41,13 +44,11 @@ public class MainController{
     public void initialize() {
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
-
-        //creating an ObservableList of strings to test with
-        ObservableList<String> names = FXCollections.observableArrayList("Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
-        SearchResults.setItems(names);
-
+        PopulateSearchResults(null);
         MakeCircle(1024,150);
     }
+
+
 
     //DisplayMap function takes a list of points(X,Y) and creates circles at all their positions and lines between them
     public void DisplayMap(LinkedList<Node> nodes){
@@ -106,16 +107,52 @@ public class MainController{
 
     //This function is called when the user clicks on a Search Result.
     //Information unique to the ListView Item can be accessed
-    //aka, we should be able to associate this click to a database object to pullup Info on the object and Display its Map Directions
     public void handleClickedOnSearchResult() {
+        HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+        ArrayList<HospitalProfessional> Professionals = hs.getHospitalProfessionals(null);
+        ObservableList<String> names = FXCollections.observableArrayList();
         System.out.println("clicked on " + SearchResults.getSelectionModel().getSelectedItem());
-        System.out.println(SearchResults.getSelectionModel().getSelectedItem());
-        DisplayInformation.setText(SearchResults.getSelectionModel().getSelectedItem().toString());
+        PopulateInformationDisplay(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
+        //FindandDisplayPath(hs.getHospitalProfessionalByName(SearchResults.getSelectionModel().getSelectedItem().toString()));
     }
 
-    public void Search() {
+    //public void FindandDisplayPath(HospitalProfessional){
+    
+
+    //triggered on key release in SearchBar
+    //runs PopulateSearchResults with the Search input
+    public void Search(){
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
+        PopulateSearchResults(SearchBar.getText().toString());
+    }
+
+    public void PopulateSearchResults(String S) {
+        HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+        ArrayList<HospitalProfessional> Professionals = hs.getHospitalProfessionals(null);
+        ObservableList<String> names = FXCollections.observableArrayList();
+        if(S == null)
+        {
+            System.out.println("null case");
+            for(HospitalProfessional HP : Professionals){
+                names.add(HP.getName());
+            }
+            SearchResults.setItems(names);
+        }
+        else{
+            for(HospitalProfessional HP : Professionals){
+                if(HP.getName().contains(S)) {
+                    names.add(HP.getName());
+                }
+            }
+            SearchResults.setItems(names);
+        }
+    }
+
+    //This function takes a HospitalProfessional edits the DisplayInformation TextArea
+    //with all the HP's associated information
+    public void PopulateInformationDisplay(HospitalProfessional HP){
+        DisplayInformation.setText(HP.getName()+"\n\n"+HP.getTitle()+"\n"+HP.getLocation());
     }
 
     //function for Help Button
@@ -123,7 +160,6 @@ public class MainController{
         System.out.println("HELP");
         DisplayInformation.setText("Use the App by Using the App. \nIf you need help get some help");
     }
-
 
     //SCREEN CHANGING FUNCTIONS
     @FXML
