@@ -1,4 +1,7 @@
+import db.Driver;
+import db.dbClasses.HospitalProfessional;
 import db.dbClasses.Node;
+import db.dbHelpers.HospitalProfessionalsHelper;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -41,11 +44,7 @@ public class MainController{
     public void initialize() {
         //the bind function locks an element property to another elements property
         FourthFloor.fitWidthProperty().bind(MapAnchor.widthProperty());
-
-        //creating an ObservableList of strings to test with
-        ObservableList<String> names = FXCollections.observableArrayList("Julia", "Ian", "Sue", "Matthew", "Hannah", "Stephan", "Denise");
-        SearchResults.setItems(names);
-
+        PopulateSearchResults(null);
         MakeCircle(1024,150);
     }
 
@@ -112,10 +111,32 @@ public class MainController{
         System.out.println(SearchResults.getSelectionModel().getSelectedItem());
         DisplayInformation.setText(SearchResults.getSelectionModel().getSelectedItem().toString());
     }
-
-    public void Search() {
+    public void Search(){
         System.out.println("Searching");
         System.out.println(SearchBar.getText().toString());
+        PopulateSearchResults(SearchBar.getText().toString());
+    }
+
+    public void PopulateSearchResults(String S) {
+        HospitalProfessionalsHelper hs = Driver.getHospitalProfessionalHelper();
+        ArrayList<HospitalProfessional> Professionals = hs.getHospitalProfessionals(null);
+        ObservableList<String> names = FXCollections.observableArrayList();
+        if(S == null)
+        {
+            System.out.println("null case");
+            for(HospitalProfessional HP : Professionals){
+                names.add(HP.getName());
+            }
+            SearchResults.setItems(names);
+        }
+        else{
+            for(HospitalProfessional HP : Professionals){
+                if(HP.getName().contains(S)) {
+                    names.add(HP.getName());
+                }
+            }
+            SearchResults.setItems(names);
+        }
     }
 
     //function for Help Button
