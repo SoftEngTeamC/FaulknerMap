@@ -55,9 +55,9 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for node:" />
-                              <TextField fx:id="editNode_searchField" layoutX="14.0" layoutY="31.0" />
-                              <Button fx:id="editNode_searchBtn" layoutX="205.0" layoutY="31.0" mnemonicParsing="false" onAction="#editNode_searchBtnPressed" text="Search" />
+                              <!--<Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for node:" />-->
+                              <!--<TextField fx:id="editNode_searchField" layoutX="14.0" layoutY="31.0" />-->
+                              <Button fx:id="editNode_searchBtn" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#editNode_searchBtnPressed" text="Refresh" />
                               <Text layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search results:" />
                               <ListView fx:id="editNode_searchResultsList" layoutX="14.0" layoutY="80.0" prefHeight="57.0" prefWidth="200.0" />
                               <Text layoutX="14.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neighbors:" />

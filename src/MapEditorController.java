@@ -1,12 +1,11 @@
 import db.Driver;
+import db.dbClasses.Coordinate;
 import db.dbClasses.Edge;
 import db.dbClasses.Node;
 import db.dbHelpers.EdgesHelper;
 import db.dbHelpers.NodesHelper;
-
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -17,22 +16,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
-
-import db.Driver.*;
-import db.dbHelpers.*;
-import db.dbClasses.*;
-import db.dbClasses.Edge;
-import db.dbClasses.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -337,6 +328,18 @@ public class MapEditorController implements AdminController {
      *
      */
     public void editNode_addBtnPressed(){
+
+        Node newNode = nodesHelper.getNodeByName(editNode_addField.getText());
+        if (newNode != null){
+            currNodes[0].addEdge(newNode);
+            ArrayList<Node> neighbors = edgesHelper.getNeighbors(currNodes[0]);
+            ArrayList<String> neighborsS = new ArrayList<>();
+            for(Node node: neighbors){
+                neighborsS.add(node.getName());
+            }
+            ObservableList<String> nList = FXCollections.observableArrayList(neighborsS);
+            editNode_neighborsList.setItems(nList);
+        }
 
     }
 
